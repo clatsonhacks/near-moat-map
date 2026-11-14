@@ -1,454 +1,600 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NEAR Intents Thesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 :root{
   color-scheme:light;
-  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
-  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
-  --s1:#2a78d6; --s2:#eb6834; --off:#e1e0d9;
-  --good:#0ca30c; --critical:#d03b3b; --warning:#fab219;
-  --code:#f0efec;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --page:#0d0d0d; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
-    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
-    --s1:#3987e5; --s2:#d95926; --off:#2c2c2a; --code:#232321;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --page:#0d0d0d; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
-  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
-  --s1:#3987e5; --s2:#d95926; --off:#2c2c2a; --code:#232321;
+  --page:#f2f8fe; --surface:#ffffff; --tint:#e6f1fd; --tint2:#cde2fb;
+  --ink:#0b1f3a; --ink2:#44566e; --muted:#7c8ba0;
+  --grid:#e3ecf6; --axis:#c4d3e4; --border:rgba(20,70,130,.12);
+  --blue:#2a78d6; --blue-deep:#184f95; --blue-soft:#86b6ef; --orange:#eb6834; --aqua:#1baf7a; --neutral:#b9c6d6;
+  --good:#0ca30c; --warning:#fab219;
+  --shadow:0 1px 2px rgba(20,70,130,.06),0 8px 28px rgba(20,70,130,.08);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:1040px;margin:0 auto;padding:32px 16px 80px}
-h1{font-size:30px;line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
-h2{font-size:19px;margin:0 0 4px}
-.lede{color:var(--ink2);max-width:72ch;margin:0 0 20px}
-.meta{color:var(--muted);font-size:13px}
-section{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin:16px 0}
-.says{color:var(--ink2);margin:0 0 14px;max-width:80ch}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0}
-.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px}
-.tile .label{color:var(--ink2);font-size:13px}
-.tile .value{font-size:34px;font-weight:600;line-height:1.2;margin:4px 0}
-.tile .note{color:var(--ink2);font-size:13px}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:2px 9px;border-radius:99px;border:1px solid var(--border);color:var(--ink)}
-.badge i{width:8px;height:8px;border-radius:50%;display:inline-block}
-.nc{border:1px dashed var(--axis);border-radius:8px;padding:14px;color:var(--ink2);font-size:14px}
-details{margin-top:14px;font-size:13px}
-summary{cursor:pointer;color:var(--ink2)}
-pre{background:var(--code);padding:12px;border-radius:8px;overflow:auto;font:12px/1.5 ui-monospace,Consolas,monospace;max-height:340px;white-space:pre-wrap;word-break:break-word}
-table{border-collapse:collapse;width:100%;font-size:13px}
-th,td{padding:6px 8px;border-bottom:1px solid var(--grid);text-align:left;white-space:nowrap}
-th{color:var(--ink2);font-weight:600}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-.scroll{overflow-x:auto}
-.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:0 0 8px}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:var(--page);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-deep)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#dcebfc 0%,#eaf3fe 55%,var(--page) 100%);padding:28px 0 36px}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .wrap{position:relative}
+.eyebrow{display:inline-flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-deep);background:rgba(255,255,255,.7);border:1px solid var(--border);padding:5px 12px;border-radius:99px;backdrop-filter:blur(6px)}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(42,120,214,.5)}70%{box-shadow:0 0 0 9px rgba(42,120,214,0)}100%{box-shadow:0 0 0 0 rgba(42,120,214,0)}}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin:20px 0 14px;max-width:17ch}
+h1 em{font-style:normal;color:var(--blue)}
+.lede{font-size:17px;color:var(--ink2);max-width:66ch;margin:0 0 26px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.kpi{background:rgba(255,255,255,.86);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+.kpi:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(20,70,130,.08),0 16px 40px rgba(20,70,130,.14)}
+.kpi .label{font-size:12.5px;color:var(--ink2);font-weight:500}
+.kpi .value{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:6px 0 4px}
+.kpi .note{font-size:12.5px;color:var(--ink2)}
+.kpi .bar{height:4px;border-radius:4px;background:var(--tint2);margin-top:12px;overflow:hidden}
+.kpi .bar b{display:block;height:100%;background:var(--blue);border-radius:4px;width:0}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:20;background:rgba(242,248,254,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px}
+nav a{white-space:nowrap;text-decoration:none;font-size:13px;font-weight:600;color:var(--ink2);padding:6px 13px;border-radius:99px;transition:background .2s,color .2s}
+nav a:hover,nav a.on{background:var(--blue);color:#fff}
+
+/* ---------- sections ---------- */
+.part{padding:44px 0 6px}
+.part-tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.part h2{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;line-height:1.15;margin:6px 0 8px;font-weight:800}
+.part p.sub{color:var(--ink2);max-width:70ch;margin:0;font-size:16px}
+.grid{display:grid;gap:16px;margin-top:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow);min-width:0}
+.card.span{grid-column:1/-1}
+.card h3{font-size:16.5px;margin:0 0 4px;font-weight:700;letter-spacing:-.01em}
+.card .says{color:var(--ink2);margin:0 0 12px;font-size:14px;max-width:78ch}
+.chart{width:100%;height:300px}
+.chart.sm{height:210px}.chart.lg{height:420px}.chart.xl{height:620px}
+.insight{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,var(--tint) 0%,#f3f9ff 100%);border:1px solid var(--tint2);border-left:4px solid var(--blue);border-radius:14px;padding:14px 16px;margin-top:16px}
+.insight svg{flex:none;margin-top:2px}
+.insight b{display:block;font-size:15px;margin-bottom:2px}
+.insight span{color:var(--ink2);font-size:14px}
+.insights{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-top:20px}
+.insights .insight{margin-top:0}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:0 0 6px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:10px;height:10px;border-radius:50%;display:inline-block}
-.filters{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
-.filters button{font:inherit;font-size:13px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--ink2);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-svg{display:block;width:100%;height:auto;overflow:visible}
-svg text{fill:var(--ink2);font-size:12px;font-family:inherit}
-svg text.strong{fill:var(--ink)}
-svg text.tick{fill:var(--muted);font-variant-numeric:tabular-nums}
-.multi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.multi h3{font-size:14px;margin:0 0 2px}
-.multi p{font-size:12px;color:var(--muted);margin:0 0 6px}
-#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:6px 9px;border-radius:6px;opacity:0;transition:opacity .08s;z-index:9;max-width:280px;line-height:1.4}
-.cell{width:14px;height:14px;border-radius:4px;display:inline-block;background:var(--off);vertical-align:middle}
-.cell.on{background:var(--s1)}
+.filters{display:inline-flex;gap:4px;background:var(--tint);padding:4px;border-radius:20px;margin:0 0 10px;flex-wrap:wrap}
+.filters button{font:inherit;font-size:13px;font-weight:600;padding:5px 14px;border-radius:99px;border:0;background:transparent;color:var(--ink2);cursor:pointer;transition:all .2s}
+.filters button[aria-pressed="true"]{background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(42,120,214,.35)}
+details{margin-top:12px;font-size:13px}
+summary{cursor:pointer;color:var(--blue-deep);font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px}
+summary::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+details[open] summary::before{transform:rotate(45deg)}
+pre{background:#f1f6fc;border:1px solid var(--grid);padding:12px;border-radius:10px;overflow:auto;font:12px/1.5 ui-monospace,Consolas,monospace;max-height:320px;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--grid);text-align:left;white-space:nowrap}
+th{color:var(--ink2);font-weight:600;font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.nc{border:1px dashed var(--axis);border-radius:10px;padding:14px;color:var(--ink2);font-size:14px}
+.meta{color:var(--muted);font-size:12.5px}
+
+/* verdict cards */
+.verdict{display:flex;flex-direction:column;gap:6px}
+.verdict .big{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--tint);color:var(--blue-deep);width:max-content}
+.pill.met{background:#e2f6e2;color:#006300}
+.meter{position:relative;height:12px;border-radius:99px;background:var(--tint2);margin:14px 0 26px}
+.meter b{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--blue);width:0}
+.meter i{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink)}
+.meter i::after{content:attr(data-l);position:absolute;top:22px;left:50%;transform:translateX(-50%);font-size:11px;font-style:normal;font-weight:600;color:var(--ink2);white-space:nowrap}
+
+/* coverage matrix */
+.matrix{display:grid;gap:4px;align-items:center;font-size:12.5px}
+.matrix .h{font-weight:600;color:var(--ink2);font-size:11.5px;text-align:center}
+.matrix .c{color:var(--ink);font-weight:600}
+.matrix .n{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.dot{height:18px;border-radius:6px;background:var(--tint)}
+.dot.on{background:var(--blue)}
+.band{grid-column:1/-1;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* growth track */
+.track{position:relative;height:74px;margin:26px 34px 34px 24px}
+.track .rail{position:absolute;left:0;right:0;top:30px;height:10px;border-radius:99px;background:var(--tint2)}
+.track .fill{position:absolute;left:0;top:30px;height:10px;border-radius:99px;background:linear-gradient(90deg,var(--blue-soft),var(--blue));width:0}
+.track .mk{position:absolute;top:0;transform:translateX(-50%);text-align:center;font-size:12px;color:var(--ink2);white-space:nowrap}
+.track .mk b{display:block;font-size:15px;color:var(--ink)}
+.track .mk::after{content:"";position:absolute;left:50%;top:26px;width:2px;height:18px;background:var(--ink);transform:translateX(-50%)}
+.track .mk span{position:absolute;top:50px;left:50%;transform:translateX(-50%)}
+.track .mk.now::after{background:var(--blue);width:14px;height:14px;border-radius:50%;top:28px;border:3px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px}
 ul.caveats{margin:8px 0 0;padding-left:18px;color:var(--ink2)}
-ul.caveats li{margin:4px 0}
+ul.caveats li{margin:5px 0}
+@media (max-width:600px){.kpi .value{font-size:32px}.chart{height:270px}.chart.xl{height:560px}.track .mk{font-size:10.5px}.track .mk b{font-size:13px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<main>
-  <p class="meta">NEAR hackathon · Investment Thesis track · <span id="gen"></span></p>
-  <h1>NEAR's long-term case rests on Intents. Here is what the evidence supports.</h1>
-  <p class="lede" id="lede"></p>
-  <div class="tiles" id="mtiles"></div>
+<header class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow"><i></i>NEAR hackathon · Investment Thesis · <span id="gen"></span></span>
+    <h1>NEAR's long-term case <em>rests on Intents.</em></h1>
+    <p class="lede" id="lede"></p>
+    <div class="kpis" id="kpis"></div>
+  </div>
+</header>
 
-  <section><h2>A. What Intents revenue is worth to a NEAR holder</h2>
-    <p class="says" id="val-says"></p>
-    <div class="multi" id="val-charts"></div>
-    <p class="meta" style="margin:18px 0 4px">Buyback yield on NEAR's market value under different volume and take assumptions. The measured position today is the highlighted cell; every other cell is an assumption, not a forecast.</p>
-    <div class="scroll" id="grid"></div>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.model
+<nav><div class="wrap">
+  <a href="#verdict">Verdict</a><a href="#value">A · What it is worth</a><a href="#moat">B · Will it last</a><a href="#price">Pricing</a><a href="#network">Network</a><a href="#limits">Limits</a>
+</div></nav>
+
+<main class="wrap">
+
+<section class="part" id="verdict">
+  <div class="part-tag">The verdict in three findings</div>
+  <h2>Real business, small yield, narrow moat</h2>
+  <div class="insights" id="top-insights"></div>
+</section>
+
+<section class="part" id="value">
+  <div class="part-tag">Part A</div>
+  <h2>What Intents revenue is worth to a NEAR holder</h2>
+  <p class="sub" id="val-says"></p>
+  <div class="grid g3" id="val-charts">
+    <div class="card"><h3>Monthly volume</h3><p class="says" id="mv-says"></p><div class="chart sm" id="c-vol"></div></div>
+    <div class="card"><h3>Monthly fees</h3><p class="says" id="mf-says"></p><div class="chart sm" id="c-fee"></div></div>
+    <div class="card"><h3>Monthly revenue captured by NEAR</h3><p class="says" id="mr-says"></p><div class="chart sm" id="c-rev"></div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>How far Intents has to grow</h3><p class="says" id="track-says"></p>
+      <div class="track" id="track"></div>
+      <p class="meta">Volume multiple needed at today's take. The scale is logarithmic.</p></div>
+    <div class="card"><h3>Buyback against new supply</h3><p class="says" id="iss-says"></p><div class="chart sm" id="c-iss"></div></div>
+    <div class="card span"><h3>Scenario grid: buyback yield on NEAR's market value</h3>
+      <p class="says">Each cell is the yield if annual volume and NEAR's take were as labelled. Only the outlined cell is measured; every other cell is an assumption, not a forecast.</p>
+      <div class="chart" id="c-grid"></div>
+      <details><summary>Query behind it</summary><pre>python -m moatmap.model
 
 run rate      = trailing 90 days of DefiLlama volume, fees and revenue x 365 / 90
+                GET https://api.llama.fi/summary/fees/near-intents?dataType=dailyFees | dailyRevenue
+                GET https://api.llama.fi/summary/dexs/near-intents
 market value  = circulating supply (sql/circulating_supply.sql on NEAR BigQuery) x NEAR price (1Click token list)
 buyback yield = annual revenue / market value      (since 2026-02-23 NEAR's captured Intents revenue buys back NEAR)
 net issuance  = change in total supply over the BigQuery window, annualised
-grid cell     = run-rate volume x volume multiple x take (bps of volume NEAR keeps) / market value</pre></details>
-  </section>
+grid cell     = run-rate volume x volume multiple x take (bps of volume NEAR keeps) / market value</pre></details></div>
+  </div>
+</section>
 
-  <h2 style="margin:36px 0 0">B. Will it last? The Moat Map</h2>
-  <p class="lede" style="margin:6px 0 0">Revenue is only worth a long-term multiple if rivals cannot take it. We counted how many of five rival bridges (Across, Relay, deBridge, Chainflip, THORChain) can serve each route and tested two claims whose thresholds were fixed before the data was pulled.</p>
-  <div class="tiles" id="tiles"></div>
+<section class="part" id="moat">
+  <div class="part-tag">Part B · The Moat Map</div>
+  <h2>Will it last? Counting the rivals on every route</h2>
+  <p class="sub">Revenue earns a long-term multiple only if rivals cannot take it. We counted how many of five rival bridges (Across, Relay, deBridge, Chainflip, THORChain) can serve each route and tested two claims whose thresholds were fixed before the data was pulled.</p>
+  <div class="grid g2" id="verdicts"></div>
 
-  <section><h2>1. Where NEAR Intents has company</h2>
-    <p class="says" id="cov-says"></p><div class="scroll" id="cov"></div>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.coverage
+  <div class="grid g2">
+    <div class="card"><h3>Where NEAR Intents has company</h3><p class="says" id="cov-says"></p><div id="cov"></div>
+      <details><summary>Query behind it</summary><pre>python -m moatmap.coverage
 
 NEAR Intents chains : GET https://1click.chaindefuser.com/v0/tokens  (distinct `blockchain`)
-Across              : GET https://app.across.to/api/available-routes
+Across              : GET https://app.across.to/api/available-routes  +  /api/swap/chains
 Relay               : GET https://api.relay.link/chains
 deBridge            : GET https://dln.debridge.finance/v1.0/supported-chains-info
-Chainflip, THORChain: the rival's own asset / pool list (see moatmap/coverage.py)
+Chainflip           : JSON-RPC cf_supported_assets on https://mainnet-rpc.chainflip.io
+THORChain           : GET .../thorchain/pools  (status Available)
 
-A filled cell = the rival's own live API lists that chain. Output: data/processed/coverage.csv</pre></details>
-  </section>
+A filled cell = the rival's own live API lists that chain. Output: data/processed/coverage.csv</pre></details></div>
+    <div class="card"><h3>Fee revenue by number of rivals on the route</h3><p class="says" id="rev-says"></p><div class="chart" id="c-buckets"></div>
+      <h3 style="margin-top:14px">The same split, measured four ways</h3><p class="says">The line marks the 50% the claim needed.</p><div class="chart sm" id="c-measures"></div>
+      <details><summary>Query behind it</summary><pre>python -m moatmap.explorer   then   python -m moatmap.analyze
 
-  <section><h2>2. Revenue by number of rivals on the route</h2>
-    <p class="says" id="rev-says"></p><div id="rev"></div>
-    <details><summary>Query behind it</summary><pre id="rev-q"></pre></details>
-  </section>
+GET https://explorer.near-intents.org/api/v0/transactions?statuses=SUCCESS&numberOfTransactions=1000&...
+    (Authorization: Bearer $NEAR_INTENTS_JWT, paged over the whole window)
+route = chain(originAsset) > chain(destinationAsset); volume = amountInUsd
+fee per recipient = amountInUsd x appFees[].fee / 10,000 ; NEAR's own = recipient is one of NEAR's three revenue wallets
+Routes are grouped by the number of rivals listing both chains (coverage.csv); same-chain swaps are excluded.</pre></details></div>
+    <div class="card span"><h3>The routes that carry the money</h3><p class="says" id="top-says"></p>
+      <div class="legend"><span><i class="sw" style="background:var(--blue)"></i>Thin route (at most 2 rivals)</span><span><i class="sw" style="background:var(--neutral)"></i>Contested route (3 or more rivals)</span></div>
+      <div class="chart lg" id="c-top"></div>
+      <details><summary>Table view</summary><div class="scroll" id="top-t"></div></details></div>
+    <div class="card"><h3>The thin-route share, week by week</h3><p class="says" id="wk-says"></p><div class="chart" id="c-weekly"></div></div>
+    <div class="card"><h3>How much of it is Zcash</h3><p class="says" id="z-says"></p><div class="chart" id="c-zec"></div></div>
+  </div>
+</section>
 
-  <section><h2>3. The routes that carry the money</h2>
-    <p class="says" id="top-says"></p><div class="scroll" id="top"></div>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.analyze   (function revenue_test)
-
-Sum the per-route rows, drop same-chain swaps, rank by the revenue measure, and attach the number of
-rivals whose API lists both the origin and the destination chain (data/processed/coverage.csv).</pre></details>
-  </section>
-
-  <section><h2>4. What a swap costs: NEAR Intents against the cheapest rival</h2>
-    <p class="says" id="px-says"></p>
-    <div class="filters" id="px-f" role="group" aria-label="Swap size"></div>
-    <div class="legend"><span><i class="sw" style="background:var(--s1)"></i>NEAR Intents</span><span><i class="sw" style="background:var(--s2)"></i>Cheapest rival quoting the route</span></div>
-    <div id="px"></div>
-    <details><summary>Table view</summary><div class="scroll" id="px-t"></div></details>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.quotes
+<section class="part" id="price">
+  <div class="part-tag">Part B · Pricing</div>
+  <h2>Does NEAR charge more where it is alone?</h2>
+  <p class="sub" id="ratio-says"></p>
+  <div class="grid g2">
+    <div class="card span"><h3>What a swap costs: NEAR Intents against the cheapest rival</h3><p class="says" id="px-says"></p>
+      <div class="filters" id="px-f" role="group" aria-label="Swap size"></div>
+      <div class="legend"><span><i class="sw" style="background:var(--blue)"></i>NEAR Intents</span><span><i class="sw" style="background:var(--orange)"></i>Cheapest rival that quoted</span></div>
+      <div class="chart xl" id="c-px"></div>
+      <details><summary>Table view</summary><div class="scroll" id="px-t"></div></details>
+      <details><summary>Query behind it</summary><pre>python -m moatmap.quotes
 
 For each route x size x provider: request a live quote for the same asset pair and input amount.
 cost_bps = (amount_in_usd - amount_out_usd) / amount_in_usd x 10,000
 Both sides are priced with one 1Click price snapshot taken in the same run, for every provider, so the
 figure is the all-in cost (spread + protocol fee + destination gas), not each provider's own estimate.
-Failed quotes are kept with ok=0 and never filled in. Output: data/processed/quotes.csv</pre></details>
-  </section>
+Failed quotes are kept with ok=0 and never filled in. Each point is the median across snapshots.</pre></details></div>
+    <div class="card"><h3>Thin-route cost relative to crowded-route cost</h3><p class="says">Like for like: same token type, same swap size. The line marks the 1.5× the claim needed.</p><div class="chart" id="c-ratio"></div>
+      <details><summary>Query behind it</summary><pre>python -m moatmap.analyze   (function pricing_test)
 
-  <section><h2>5. Is the low-contestation premium there?</h2>
-    <p class="says" id="ratio-says"></p><div class="scroll" id="ratio"></div>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.analyze   (function pricing_test)
-
-NEAR Intents cost per route = median cost_bps across quote snapshots.
-"Least contested" = routes where at most 2 rivals list both chains; "most contested" = 4 or 5.
-Ratio = median cost on least-contested routes / median cost on most-contested routes, per swap size,
+"Thin" = routes where at most 2 rivals list both chains; "crowded" = 4 or 5.
+Ratio = median NEAR cost on thin routes / median NEAR cost on crowded routes, per swap size,
 computed separately for same-token routes (USDC>USDC, ETH>ETH) and different-token routes (BTC>ETH),
-because NEAR's documented fee differs between them and mixing the two would manufacture a premium.
-Claim holds at a size if the ratio is at least 1.5.</pre></details>
-  </section>
+because NEAR's documented fee differs between them and mixing the two would manufacture a premium.</pre></details></div>
+    <div class="card"><h3>Fees actually charged on executed swaps</h3><p class="says" id="real-says"></p><div class="chart" id="c-real"></div></div>
+  </div>
+</section>
 
-  <section><h2>6. Control totals: fees, revenue and volume</h2>
-    <p class="says" id="ll-says"></p><div class="multi" id="ll"></div>
-    <details><summary>Query behind it</summary><pre>python -m moatmap.llama
+<section class="part" id="network">
+  <div class="part-tag">Network context · NEAR BigQuery</div>
+  <h2>Heavy use, few hands</h2>
+  <p class="sub" id="bq-says"></p>
+  <div class="grid g2">
+    <div class="card"><h3>Most-called contracts on NEAR</h3><p class="says" id="tc-says"></p><div class="chart lg" id="c-topc"></div></div>
+    <div class="card"><h3>Daily activity</h3><p class="says">Every query filters on block_date; the newest, still-filling day is not plotted.</p>
+      <div class="filters" id="bq-f" role="group" aria-label="Metric"></div><div class="chart" id="c-bq"></div>
+      <details><summary>Queries behind it</summary><div id="bq-q"></div></details></div>
+  </div>
+</section>
 
-GET https://api.llama.fi/summary/fees/near-intents?dataType=dailyFees
-GET https://api.llama.fi/summary/fees/near-intents?dataType=dailyRevenue
-GET https://api.llama.fi/summary/dexs/near-intents
-
-DefiLlama's adapter reads NEAR's own Dune datasets: fees = protocol fee + affiliate fees;
-revenue = NEAR / wNEAR swept into NEAR's three revenue wallets, so it arrives in lumps on sweep days.</pre></details>
-  </section>
-
-  <section><h2>7. Network usage from NEAR BigQuery</h2>
-    <p class="says" id="bq-says"></p><div class="multi" id="bq"></div>
-    <details><summary>Queries behind it</summary><div id="bq-q"></div></details>
-  </section>
-
-  <section><h2>What these charts cannot tell you</h2><ul class="caveats" id="cav"></ul></section>
+<section class="part" id="limits">
+  <div class="part-tag">Read before relying on it</div>
+  <h2>What these charts cannot tell you</h2>
+  <div class="card" style="margin-top:20px"><ul class="caveats" id="cav"></ul></div>
+</section>
 </main>
-<div id="tip" role="tooltip"></div>
+<footer><div class="wrap">Full argument, evidence for and against, and what would change the conclusion: THESIS.md in the repository. Rebuild every chart with <code>python build.py</code>.</div></footer>
+
 <script>
 const D = /*__DATA__*/null;
-const R = D.results;
+const R = D.results, M = D.model;
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const usd = v => v == null ? 'n/a' : (Math.abs(v) >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : Math.abs(v) >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : Math.abs(v) >= 1e4 ? '$' + (v/1e3).toFixed(1) + 'K' : '$' + v.toLocaleString('en-US', {maximumFractionDigits: 0}));
+const usd = v => v == null ? 'n/a' : (Math.abs(v) >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : Math.abs(v) >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : Math.abs(v) >= 1e4 ? '$' + (v/1e3).toFixed(1) + 'K' : '$' + v.toLocaleString('en-US', {maximumFractionDigits: 0}));
 const num = v => v == null ? 'n/a' : (Math.abs(v) >= 1e6 ? (v/1e6).toFixed(2) + 'M' : Math.abs(v) >= 1e4 ? (v/1e3).toFixed(1) + 'K' : v.toLocaleString('en-US', {maximumFractionDigits: 0}));
-const pct = v => v == null ? 'n/a' : (v * 100).toFixed(1) + '%';
+const pct = (v, d = 1) => v == null ? 'n/a' : (v * 100).toFixed(d) + '%';
 const bps = v => v == null ? 'n/a' : v.toFixed(1) + ' bps';
 const nc = why => `<div class="nc"><strong>Not computed.</strong> ${esc(why)}</div>`;
-const tip = $('tip');
-function hover(el, html){
-  el.addEventListener('mousemove', e => { tip.innerHTML = html; tip.style.opacity = 1;
-    const w = tip.offsetWidth; tip.style.left = Math.min(e.clientX + 14, innerWidth - w - 8) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
-  el.addEventListener('mouseleave', () => tip.style.opacity = 0);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const C = {blue: css('--blue'), deep: css('--blue-deep'), soft: css('--blue-soft'), orange: css('--orange'), aqua: css('--aqua'), neutral: css('--neutral'),
+           ink: css('--ink'), ink2: css('--ink2'), muted: css('--muted'), grid: css('--grid'), axis: css('--axis'), tint: css('--tint'), tint2: css('--tint2')};
+const hasE = typeof echarts !== 'undefined', hasG = typeof gsap !== 'undefined';
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const bulb = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="' + C.blue + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>';
+const insight = (t, d) => `<div class="insight">${bulb}<div><b>${t}</b><span>${d}</span></div></div>`;
+
+/* ---------- lazy charts: each one draws (and animates) when it scrolls into view ---------- */
+const AX = {axisLine: {lineStyle: {color: C.axis}}, axisTick: {show: false}, axisLabel: {color: C.muted, fontSize: 11}, splitLine: {lineStyle: {color: C.grid}}};
+const TT = {backgroundColor: C.ink, borderWidth: 0, textStyle: {color: '#fff', fontSize: 12}, extraCssText: 'border-radius:8px;box-shadow:0 6px 24px rgba(11,31,58,.25)'};
+const BASE = {textStyle: {fontFamily: 'Inter, system-ui, sans-serif'}, animationDuration: still ? 0 : 1100, animationEasing: 'cubicOut', animationDurationUpdate: still ? 0 : 600};
+const charts = {};
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ io.unobserve(e.target); e.target._draw(); } }), {threshold: .12}) : null;
+function chart(id, build, after){
+  const el = $(id); if (!el) return;
+  if (!hasE){ el.innerHTML = nc('The chart library could not be loaded (no network). The table views and text carry the same figures.'); el.style.height = 'auto'; return; }
+  el._draw = () => { const c = echarts.init(el, null, {renderer: 'svg'}); charts[id] = c; c.setOption(Object.assign({}, BASE, build())); if (after) after(c); };
+  io ? io.observe(el) : el._draw();
 }
-const NS = 'http://www.w3.org/2000/svg';
-function S(tag, attrs, parent, text){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; if (parent) parent.appendChild(e); return e; }
-function niceMax(v){ if (!(v > 0)) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); const m = v / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
-const ptName = t => t === 'same_asset' ? 'Same token both sides' : t === 'cross_asset' ? 'Different tokens' : t;
-const verdictBadge = v => { const c = v === 'supported' ? 'var(--good)' : v === 'rejected' ? 'var(--muted)' : 'var(--warning)';
-  const t = v === 'supported' ? 'Threshold met' : v === 'rejected' ? 'Threshold not met' : v === 'inconclusive' ? 'Inconclusive' : 'Not computed';
-  return `<span class="badge"><i style="background:${c}"></i>${t}</span>`; };
+addEventListener('resize', () => Object.values(charts).forEach(c => c.resize()));
+function miss(id, why){ const el = $(id); if (el){ el.innerHTML = nc(why); el.style.height = 'auto'; } }
+function fmtv(v, f){ return f === 'usdB' ? '$' + v.toFixed(1) + 'B' : f === 'usdM' ? '$' + v.toFixed(1) + 'M' : f === 'pct2' ? v.toFixed(2) + '%' : f === 'pct0' ? v.toFixed(0) + '%' : f === 'pct1' ? v.toFixed(1) + '%' : String(v); }
 
-$('gen').textContent = 'built ' + R.generated_at.replace('T', ' ').replace('+00:00', ' UTC');
-const revs = R.revenue.filter(r => r.computed);
-const rev = revs[0];           // official source first; block sample if that is all there is
-const px = R.pricing;
+$('gen').textContent = 'built ' + R.generated_at.slice(0, 10);
+const rev = R.revenue.find(r => r.computed), px = R.pricing;
 
-/* ---------- A. valuation model ---------- */
+/* ================= hero ================= */
 (function(){
-  const M = D.model;
-  if (!M){ $('mtiles').innerHTML = nc('model.json missing: run python -m moatmap.model'); return; }
-  const t = M.trailing_90d, g = M.growth, v = M.valuation || {}, y = M.same_90d_a_year_earlier;
-  const x = n => n == null ? 'n/a' : (n + 1).toFixed(1) + '×';
-  const tile = (l, val, note) => `<div class="tile"><div class="label">${l}</div><div class="value">${val}</div><div class="note">${note}</div></div>`;
-  let h = tile('Intents volume, annualised', usd(t.annualised_volume_usd), `90 days to ${t.to}. ${x(g.volume_vs_year_earlier)} the same 90 days a year earlier.`)
-        + tile('Revenue captured by NEAR, annualised', usd(t.annualised_revenue_usd), `${(t.revenue_share_of_fees * 100).toFixed(0)}% of the ${usd(t.annualised_fees_usd)} in fees; it was ${(y.revenue_share_of_fees * 100).toFixed(0)}% a year earlier.`);
+  if (!M){ $('lede').textContent = 'Model output missing: run python -m moatmap.model.'; return; }
+  const t = M.trailing_90d, g = M.growth, v = M.valuation || {}, y = M.same_90d_a_year_earlier, sc = M.scenarios;
+  const mult = n => (n + 1).toFixed(1) + '×';
+  const kpi = (label, val, fmt, note, fill) => `<div class="kpi"><div class="label">${label}</div><div class="value" data-count="${val}" data-fmt="${fmt}">${fmtv(val, fmt)}</div><div class="note">${note}</div>${fill == null ? '' : `<div class="bar"><b data-w="${Math.min(100, fill * 100)}"></b></div>`}</div>`;
+  let h = kpi('Intents volume, annualised', t.annualised_volume_usd / 1e9, 'usdB', `${mult(g.volume_vs_year_earlier)} the same 90 days a year earlier`)
+        + kpi('Revenue captured by NEAR, annualised', t.annualised_revenue_usd / 1e6, 'usdM', `${pct(t.revenue_share_of_fees, 0)} of ${usd(t.annualised_fees_usd)} in fees, up from ${pct(y.revenue_share_of_fees, 0)}`, t.revenue_share_of_fees);
   if (v.computed){
-    h += tile('Buyback yield on NEAR market value', (v.buyback_yield * 100).toFixed(2) + '%', `${usd(v.annual_revenue_usd_90d_run_rate)} a year against ${usd(v.market_value_usd)} (${num(v.circulating_supply_near)} NEAR at $${v.near_price_usd}).`)
-       + tile('Share of new NEAR issuance the buyback offsets', v.buyback_as_share_of_net_issuance == null ? 'n/a' : (v.buyback_as_share_of_net_issuance * 100).toFixed(0) + '%', `Total supply grew at ${(v.annualised_net_issuance_rate * 100).toFixed(2)}% a year over ${v.supply_window.join(' to ')}.`);
-    const sc = M.scenarios;
-    $('lede').textContent = `NEAR Intents is a real and fast-growing business: ${usd(t.annualised_volume_usd)} of annualised volume, ${x(g.volume_vs_year_earlier)} a year ago, with NEAR's captured revenue now used to buy back the token. But that revenue is ${(v.buyback_yield * 100).toFixed(2)}% of NEAR's market value and offsets ${(v.buyback_as_share_of_net_issuance * 100).toFixed(0)}% of new issuance, so the long-term case depends on Intents growing about ${sc.volume_multiple_to_offset_net_issuance.toFixed(0)}× from here, and on rivals not taking the flow. Part A sizes the first condition; part B tests the second.`;
-    $('val-says').textContent = `At today's take of ${t.revenue_bps_of_volume.toFixed(1)} bps of volume, Intents volume would have to grow ${sc.volume_multiple_for_1pct_yield.toFixed(1)}× for the buyback to reach 1% of market value, ${sc.volume_multiple_to_offset_net_issuance.toFixed(1)}× to offset net issuance, and ${sc.volume_multiple_for_5pct_yield.toFixed(1)}× to reach 5%.`;
-    const takes = [...new Set(sc.grid.map(c => c.take))], vms = [...new Set(sc.grid.map(c => c.volume_multiple))];
-    let tb = '<table><thead><tr><th>Annual volume</th>' + takes.map(k => { const c = sc.grid.find(q => q.take === k); return `<th class="num">${esc(k)}<br><span style="font-weight:400">${c.take_bps.toFixed(1)} bps</span></th>`; }).join('') + '</tr></thead><tbody>';
-    for (const vm of vms){ const c0 = sc.grid.find(q => q.volume_multiple === vm);
-      tb += `<tr><td>${vm}× run rate (${usd(c0.annual_volume_usd)})</td>` + takes.map(k => { const c = sc.grid.find(q => q.volume_multiple === vm && q.take === k); const now = vm === 1 && k === "today's take";
-        return `<td class="num" style="${now ? 'outline:2px solid var(--s1);outline-offset:-2px;font-weight:600' : ''}" title="${usd(c.annual_revenue_usd)} a year">${(c.buyback_yield * 100).toFixed(2)}%</td>`; }).join('') + '</tr>'; }
-    $('grid').innerHTML = tb + '</tbody></table>';
-  } else {
-    h += tile('Buyback yield on NEAR market value', 'n/a', esc(v.reason || 'not computed'));
-    $('lede').textContent = `NEAR Intents runs at ${usd(t.annualised_volume_usd)} of annualised volume and ${usd(t.annualised_revenue_usd)} of revenue captured by NEAR.`;
-    $('grid').innerHTML = nc(v.reason || 'valuation not computed');
+    h += kpi('Buyback yield on market value', v.buyback_yield * 100, 'pct2', `${usd(v.annual_revenue_usd_90d_run_rate)} a year against ${usd(v.market_value_usd)}`)
+       + kpi('New issuance offset by the buyback', v.buyback_as_share_of_net_issuance * 100, 'pct0', `Supply is growing ${pct(v.annualised_net_issuance_rate, 2)} a year`, v.buyback_as_share_of_net_issuance);
+    $('lede').textContent = `NEAR Intents is a real and fast-growing business whose revenue now buys back NEAR. But that revenue is ${pct(v.buyback_yield, 2)} of NEAR's market value, so the long-term case needs Intents to grow about ${sc.volume_multiple_to_offset_net_issuance.toFixed(0)}× and to keep rivals out. This page sizes the first condition and tests the second.`;
   }
-  $('mtiles').innerHTML = h;
-  const mon = M.monthly.slice(0, -1);   /* the current month is incomplete */
-  [['volume_usd', 'Monthly volume'], ['fees_usd', 'Monthly fees (protocol + partners)'], ['revenue_usd', "Monthly revenue captured by NEAR"]].forEach(([k, n]) => {
-    const p = mon.filter(r => r[k] != null).map(r => ({x: r.month, y: r[k]})); if (p.length > 1) lineChart($('val-charts'), n, 'USD per calendar month, DefiLlama', p, usd); });
+  $('kpis').innerHTML = h;
+
+  const ins = [];
+  ins.push(insight(`Volume tripled in a year without a price cut`, `Annualised volume went from ${usd(y.annualised_volume_usd)} to ${usd(t.annualised_volume_usd)} while fees held at ${t.fee_bps_of_volume.toFixed(1)} bps of volume (${y.fee_bps_of_volume.toFixed(1)} a year earlier).`));
+  if (v.computed) ins.push(insight(`The buyback is ${pct(v.buyback_yield, 2)} of market value`, `It offsets ${pct(v.buyback_as_share_of_net_issuance, 0)} of new NEAR issuance. Volume must grow ${sc.volume_multiple_to_offset_net_issuance.toFixed(1)}× at today's take to offset all of it.`));
+  if (rev && rev.zcash) ins.push(insight(`The moat is one asset wide`, `Thin routes bring ${pct(rev.share_low_contestation)} of NEAR's direct fee income, but Zcash routes alone are ${pct(rev.zcash.share_near_fee)} of it. Without Zcash the thin-route share is ${pct(rev.zcash.thin_share_ex_zcash, 0)}.`));
+  $('top-insights').innerHTML = ins.join('');
 })();
 
-/* ---------- headline tiles ---------- */
+/* ================= Part A ================= */
+(function(){
+  if (!M) return;
+  const t = M.trailing_90d, v = M.valuation || {}, sc = M.scenarios, mon = M.monthly.slice(0, -1);
+  const line = (id, key, sayId, say) => {
+    const p = mon.filter(r => r[key] != null && r[key] > 0);
+    const peak = p.reduce((a, r) => r[key] > a[key] ? r : a, p[0]);
+    $(sayId).textContent = say(p, peak);
+    chart(id, () => ({grid: {left: 56, right: 34, top: 26, bottom: 26},
+      tooltip: Object.assign({trigger: 'axis', valueFormatter: usd}, TT),
+      xAxis: Object.assign({type: 'category', data: p.map(r => r.month), boundaryGap: false}, AX, {splitLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, interval: i => i === 0 || i === p.length - 1}}),
+      yAxis: Object.assign({type: 'value', splitNumber: 3}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: usd}}),
+      series: [{type: 'line', data: p.map(r => r[key]), smooth: .25, symbol: 'circle', symbolSize: 7, showSymbol: false, lineStyle: {width: 2.5, color: C.blue}, itemStyle: {color: C.blue, borderColor: '#fff', borderWidth: 2},
+        areaStyle: {color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(42,120,214,.28)'}, {offset: 1, color: 'rgba(42,120,214,0)'}])},
+        markPoint: {symbol: 'circle', symbolSize: 9, itemStyle: {color: C.blue, borderColor: '#fff', borderWidth: 2}, label: {show: true, position: 'top', color: C.ink, fontSize: 11, fontWeight: 600, formatter: q => usd(q.value)}, data: [{coord: [peak.month, peak[key]], value: peak[key]}]}}]}));
+  };
+  line('c-vol', 'volume_usd', 'mv-says', (p, k) => `Volume peaked at ${usd(k.volume_usd)} in ${k.month}; the last full month was ${usd(p[p.length - 1].volume_usd)}.`);
+  line('c-fee', 'fees_usd', 'mf-says', (p, k) => `Protocol and partner fees together reached ${usd(p[p.length - 1].fees_usd)} in ${p[p.length - 1].month}.`);
+  line('c-rev', 'revenue_usd', 'mr-says', (p, k) => `NEAR's own slice set a monthly high of ${usd(k.revenue_usd)} in ${k.month}.`);
+  if (!v.computed){ ['track', 'c-iss', 'c-grid'].forEach(i => miss(i, v.reason || 'valuation not computed')); return; }
+
+  $('val-says').textContent = `At today's take of ${t.revenue_bps_of_volume.toFixed(1)} bps of volume, NEAR earns ${usd(v.annual_revenue_usd_90d_run_rate)} a year from Intents against a market value of ${usd(v.market_value_usd)}: NEAR trades at ${Math.round(v.market_value_to_revenue)}× that revenue.`;
+
+  /* growth track (log scale 1x..12x) */
+  const ms = [['now', 1, 'Today', pct(v.buyback_yield, 2) + ' yield'], ['', sc.volume_multiple_for_1pct_yield, sc.volume_multiple_for_1pct_yield.toFixed(1) + '×', '1% yield'],
+              ['', sc.volume_multiple_to_offset_net_issuance, sc.volume_multiple_to_offset_net_issuance.toFixed(1) + '×', 'offsets issuance'], ['', sc.volume_multiple_for_5pct_yield, sc.volume_multiple_for_5pct_yield.toFixed(1) + '×', '5% yield']];
+  const top = Math.max(12, ms[3][1] * 1.1), pos = m => Math.log(m) / Math.log(top) * 100;
+  $('track').innerHTML = '<div class="rail"></div><div class="fill" data-w="' + pos(ms[3][1]) + '"></div>' + ms.map(m => `<div class="mk ${m[0]}" style="left:${pos(m[1])}%"><b>${m[2]}</b><span>${m[3]}</span></div>`).join('');
+  $('track-says').textContent = `Volume would have to grow ${ms[1][2]} for the buyback to reach 1% of market value, ${ms[2][2]} to offset new issuance, and ${ms[3][2]} to reach 5%.`;
+
+  /* buyback vs issuance */
+  $('iss-says').textContent = `New NEAR supply is worth about ${usd(v.annualised_net_issuance_usd)} a year at today's price; the Intents buyback is ${usd(v.annual_revenue_usd_90d_run_rate)}, or ${pct(v.buyback_as_share_of_net_issuance, 0)} of it.`;
+  chart('c-iss', () => ({grid: {left: 130, right: 70, top: 10, bottom: 24},
+    tooltip: Object.assign({trigger: 'item', valueFormatter: usd}, TT),
+    xAxis: Object.assign({type: 'value'}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: usd}, splitNumber: 3}),
+    yAxis: Object.assign({type: 'category', data: ['Intents buyback', 'Net new issuance'], inverse: true}, AX, {axisLabel: {color: C.ink, fontSize: 12.5, fontWeight: 600}, splitLine: {show: false}}),
+    series: [{type: 'bar', barWidth: 22, data: [{value: v.annual_revenue_usd_90d_run_rate, itemStyle: {color: C.blue}}, {value: v.annualised_net_issuance_usd, itemStyle: {color: C.neutral}}],
+      itemStyle: {borderRadius: [0, 4, 4, 0]}, label: {show: true, position: 'right', color: C.ink, fontWeight: 600, formatter: q => usd(q.value)}}]}));
+
+  /* scenario heatmap */
+  const takes = [...new Set(sc.grid.map(c => c.take))], vms = [...new Set(sc.grid.map(c => c.volume_multiple))];
+  const short = k => k.startsWith('all fees') ? 'All fees to NEAR' : k.charAt(0).toUpperCase() + k.slice(1);
+  const ti = takes.indexOf("today's take"), vi = vms.indexOf(1);
+  chart('c-grid', () => ({grid: {left: 130, right: 16, top: 46, bottom: 8},
+    tooltip: Object.assign({formatter: q => { const c = sc.grid.find(g => g.volume_multiple === vms[q.value[1]] && g.take === takes[q.value[0]]); return `<b>${pct(c.buyback_yield, 2)} yield</b><br>${usd(c.annual_volume_usd)} volume × ${c.take_bps.toFixed(1)} bps<br>${usd(c.annual_revenue_usd)} a year to NEAR`; }}, TT),
+    xAxis: {type: 'category', position: 'top', data: takes.map(k => short(k) + '\n' + sc.grid.find(g => g.take === k).take_bps.toFixed(1) + ' bps'), axisLine: {show: false}, axisTick: {show: false}, axisLabel: {color: C.ink2, fontSize: 11.5, lineHeight: 15, interval: 0}},
+    yAxis: {type: 'category', inverse: true, data: vms.map(m => m + '× · ' + usd(sc.grid.find(g => g.volume_multiple === m).annual_volume_usd)), axisLine: {show: false}, axisTick: {show: false}, axisLabel: {color: C.ink2, fontSize: 11.5}},
+    visualMap: {show: false, min: 0, max: 0.10, dimension: 2, inRange: {color: ['#eef5fe', '#cde2fb', '#9ec5f4', '#5598e7', '#256abf']}},
+    series: [{type: 'heatmap', data: sc.grid.map(c => { const now = takes.indexOf(c.take) === ti && vms.indexOf(c.volume_multiple) === vi;
+        return {value: [takes.indexOf(c.take), vms.indexOf(c.volume_multiple), c.buyback_yield], itemStyle: now ? {borderColor: C.ink, borderWidth: 3, borderRadius: 8} : undefined,
+                label: {color: c.buyback_yield > 0.06 ? '#fff' : C.ink, formatter: q => pct(q.value[2], 2) + (now ? '\n{s|measured today}' : ''), rich: {s: {fontSize: 10, fontWeight: 600, color: C.ink2, padding: [3, 0, 0, 0]}}}}; }),
+      itemStyle: {borderColor: '#fff', borderWidth: 3, borderRadius: 8}, label: {show: true, fontSize: 13, fontWeight: 700},
+      emphasis: {itemStyle: {shadowBlur: 12, shadowColor: 'rgba(24,79,149,.35)'}}}]}));
+})();
+
+/* ================= Part B: verdicts, coverage, revenue ================= */
 (function(){
   let h = '';
-  if (rev){
-    h += `<div class="tile"><div class="label">Share of cross-chain ${rev.measure === 'volume_usd' ? 'volume' : 'fee revenue'} from routes with at most 2 rivals</div>
-      <div class="value">${pct(rev.share_low_contestation)}</div>${verdictBadge(rev.verdict)}
-      <div class="note">Claim needs at least ${pct(rev.threshold)}. Source: ${esc(rev.source)}; measure: ${esc(rev.measure_note)}.</div></div>`;
-  } else {
-    h += `<div class="tile"><div class="label">Share of revenue from routes with at most 2 rivals</div><div class="value">n/a</div>${verdictBadge(null)}
-      <div class="note">${esc(R.revenue.map(r => r.reason).filter(Boolean).join(' · '))}</div></div>`;
-  }
-  if (px.computed){
-    for (const e of px.by_notional.filter(x => x.notional_usd === 1000))
-    h += `<div class="tile"><div class="label">NEAR Intents cost on least-contested routes relative to most-contested · ${ptName(e.pair_type).toLowerCase()} · $${num(e.notional_usd)} swap</div>
-      <div class="value">${e.ratio == null ? 'n/a' : e.ratio.toFixed(2) + '×'}</div>${verdictBadge(e.ratio == null ? null : e.verdict)}
-      <div class="note">Claim needs at least ${px.threshold}×. Median ${bps(e.low_median_bps)} over ${e.low_routes} thin routes against ${bps(e.high_median_bps)} over ${e.high_routes} crowded routes.</div></div>`;
-  } else {
-    h += `<div class="tile"><div class="label">NEAR Intents cost, least- vs most-contested routes</div><div class="value">n/a</div>${verdictBadge(null)}<div class="note">${esc(px.reason)}</div></div>`;
-  }
-  $('tiles').innerHTML = h;
-})();
+  const vcard = (title, big, met, need, fill, mark, markLabel, note) => `<div class="card verdict"><h3>${title}</h3><div class="big">${big}</div><span class="pill ${met ? 'met' : ''}">${met ? 'Threshold met' : 'Threshold not met'} · needed ${need}</span>
+     <div class="meter"><b data-w="${Math.max(0, Math.min(100, fill))}"></b><i style="left:${mark}%" data-l="${markLabel}"></i></div><p class="says" style="margin:0">${note}</p></div>`;
+  if (rev) h += vcard('Claim 1 · Revenue comes from routes with at most two rivals', pct(rev.share_low_contestation), rev.verdict === 'supported', pct(rev.threshold, 0), rev.share_low_contestation * 100, rev.threshold * 100, 'needed ' + pct(rev.threshold, 0),
+      `Share of fees paid to NEAR's own wallets, ${rev.window.join(' to ')}. By all app fees it is ${pct(rev.share_low_by_measure.fee_usd.share_low)}; by volume ${pct(rev.share_low_by_measure.volume_usd.share_low)}.`);
+  else h += `<div class="card">${nc(R.revenue.map(r => r.reason).join(' '))}</div>`;
+  if (px.computed){ const ok = px.by_notional.filter(e => e.ratio != null), rs = ok.map(e => e.ratio), lo = Math.min(...rs), hi = Math.max(...rs), pass = ok.filter(e => e.verdict === 'supported').length;
+    h += vcard('Claim 2 · NEAR charges 1.5× more on those routes', lo.toFixed(2) + '× to ' + hi.toFixed(2) + '×', pass > ok.length / 2, px.threshold + '×', hi / 2 * 100, px.threshold / 2 * 100, 'needed ' + px.threshold + '×',
+      `Like-for-like quotes; the threshold is met in ${pass} of ${ok.length} comparisons. The bar shows the highest ratio observed.`);
+    $('ratio-says').textContent = `Comparing the same token type at the same size, NEAR Intents' cost on thin routes is between ${lo.toFixed(2)}× and ${hi.toFixed(2)}× its cost on crowded routes. Price follows the kind of swap, not the number of rivals.`;
+  } else h += `<div class="card">${nc(px.reason)}</div>`;
+  $('verdicts').innerHTML = h;
 
-/* ---------- 1 coverage ---------- */
-(function(){
+  /* coverage matrix */
   const c = R.coverage;
-  if (!c.computed){ $('cov').innerHTML = nc(c.reason); return; }
-  const rivals = R.definitions.rivals;
-  const thin = c.chains.filter(x => x.n_rivals <= 2).length;
-  $('cov-says').textContent = `Of the ${c.chains.length} chains NEAR Intents serves, ${thin} are listed by at most two of the five rivals, and ${c.chains.filter(x => x.n_rivals === 0).length} by none.`;
-  let h = '<table><thead><tr><th>Chain</th>' + rivals.map(r => `<th>${esc(r)}</th>`).join('') + '<th class="num">Rivals</th></tr></thead><tbody>';
-  for (const ch of c.chains)
-    h += `<tr><td>${esc(ch.chain)}</td>` + rivals.map(r => `<td><span class="cell ${ch.rivals.includes(r) ? 'on' : ''}" title="${esc(r)} ${ch.rivals.includes(r) ? 'lists' : 'does not list'} ${esc(ch.chain)}"></span></td>`).join('') + `<td class="num">${ch.n_rivals}</td></tr>`;
-  h += '<tr><th>Chains listed</th>' + rivals.map(r => `<th>${c.per_rival[r]}</th>`).join('') + '<th></th></tr></tbody></table>';
-  $('cov').innerHTML = h;
+  if (!c.computed){ $('cov').innerHTML = nc(c.reason); }
+  else {
+    const rivals = R.definitions.rivals, thin = c.chains.filter(x => x.n_rivals <= 2).length, none = c.chains.filter(x => x.n_rivals === 0).length;
+    $('cov-says').textContent = `Of the ${c.chains.length} chains NEAR Intents serves, ${thin} are listed by at most two of the five rivals and ${none} by none.`;
+    let m = `<div class="matrix" style="grid-template-columns:82px repeat(${rivals.length},1fr) 22px"><div></div>` + rivals.map(r => `<div class="h">${esc(r)}</div>`).join('') + '<div></div>';
+    const bands = [['Crowded · 4 or 5 rivals', x => x.n_rivals >= 4], ['Middle · 3 rivals', x => x.n_rivals === 3], ['Thin · 1 or 2 rivals', x => x.n_rivals >= 1 && x.n_rivals <= 2]];
+    for (const [name, f] of bands){ const rows = c.chains.filter(f); if (!rows.length) continue; m += `<div class="band">${name}</div>`;
+      for (const ch of rows) m += `<div class="c">${esc(ch.chain)}</div>` + rivals.map(r => `<div class="dot ${ch.rivals.includes(r) ? 'on' : ''}" title="${esc(r)} ${ch.rivals.includes(r) ? 'lists' : 'does not list'} ${esc(ch.chain)}"></div>`).join('') + `<div class="n">${ch.n_rivals}</div>`; }
+    const z = c.chains.filter(x => x.n_rivals === 0);
+    m += `<div class="band">No rival at all · ${z.length} chains</div><div style="grid-column:1/-1;line-height:1.9">` + z.map(x => `<span style="display:inline-block;background:var(--tint);border-radius:6px;padding:1px 8px;margin:0 4px 4px 0;font-weight:600;color:var(--ink)">${esc(x.chain)}</span>`).join('') + '</div></div>';
+    $('cov').innerHTML = m;
+  }
+  if (!rev){ ['c-buckets', 'c-measures', 'c-top', 'c-weekly', 'c-zec'].forEach(i => miss(i, 'Needs per-swap data from the Explorer API.')); return; }
+
+  /* buckets */
+  const what = rev.measure === 'near_fee_usd' ? "fees paid to NEAR's own wallets" : rev.measure === 'fee_usd' ? 'app fees' : 'volume';
+  const B = rev.buckets.filter(b => b.n_rivals !== 'unknown');
+  const big = B.reduce((a, b) => b.share > a.share ? b : a, B[0]);
+  $('rev-says').textContent = `Routes with ${big.n_rivals} rival${big.n_rivals === '1' ? '' : 's'} are the largest group at ${pct(big.share)} of ${what} (${usd(rev.cross_chain_total_usd)} in total over ${rev.window.join(' to ')}).`;
+  chart('c-buckets', () => ({grid: {left: 44, right: 14, top: 24, bottom: 44},
+    tooltip: Object.assign({trigger: 'item', formatter: q => { const b = B[q.dataIndex]; return `<b>${b.n_rivals} rival${b.n_rivals === '1' ? '' : 's'}</b><br>${pct(b.share)} · ${usd(b.measure_usd)}<br>${b.routes} routes · ${num(b.n_swaps)} swaps<br>${usd(b.volume_usd)} volume`; }}, TT),
+    xAxis: Object.assign({type: 'category', data: B.map(b => b.n_rivals), name: 'rivals able to serve the route', nameLocation: 'middle', nameGap: 28, nameTextStyle: {color: C.muted, fontSize: 11.5}}, AX, {splitLine: {show: false}, axisLabel: {color: C.ink, fontSize: 13, fontWeight: 600}}),
+    yAxis: Object.assign({type: 'value'}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: v => (v * 100).toFixed(0) + '%'}, splitNumber: 3}),
+    series: [{type: 'bar', barWidth: 24, data: B.map(b => ({value: b.share, itemStyle: {color: +b.n_rivals <= 2 ? C.blue : C.neutral}})), itemStyle: {borderRadius: [4, 4, 0, 0]},
+      label: {show: true, position: 'top', color: C.ink, fontWeight: 600, fontSize: 12, formatter: q => pct(q.value)}}]}));
+
+  /* four measures with threshold */
+  const mm = rev.share_low_by_measure, names = {near_fee_usd: "Fees to NEAR's wallets", fee_usd: 'All app fees', volume_usd: 'Swap volume', n_swaps: 'Number of swaps'}, keys = Object.keys(mm);
+  chart('c-measures', () => ({grid: {left: 150, right: 56, top: 22, bottom: 22},
+    tooltip: Object.assign({trigger: 'item', formatter: q => `<b>${names[keys[q.dataIndex]]}</b><br>${pct(q.value)} from thin routes<br>total ${keys[q.dataIndex] === 'n_swaps' ? num(mm[keys[q.dataIndex]].total) : usd(mm[keys[q.dataIndex]].total)}`}, TT),
+    xAxis: Object.assign({type: 'value', max: .6}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: v => (v * 100).toFixed(0) + '%'}, splitNumber: 3}),
+    yAxis: Object.assign({type: 'category', inverse: true, data: keys.map(k => names[k])}, AX, {axisLabel: {color: C.ink, fontSize: 12.5}, splitLine: {show: false}}),
+    series: [{type: 'bar', barWidth: 16, data: keys.map(k => mm[k].share_low), itemStyle: {color: C.blue, borderRadius: [0, 4, 4, 0]}, label: {show: true, position: 'insideRight', color: '#fff', fontWeight: 700, formatter: q => pct(q.value)},
+      markLine: {silent: true, symbol: 'none', lineStyle: {color: C.ink, width: 2, type: 'solid'}, label: {formatter: 'needed 50%', color: C.ink, fontSize: 11, fontWeight: 600, position: 'start'}, data: [{xAxis: rev.threshold}]}}]}));
+
+  /* top routes */
+  const T = rev.top_routes.slice(0, 15), thinT = T.filter(x => x.n_rivals !== 'unknown' && +x.n_rivals <= 2);
+  $('top-says').textContent = `Of the ${T.length} largest routes, ${thinT.length} are thin; together those ${thinT.length} carry ${pct(thinT.reduce((a, x) => a + x.share, 0))} of the total. The single largest route, ${T[0].route}, has ${T[0].n_rivals} rivals.`;
+  chart('c-top', () => ({grid: {left: 84, right: 70, top: 6, bottom: 24},
+    tooltip: Object.assign({trigger: 'item', formatter: q => { const r = T[q.dataIndex]; return `<b>${r.route}</b> · ${r.n_rivals} rival${r.n_rivals === '1' ? '' : 's'}<br>${r.rivals && r.rivals.length ? r.rivals.join(', ') : 'no rival lists both chains'}<br>${usd(r.measure_usd)} · ${pct(r.share)} of total<br>${num(r.n_swaps)} swaps · ${usd(r.volume_usd)} volume`; }}, TT),
+    xAxis: Object.assign({type: 'value'}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: usd}, splitNumber: 4}),
+    yAxis: Object.assign({type: 'category', inverse: true, data: T.map(r => r.route)}, AX, {axisLabel: {color: C.ink, fontSize: 12.5, fontWeight: 600}, splitLine: {show: false}}),
+    series: [{type: 'bar', barWidth: 16, data: T.map(r => ({value: r.measure_usd, itemStyle: {color: (r.n_rivals !== 'unknown' && +r.n_rivals <= 2) ? C.blue : C.neutral}})), itemStyle: {borderRadius: [0, 4, 4, 0]},
+      label: {show: true, position: 'right', color: C.ink2, fontSize: 11.5, formatter: q => pct(T[q.dataIndex].share)}}]}));
+  let tb = '<table><thead><tr><th>Route</th><th class="num">Rivals</th><th>Who else serves it</th><th class="num">Swaps</th><th class="num">Volume</th><th class="num">NEAR-wallet fees</th><th class="num">Share</th></tr></thead><tbody>';
+  for (const r of T) tb += `<tr><td>${esc(r.route)}</td><td class="num">${r.n_rivals}</td><td>${r.rivals ? (r.rivals.join(', ') || 'none') : 'unknown'}</td><td class="num">${num(r.n_swaps)}</td><td class="num">${usd(r.volume_usd)}</td><td class="num">${usd(r.measure_usd)}</td><td class="num">${pct(r.share)}</td></tr>`;
+  $('top-t').innerHTML = tb + '</tbody></table>';
+
+  /* weekly */
+  if (rev.weekly){ const W = rev.weekly, lastW = W[W.length - 1], mx = W.reduce((a, w) => w.share_near_fee > a.share_near_fee ? w : a, W[0]);
+    $('wk-says').textContent = `The thin-route share of NEAR's direct fees peaked at ${pct(mx.share_near_fee, 0)} in the week from ${mx.from} and was ${pct(lastW.share_near_fee, 0)} in the latest week; the first and last weeks are partial.`;
+    chart('c-weekly', () => ({grid: {left: 44, right: 20, top: 34, bottom: 28}, legend: {top: 0, left: 0, icon: 'circle', itemWidth: 9, itemGap: 18, textStyle: {color: C.ink2, fontSize: 12}},
+      tooltip: Object.assign({trigger: 'axis', valueFormatter: v => pct(v)}, TT),
+      xAxis: Object.assign({type: 'category', data: W.map(w => w.from.slice(5))}, AX, {splitLine: {show: false}}),
+      yAxis: Object.assign({type: 'value', max: .8}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: v => (v * 100).toFixed(0) + '%'}, splitNumber: 4}),
+      series: [{name: "Fees to NEAR's wallets", type: 'line', data: W.map(w => w.share_near_fee), symbol: 'circle', symbolSize: 9, lineStyle: {width: 2.5, color: C.blue}, itemStyle: {color: C.blue, borderColor: '#fff', borderWidth: 2},
+          markLine: {silent: true, symbol: 'none', lineStyle: {color: C.ink, width: 2, type: 'solid'}, label: {formatter: 'needed 50%', color: C.ink, fontSize: 11, fontWeight: 600, position: 'insideEndTop'}, data: [{yAxis: rev.threshold}]}},
+        {name: 'Volume', type: 'line', data: W.map(w => w.share_volume), symbol: 'circle', symbolSize: 9, lineStyle: {width: 2.5, color: C.orange}, itemStyle: {color: C.orange, borderColor: '#fff', borderWidth: 2}}]}));
+  } else miss('c-weekly', 'Weekly split not available.');
+
+  /* zcash */
+  if (rev.zcash){ const z = rev.zcash;
+    $('z-says').textContent = `Routes touching Zcash are ${pct(z.share_volume)} of cross-chain volume but ${pct(z.share_near_fee)} of NEAR's direct fee income; THORChain is the only rival that lists Zcash.`;
+    chart('c-zec', () => ({grid: {left: 196, right: 60, top: 10, bottom: 24},
+      tooltip: Object.assign({trigger: 'item', valueFormatter: v => pct(v)}, TT),
+      xAxis: Object.assign({type: 'value', max: .6}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: v => (v * 100).toFixed(0) + '%'}, splitNumber: 3}),
+      yAxis: Object.assign({type: 'category', inverse: true, data: ['Zcash share of volume', 'Zcash share of NEAR fees', 'Thin-route share, all routes', 'Thin-route share, without Zcash']}, AX, {axisLabel: {color: C.ink, fontSize: 12.5}, splitLine: {show: false}}),
+      series: [{type: 'bar', barWidth: 18, itemStyle: {borderRadius: [0, 4, 4, 0]}, label: {show: true, position: 'right', color: C.ink, fontWeight: 600, formatter: q => pct(q.value)},
+        data: [{value: z.share_volume, itemStyle: {color: C.neutral}}, {value: z.share_near_fee, itemStyle: {color: C.blue}}, {value: rev.share_low_contestation, itemStyle: {color: C.blue}}, {value: z.thin_share_ex_zcash, itemStyle: {color: C.neutral}}]}]}));
+  } else miss('c-zec', 'Zcash split not available.');
 })();
 
-/* ---------- horizontal bar helper ---------- */
-function hbars(el, rows, fmt, tipf){
-  const W = 720, lab = 150, rowH = 34, padR = 70, H = rows.length * rowH + 8;
-  const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img'});
-  const max = niceMax(Math.max(...rows.map(r => r.value)));
-  S('line', {x1: lab, x2: lab, y1: 0, y2: H - 8, stroke: 'var(--axis)'}, svg);
-  rows.forEach((r, i) => {
-    const y = i * rowH + 6, w = Math.max(0, (r.value / max) * (W - lab - padR));
-    S('text', {x: lab - 10, y: y + 15, 'text-anchor': 'end', class: 'strong'}, svg, r.label);
-    const p = S('path', {d: `M${lab},${y} h${Math.max(w - 4, 0)} a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4 h-${Math.max(w - 4, 0)} z`, fill: 'var(--s1)'}, svg);
-    S('text', {x: lab + w + 8, y: y + 15, class: 'strong'}, svg, fmt(r.value));
-    const hit = S('rect', {x: 0, y: y - 6, width: W, height: rowH, fill: 'transparent'}, svg);
-    hover(hit, tipf(r));
-  });
-  el.appendChild(svg);
-}
-
-/* ---------- 2 revenue buckets ---------- */
+/* ================= pricing ================= */
 (function(){
-  if (!revs.length){ $('rev').innerHTML = nc(R.revenue.map(r => r.source + ': ' + r.reason).join(' '));
-    $('rev-says').textContent = 'The split of NEAR Intents revenue by route needs per-swap data, which is not available in this build.'; }
-  const what = r => r.measure === 'volume_usd' ? 'volume' : 'fee revenue';
-  if (rev) $('rev-says').textContent = `Routes that at most two rivals can serve bring in ${pct(rev.share_low_contestation)} of NEAR Intents' cross-chain ${what(rev)}; the claim needed ${pct(rev.threshold)}.`;
-  revs.forEach(r => {
-    const d = document.createElement('div'); d.style.marginBottom = '18px';
-    d.innerHTML = `<p class="meta" style="margin:0 0 6px"><strong style="color:var(--ink)">${esc(r.source)}</strong> · share of cross-chain ${what(r)} (${usd(r.cross_chain_total_usd)} total) by number of rivals able to serve the route${r.window ? ' · ' + r.window.join(' to ') : ''}</p>`;
-    hbars(d, r.buckets.map(b => ({label: b.n_rivals === 'unknown' ? 'unknown' : b.n_rivals + (b.n_rivals === '1' ? ' rival' : ' rivals'), value: b.share, b})), pct,
-      x => `<strong>${esc(x.label)}</strong><br>${pct(x.b.share)} · ${usd(x.b.measure_usd)}<br>${x.b.routes} routes · ${num(x.b.n_swaps)} swaps · ${usd(x.b.volume_usd)} volume`);
-    $('rev').appendChild(d);
-  });
-  revs.forEach(r => { const m = r.share_low_by_measure || {}; const nm = {near_fee_usd: "Fees paid to NEAR's own wallets", fee_usd: 'All app fees (mostly distribution partners)', volume_usd: 'Swap volume', n_swaps: 'Number of swaps'};
-    let h = '<table style="margin-top:6px"><thead><tr><th>Measured by</th><th class="num">Cross-chain total</th><th class="num">Share from routes with at most 2 rivals</th></tr></thead><tbody>';
-    for (const k in m) h += `<tr><td>${nm[k] || k}</td><td class="num">${k === 'n_swaps' ? num(m[k].total) : usd(m[k].total)}</td><td class="num">${pct(m[k].share_low)}</td></tr>`;
-    $('rev').insertAdjacentHTML('beforeend', h + '</tbody></table>'); });
-  R.revenue.filter(r => !r.computed).forEach(r => $('rev').insertAdjacentHTML('beforeend', `<div class="nc" style="margin-top:8px"><strong>${esc(r.source)}: not computed.</strong> ${esc(r.reason)}</div>`));
-  $('rev-q').textContent = `Official source  : python -m moatmap.explorer
-  GET https://explorer.near-intents.org/api/v0/transactions?statuses=SUCCESS&numberOfTransactions=1000&...   (Authorization: Bearer $NEAR_INTENTS_JWT)
-  route = chain(originAsset) > chain(destinationAsset); volume = amountInUsd; fees from appFees
-  fee per recipient = amountInUsd x appFees[].fee / 10,000 ; NEAR's own = recipient is one of NEAR's three revenue wallets
-Then            : python -m moatmap.analyze  groups routes by the number of rivals listing both chains (coverage.csv)`;
-})();
-
-/* ---------- 3 top routes ---------- */
-(function(){
-  if (!rev){ $('top').innerHTML = nc('Needs per-swap data (see panel 2).'); $('top-says').textContent = ''; return; }
-  const t = rev.top_routes.slice(0, 15);
-  const thin = t.filter(x => x.n_rivals !== 'unknown' && +x.n_rivals <= 2);
-  $('top-says').textContent = `Of the ${t.length} largest routes, ${thin.length} can be served by at most two rivals; together those ${thin.length} carry ${pct(thin.reduce((a, x) => a + x.share, 0))} of the total.`;
-  let h = '<table><thead><tr><th>Route</th><th class="num">Rivals</th><th>Who else serves it</th><th class="num">Swaps</th><th class="num">Volume</th><th class="num">Measure</th><th class="num">Share</th></tr></thead><tbody>';
-  for (const r of t) h += `<tr><td>${esc(r.route)}</td><td class="num">${r.n_rivals}</td><td>${r.rivals ? (r.rivals.join(', ') || 'none') : 'unknown'}</td><td class="num">${num(r.n_swaps)}</td><td class="num">${usd(r.volume_usd)}</td><td class="num">${usd(r.measure_usd)}</td><td class="num">${pct(r.share)}</td></tr>`;
-  $('top').innerHTML = h + '</tbody></table>';
-})();
-
-/* ---------- 4 pricing dumbbell ---------- */
-(function(){
-  if (!px.computed){ $('px').innerHTML = nc(px.reason); return; }
+  if (!px.computed){ ['c-px', 'c-ratio'].forEach(i => miss(i, px.reason)); return; }
+  const ptName = t => t === 'same_asset' ? 'Same token' : t === 'cross_asset' ? 'Different tokens' : t;
   const sizes = [...new Set(px.routes.map(r => r.notional_usd))].sort((a, b) => a - b);
   let cur = sizes.includes(1000) ? 1000 : sizes[0];
-  const draw = () => {
-    const rows = px.routes.filter(r => r.notional_usd === cur).sort((a, b) => a.pair_type.localeCompare(b.pair_type) || (+a.n_rivals - +b.n_rivals) || a.route.localeCompare(b.route));
-    const W = 760, lab = 190, rowH = 26, padR = 30, top = 22, H = rows.length * rowH + top + 8;
-    const vals = rows.flatMap(r => [r.near_bps, r.best_rival_bps]).filter(v => v != null);
-    const lo = Math.floor(Math.min(0, ...vals) / 20) * 20, hi = Math.ceil(Math.max(...vals) / 20) * 20, nt = (hi - lo) / 20 <= 8 ? (hi - lo) / 20 : 4;
-    const x = v => lab + ((v - lo) / (hi - lo)) * (W - lab - padR);
-    const el = $('px'); el.innerHTML = '';
-    const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Cost in basis points by route'});
-    for (let i = 0; i <= nt; i++){ const v = lo + (hi - lo) * i / nt;
-      S('line', {x1: x(v), x2: x(v), y1: top, y2: H - 8, stroke: 'var(--grid)'}, svg);
-      S('text', {x: x(v), y: 12, 'text-anchor': 'middle', class: 'tick'}, svg, Math.round(v) + ' bps'); }
-    rows.forEach((r, i) => {
-      const y = top + i * rowH + rowH / 2;
-      S('text', {x: 0, y: y + 4, class: 'strong'}, svg, r.route + (r.pair_type === 'same_asset' ? ' ·' : ''));
-      S('text', {x: lab - 12, y: y + 4, 'text-anchor': 'end', class: 'tick'}, svg, r.n_rivals + (r.n_rivals === '1' ? ' rival' : ' rivals'));
-      if (r.best_rival_bps != null){
-        S('line', {x1: x(r.near_bps), x2: x(r.best_rival_bps), y1: y, y2: y, stroke: 'var(--axis)', 'stroke-width': 2}, svg);
-        S('circle', {cx: x(r.best_rival_bps), cy: y, r: 5, fill: 'var(--s2)', stroke: 'var(--surface)', 'stroke-width': 2}, svg);
-      }
-      S('circle', {cx: x(r.near_bps), cy: y, r: 5, fill: 'var(--s1)', stroke: 'var(--surface)', 'stroke-width': 2}, svg);
-      const hit = S('rect', {x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent'}, svg);
-      hover(hit, `<strong>${esc(r.route)}</strong> (${esc(r.pair)}), $${num(cur)}<br>NEAR Intents: ${bps(r.near_bps)}<br>` +
-        (r.best_rival ? `Cheapest rival (${esc(r.best_rival)}): ${bps(r.best_rival_bps)}<br>NEAR premium: ${bps(r.premium_bps)}` : 'No rival returned a quote'));
-    });
-    el.appendChild(svg);
-    [...$('px-f').children].forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === cur)));
-    let h = '<table><thead><tr><th>Route</th><th>Pair</th><th>Type</th><th class="num">Rivals listing both chains</th><th class="num">NEAR Intents</th><th>Cheapest rival</th><th class="num">Its cost</th><th class="num">NEAR premium</th><th class="num">Rivals that quoted</th></tr></thead><tbody>';
-    for (const r of rows) h += `<tr><td>${esc(r.route)}</td><td>${esc(r.pair)}</td><td>${ptName(r.pair_type)}</td><td class="num">${r.n_rivals}</td><td class="num">${bps(r.near_bps)}</td><td>${r.best_rival ? esc(r.best_rival) : 'none quoted'}</td><td class="num">${bps(r.best_rival_bps)}</td><td class="num">${bps(r.premium_bps)}</td><td class="num">${r.rivals_quoting}</td></tr>`;
+  const rowsFor = s => px.routes.filter(r => r.notional_usd === s).sort((a, b) => a.pair_type.localeCompare(b.pair_type) || (+a.n_rivals - +b.n_rivals) || a.route.localeCompare(b.route));
+  const opt = () => { const rows = rowsFor(cur), labels = rows.map(r => r.route), si = rows.findIndex(r => r.pair_type === 'same_asset');
+    return {grid: {left: 150, right: 30, top: 30, bottom: 16},
+      tooltip: Object.assign({trigger: 'axis', axisPointer: {type: 'shadow', shadowStyle: {color: 'rgba(42,120,214,.07)'}}, formatter: ps => { const r = rows[ps[0].dataIndex];
+        return `<b>${r.route}</b> · ${r.pair} · $${num(cur)}<br>${ptName(r.pair_type)} · ${r.n_rivals} rival${r.n_rivals === '1' ? '' : 's'} list both chains<br>NEAR Intents: ${bps(r.near_bps)}<br>` + (r.best_rival ? `Cheapest rival (${r.best_rival}): ${bps(r.best_rival_bps)}<br>NEAR premium: ${bps(r.premium_bps)}` : 'No rival returned a quote'); }}, TT),
+      xAxis: Object.assign({type: 'value', position: 'top'}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: v => v + ' bps'}}),
+      yAxis: Object.assign({type: 'category', inverse: true, data: labels}, AX, {splitLine: {show: false}, axisLabel: {color: C.ink, fontSize: 12, formatter: (v, i) => `{a|${v}}  {b|${rows[i].n_rivals} rival${rows[i].n_rivals === '1' ? '' : 's'}}`, rich: {a: {fontWeight: 600, color: C.ink}, b: {color: C.muted, fontSize: 11}}}}),
+      series: [
+        {type: 'custom', silent: true, z: 1, data: rows.map((r, i) => [r.near_bps, r.best_rival_bps == null ? r.near_bps : r.best_rival_bps, i]),
+          renderItem: (p, api) => { const a = api.coord([api.value(0), api.value(2)]), b = api.coord([api.value(1), api.value(2)]); return {type: 'line', shape: {x1: a[0], y1: a[1], x2: b[0], y2: b[1]}, style: {stroke: C.axis, lineWidth: 3, lineCap: 'round'}}; }},
+        {name: 'Cheapest rival', type: 'scatter', z: 2, symbolSize: 13, itemStyle: {color: C.orange, borderColor: '#fff', borderWidth: 2}, data: rows.map(r => r.best_rival_bps == null ? '-' : r.best_rival_bps)},
+        {name: 'NEAR Intents', type: 'scatter', z: 3, symbolSize: 13, itemStyle: {color: C.blue, borderColor: '#fff', borderWidth: 2}, data: rows.map(r => r.near_bps),
+          markArea: {silent: true, itemStyle: {color: 'rgba(42,120,214,.06)'}, label: {position: 'insideBottomRight', color: C.muted, fontSize: 11, fontWeight: 600},
+            data: si < 0 ? [] : [[{name: 'Same token on both sides', yAxis: labels[si]}, {yAxis: labels[labels.length - 1]}]]}}]}; };
+  const text = () => { const rows = rowsFor(cur), both = rows.filter(r => r.best_rival_bps != null), cheaper = both.filter(r => r.near_bps <= r.best_rival_bps).length;
+    $('px-says').textContent = `At $${num(cur)}, NEAR Intents is the cheapest option on ${cheaper} of the ${both.length} routes where a rival also quoted, and the only quote on ${rows.length - both.length} of ${rows.length} routes (${px.snapshots} quote snapshots, ${px.first_quote.slice(0, 16).replace('T', ' ')} to ${px.last_quote.slice(11, 16)} UTC).`;
+    let h = '<table><thead><tr><th>Route</th><th>Pair</th><th>Type</th><th class="num">Rivals listing both chains</th><th class="num">NEAR Intents</th><th>Cheapest rival</th><th class="num">Its cost</th><th class="num">NEAR premium</th></tr></thead><tbody>';
+    for (const r of rows) h += `<tr><td>${esc(r.route)}</td><td>${esc(r.pair)}</td><td>${ptName(r.pair_type)}</td><td class="num">${r.n_rivals}</td><td class="num">${bps(r.near_bps)}</td><td>${r.best_rival ? esc(r.best_rival) : 'none quoted'}</td><td class="num">${bps(r.best_rival_bps)}</td><td class="num">${bps(r.premium_bps)}</td></tr>`;
     $('px-t').innerHTML = h + '</tbody></table>';
-    const both = rows.filter(r => r.best_rival_bps != null), cheaper = both.filter(r => r.near_bps <= r.best_rival_bps).length;
-    $('px-says').textContent = `At $${num(cur)}, NEAR Intents is the cheapest option on ${cheaper} of the ${both.length} routes where a rival also quoted, and is the only quote on ${rows.length - both.length} of ${rows.length} routes; routes marked · move the same token, the rest also swap it (${px.snapshots} quote snapshot${px.snapshots === 1 ? '' : 's'}, ${px.first_quote.slice(0, 16)} to ${px.last_quote.slice(0, 16)} UTC).`;
-  };
-  sizes.forEach(s => { const b = document.createElement('button'); b.textContent = '$' + num(s); b.dataset.v = s; b.onclick = () => { cur = s; draw(); }; $('px-f').appendChild(b); });
-  draw();
+    [...$('px-f').children].forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === cur))); };
+  sizes.forEach(s => { const b = document.createElement('button'); b.textContent = '$' + num(s); b.dataset.v = s; b.onclick = () => { cur = s; text(); if (charts['c-px']) charts['c-px'].setOption(Object.assign({}, BASE, opt()), true); }; $('px-f').appendChild(b); });
+  text(); chart('c-px', opt);
+
+  /* ratios */
+  const E = px.by_notional.filter(e => e.ratio != null), sz = [...new Set(E.map(e => e.notional_usd))].sort((a, b) => a - b), types = [...new Set(E.map(e => e.pair_type))];
+  chart('c-ratio', () => ({grid: {left: 40, right: 20, top: 40, bottom: 28}, legend: {top: 0, left: 0, icon: 'circle', itemWidth: 9, itemGap: 18, textStyle: {color: C.ink2, fontSize: 12}},
+    tooltip: Object.assign({trigger: 'item', formatter: q => { const e = E.find(x => x.pair_type === types[q.seriesIndex] && x.notional_usd === sz[q.dataIndex]); return `<b>${ptName(e.pair_type)} · $${num(e.notional_usd)}</b><br>${e.ratio.toFixed(2)}×<br>thin: ${bps(e.low_median_bps)} over ${e.low_routes} routes<br>crowded: ${bps(e.high_median_bps)} over ${e.high_routes} routes`; }}, TT),
+    xAxis: Object.assign({type: 'category', data: sz.map(s => '$' + num(s))}, AX, {splitLine: {show: false}, axisLabel: {color: C.ink, fontSize: 12.5, fontWeight: 600}}),
+    yAxis: Object.assign({type: 'value', max: 2.2}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: v => v.toFixed(1) + '×'}, splitNumber: 4}),
+    series: types.map((t, i) => ({name: ptName(t), type: 'bar', barWidth: 22, barGap: '12%', itemStyle: {color: i ? C.orange : C.blue, borderRadius: [4, 4, 0, 0]},
+      data: sz.map(s => { const e = E.find(x => x.pair_type === t && x.notional_usd === s); return e ? e.ratio : null; }),
+      label: {show: true, position: 'top', color: C.ink, fontSize: 11.5, fontWeight: 600, formatter: q => q.value.toFixed(2) + '×'},
+      markLine: i ? undefined : {silent: true, symbol: 'none', lineStyle: {color: C.ink, width: 2, type: 'solid'}, label: {formatter: 'needed 1.5×', color: C.ink, fontSize: 11, fontWeight: 600, position: 'insideStartBottom'}, data: [{yAxis: px.threshold}]}}))}));
+
+  /* realised */
+  if (rev && rev.realised_fee_rate){ const rf = rev.realised_fee_rate;
+    $('real-says').textContent = `On executed swaps, all app fees ran at ${bps(rf.fee_usd.low_bps)} of volume on thin routes against ${bps(rf.fee_usd.high_bps)} on crowded ones (${rf.fee_usd.ratio.toFixed(2)}×). This is not like for like: crowded routes are mostly stablecoin transfers, and most of the fee goes to distribution partners.`;
+    chart('c-real', () => ({grid: {left: 52, right: 20, top: 40, bottom: 28}, legend: {top: 0, left: 0, icon: 'circle', itemWidth: 9, itemGap: 18, textStyle: {color: C.ink2, fontSize: 12}},
+      tooltip: Object.assign({trigger: 'item', valueFormatter: v => bps(v)}, TT),
+      xAxis: Object.assign({type: 'category', data: ['All app fees', "Fees to NEAR's wallets"]}, AX, {splitLine: {show: false}, axisLabel: {color: C.ink, fontSize: 12.5, fontWeight: 600}}),
+      yAxis: Object.assign({type: 'value'}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: v => v + ' bps'}, splitNumber: 4}),
+      series: [{name: 'Thin routes (at most 2 rivals)', type: 'bar', barWidth: 24, barGap: '12%', itemStyle: {color: C.blue, borderRadius: [4, 4, 0, 0]}, data: [rf.fee_usd.low_bps, rf.near_fee_usd.low_bps], label: {show: true, position: 'top', color: C.ink, fontWeight: 600, fontSize: 11.5, formatter: q => q.value.toFixed(1)}},
+        {name: 'Crowded routes (4 or 5 rivals)', type: 'bar', barWidth: 24, itemStyle: {color: C.neutral, borderRadius: [4, 4, 0, 0]}, data: [rf.fee_usd.high_bps, rf.near_fee_usd.high_bps], label: {show: true, position: 'top', color: C.ink, fontWeight: 600, fontSize: 11.5, formatter: q => q.value.toFixed(1)}}]}));
+  } else miss('c-real', 'Needs per-swap data from the Explorer API.');
 })();
 
-/* ---------- 5 ratio table ---------- */
-(function(){
-  if (!px.computed){ $('ratio').innerHTML = nc(px.reason); return; }
-  const ok = px.by_notional.filter(e => e.ratio != null);
-  const pass = ok.filter(e => e.verdict === 'supported').length, rs = ok.map(e => e.ratio);
-  $('ratio-says').textContent = ok.length
-    ? `Comparing like with like, NEAR Intents' cost on routes with at most two rivals is between ${Math.min(...rs).toFixed(2)}× and ${Math.max(...rs).toFixed(2)}× its cost on routes with four or five; the 1.5× claim holds in ${pass} of ${ok.length} comparisons.`
-    : 'The ratio could not be computed because one of the two groups has no successful quotes.';
-  let h = '<table><thead><tr><th>Pair type</th><th class="num">Swap size</th><th class="num">Thin routes (≤2 rivals)</th><th class="num">Median cost</th><th class="num">Crowded routes (≥4 rivals)</th><th class="num">Median cost</th><th class="num">Ratio</th><th>Result</th></tr></thead><tbody>';
-  for (const e of px.by_notional) h += `<tr><td>${ptName(e.pair_type)}</td><td class="num">$${num(e.notional_usd)}</td><td class="num">${e.low_routes}</td><td class="num">${bps(e.low_median_bps)}</td><td class="num">${e.high_routes}</td><td class="num">${bps(e.high_median_bps)}</td><td class="num">${e.ratio == null ? 'n/a' : e.ratio.toFixed(2) + '×'}</td><td>${verdictBadge(e.ratio == null ? null : e.verdict)}</td></tr>`;
-  if (rev && rev.realised_fee_rate){ const rf = rev.realised_fee_rate, f = v => v == null ? 'n/a' : v.toFixed(1) + ' bps';
-    h += '</tbody></table><p class="meta" style="margin:18px 0 4px">Cross-check on executed swaps (' + rev.window.join(' to ') + '): fees actually charged, as basis points of volume. Not like for like: the mix of tokens differs between the groups.</p><table><thead><tr><th>Fee</th><th class="num">Thin routes (≤2 rivals)</th><th class="num">Crowded routes (≥4 rivals)</th><th class="num">Ratio</th></tr></thead><tbody>';
-    [['fee_usd', 'All app fees'], ['near_fee_usd', "Fees to NEAR's own wallets"]].forEach(([k, n]) => { const x = rf[k]; if (x) h += `<tr><td>${n}</td><td class="num">${f(x.low_bps)}</td><td class="num">${f(x.high_bps)}</td><td class="num">${x.ratio == null ? 'n/a' : x.ratio.toFixed(2) + '×'}</td></tr>`; }); }
-  $('ratio').innerHTML = h + '</tbody></table>';
-})();
-
-/* ---------- line chart helper ---------- */
-function lineChart(el, title, sub, pts, fmt){
-  const box = document.createElement('div');
-  box.innerHTML = `<h3>${esc(title)}</h3><p>${esc(sub)}</p>`;
-  const W = 320, H = 150, l = 44, r = 8, t = 8, b = 20;
-  const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': title});
-  const max = niceMax(Math.max(...pts.map(p => p.y))), n = pts.length;
-  const x = i => l + (n === 1 ? 0 : i / (n - 1) * (W - l - r)), y = v => t + (1 - v / max) * (H - t - b);
-  [0, .5, 1].forEach(f => { S('line', {x1: l, x2: W - r, y1: y(max * f), y2: y(max * f), stroke: f ? 'var(--grid)' : 'var(--axis)'}, svg);
-    S('text', {x: l - 6, y: y(max * f) + 4, 'text-anchor': 'end', class: 'tick'}, svg, fmt(max * f)); });
-  S('text', {x: l, y: H - 4, class: 'tick'}, svg, pts[0].x); S('text', {x: W - r, y: H - 4, 'text-anchor': 'end', class: 'tick'}, svg, pts[n - 1].x);
-  const d = pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p.y).toFixed(1)).join('');
-  S('path', {d: d + `L${x(n - 1)},${y(0)}L${x(0)},${y(0)}z`, fill: 'var(--s1)', opacity: .1}, svg);
-  S('path', {d, fill: 'none', stroke: 'var(--s1)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
-  const cross = S('line', {y1: t, y2: H - b, stroke: 'var(--axis)', visibility: 'hidden'}, svg);
-  const dot = S('circle', {r: 4, fill: 'var(--s1)', stroke: 'var(--surface)', 'stroke-width': 2, visibility: 'hidden'}, svg);
-  const hit = S('rect', {x: l, y: t, width: W - l - r, height: H - t - b, fill: 'transparent'}, svg);
-  hit.addEventListener('mousemove', e => { const bb = svg.getBoundingClientRect(); const px = (e.clientX - bb.left) / bb.width * W;
-    const i = Math.max(0, Math.min(n - 1, Math.round((px - l) / (W - l - r) * (n - 1))));
-    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
-    dot.setAttribute('cx', x(i)); dot.setAttribute('cy', y(pts[i].y)); dot.setAttribute('visibility', 'visible');
-    tip.innerHTML = `<strong>${pts[i].x}</strong><br>${fmt(pts[i].y)}`; tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 14, innerWidth - 150) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
-  hit.addEventListener('mouseleave', () => { tip.style.opacity = 0; cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); });
-  box.appendChild(svg); el.appendChild(box);
-}
-/* 7-day sum per week keeps lumpy sweep-day revenue readable */
-function weekly(rows, key){ const out = []; const clean = rows.filter(r => r[key] != null);
-  for (let i = clean.length % 7; i + 7 <= clean.length; i += 7){ const w = clean.slice(i, i + 7); out.push({x: w[6].day, y: w.reduce((a, r) => a + r[key], 0)}); } return out; }
-
-/* ---------- 6 llama ---------- */
-(function(){
-  const L = D.llama;
-  if (!L){ $('ll').innerHTML = nc('llama_daily.csv missing: run python -m moatmap.llama'); return; }
-  const last = L.slice(-30), sum = k => last.reduce((a, r) => a + (r[k] || 0), 0);
-  const f = sum('fees_usd'), v = sum('volume_usd'), rv = sum('revenue_usd');
-  $('ll-says').textContent = `In the 30 days to ${last[last.length - 1].day}, DefiLlama reports ${usd(v)} of NEAR Intents volume, ${usd(f)} of fees and ${usd(rv)} swept to NEAR's revenue wallets, so fees were ${(f / v * 1e4).toFixed(1)} bps of volume.`;
-  [['volume_usd', 'Weekly volume'], ['fees_usd', 'Weekly fees (protocol + affiliate)'], ['revenue_usd', "Weekly revenue swept to NEAR's wallets"]].forEach(([k, t]) => {
-    const p = weekly(L, k); if (p.length > 1) lineChart($('ll'), t, 'USD per 7 days, DefiLlama', p, usd); });
-})();
-
-/* ---------- 7 bigquery ---------- */
+/* ================= network ================= */
 (function(){
   $('bq-q').innerHTML = Object.entries(D.sql).map(([n, s]) => `<p class="meta" style="margin:10px 0 4px">sql/${esc(n)}</p><pre>${esc(s)}</pre>`).join('') || '<pre>no SQL files found</pre>';
-  if (!D.bq_daily){ $('bq-says').textContent = 'The SQL is written and shown below, but it has not been run in this build, so no BigQuery number appears anywhere on this page.';
-    $('bq').innerHTML = nc('bq_daily.csv missing: set GOOGLE_APPLICATION_CREDENTIALS and GCP_PROJECT in .env, then run python -m moatmap.bq'); $('bq').style.display = 'block'; return; }
-  const by = {}; D.bq_daily.forEach(r => (by[r.metric] = by[r.metric] || []).push({x: r.block_date, y: r.value}));
-  const fr = D.bq_freshness || {};
-  const core = [['transactions', 'Transactions on NEAR'], ['active_accounts', 'Active accounts (distinct signers)'], ['network_function_calls', 'Contract calls, whole network'],
-    ['intents_function_calls', 'Contract calls to intents.near'], ['intents_distinct_signers', 'Distinct signers reaching intents.near']];
-  /* the newest block_date is still filling in, so it is not plotted */
-  const full = p => p.sort((x, y) => x.x < y.x ? -1 : 1).filter(q => q.x < fr.last_block_date);
-  core.forEach(([m, t]) => { if (by[m]){ const p = full(by[m]); if (p.length > 1) lineChart($('bq'), t, 'per day, NEAR BigQuery', p, num); } });
-  const sum = m => full(by[m] || []).reduce((acc, q) => acc + q.y, 0), mean = m => sum(m) / full(by[m] || [{}]).length;
+  if (!D.bq_daily){ $('bq-says').textContent = 'The SQL is written and shown below, but it has not been run in this build, so no BigQuery number appears on this page.';
+    ['c-topc', 'c-bq'].forEach(i => miss(i, 'bq_daily.csv missing: set GOOGLE_APPLICATION_CREDENTIALS and GCP_PROJECT in .env, then run python -m moatmap.bq')); return; }
+  const fr = D.bq_freshness || {}, by = {};
+  D.bq_daily.forEach(r => (by[r.metric] = by[r.metric] || []).push({x: r.block_date, y: r.value}));
+  const full = m => (by[m] || []).slice().sort((a, b) => a.x < b.x ? -1 : 1).filter(q => !fr.last_block_date || q.x < fr.last_block_date);
+  const mean = m => { const p = full(m); return p.reduce((a, q) => a + q.y, 0) / (p.length || 1); };
   const top = D.bq_top || [], me = top.find(r => r.contract === 'intents.near');
-  $('bq-says').textContent = (me ? `intents.near is the #${me.rank_by_calls} most-called contract on NEAR, taking ${pct(me.share_of_network_calls)} of all contract calls between ${me.window_start} and ${me.window_end}, ` : '') +
-    `but only about ${num(mean('intents_distinct_signers'))} distinct accounts sign for it per day out of ${num(mean('active_accounts'))} active on the network: usage is heavy and concentrated in a few solver and relayer accounts. Dataset current to ${fr.last_block_date}.`;
-  if (top.length){ let h = '<table><thead><tr><th class="num">Rank</th><th>Contract</th><th class="num">Calls</th><th class="num">Share of network calls</th><th class="num">Distinct callers</th></tr></thead><tbody>';
-    for (const r of top.slice(0, 10)) h += `<tr><td class="num">${r.rank_by_calls}</td><td>${esc(String(r.contract).length > 28 ? String(r.contract).slice(0, 12) + '…' + String(r.contract).slice(-8) : r.contract)}</td><td class="num">${num(r.function_calls)}</td><td class="num">${pct(r.share_of_network_calls)}</td><td class="num">${num(r.distinct_predecessors)}</td></tr>`;
-    $('bq').insertAdjacentHTML('afterend', '<p class="meta" style="margin:16px 0 4px">Most-called contracts on NEAR over the window</p><div class="scroll">' + h + '</tbody></table></div>'); }
+  $('bq-says').textContent = (me ? `intents.near is the #${me.rank_by_calls} most-called contract on NEAR with ${pct(me.share_of_network_calls)} of all contract calls, ` : '') +
+    `yet only about ${num(mean('intents_distinct_signers'))} accounts a day sign for it out of ${num(mean('active_accounts'))} active on the network. The flow arrives through a few solver and relayer accounts, so Intents adds a fee stream to NEAR more than it adds users.`;
+  if (top.length){ const T = top.slice(0, 10), nm = c => String(c).length > 24 ? String(c).slice(0, 10) + '…' + String(c).slice(-6) : c;
+    $('tc-says').textContent = `Share of all contract calls, ${T[0].window_start} to ${T[0].window_end}.`;
+    chart('c-topc', () => ({grid: {left: 150, right: 60, top: 6, bottom: 24},
+      tooltip: Object.assign({trigger: 'item', formatter: q => { const r = T[q.dataIndex]; return `<b>${esc(r.contract)}</b><br>${num(r.function_calls)} calls · ${pct(r.share_of_network_calls)}<br>${num(r.distinct_predecessors)} distinct callers`; }}, TT),
+      xAxis: Object.assign({type: 'value'}, AX, {axisLabel: {color: C.muted, fontSize: 11, formatter: v => (v * 100).toFixed(0) + '%'}, splitNumber: 4}),
+      yAxis: Object.assign({type: 'category', inverse: true, data: T.map(r => nm(r.contract))}, AX, {splitLine: {show: false}, axisLabel: {color: C.ink, fontSize: 12, formatter: v => v === 'intents.near' ? '{b|' + v + '}' : v, rich: {b: {fontWeight: 800, color: C.deep}}}}),
+      series: [{type: 'bar', barWidth: 16, itemStyle: {borderRadius: [0, 4, 4, 0]}, data: T.map(r => ({value: r.share_of_network_calls, itemStyle: {color: r.contract === 'intents.near' ? C.blue : C.neutral}})),
+        label: {show: true, position: 'right', color: C.ink2, fontSize: 11.5, formatter: q => pct(q.value)}}]}));
+  } else miss('c-topc', 'Top contracts not available.');
+  const metrics = [['transactions', 'Transactions'], ['active_accounts', 'Active accounts'], ['intents_function_calls', 'Calls to intents.near'], ['intents_distinct_signers', 'Signers reaching intents.near']].filter(m => by[m[0]]);
+  if (!metrics.length){ miss('c-bq', 'No daily metrics available.'); return; }
+  let cm = metrics[0][0];
+  const o = () => { const p = full(cm); return {grid: {left: 56, right: 16, top: 14, bottom: 26},
+    tooltip: Object.assign({trigger: 'axis', valueFormatter: num}, TT),
+    xAxis: Object.assign({type: 'category', data: p.map(q => q.x.slice(5)), boundaryGap: false}, AX, {splitLine: {show: false}}),
+    yAxis: Object.assign({type: 'value', splitNumber: 4}, AX, {axisLine: {show: false}, axisLabel: {color: C.muted, fontSize: 11, formatter: num}}),
+    series: [{type: 'line', data: p.map(q => q.y), smooth: .2, showSymbol: false, symbolSize: 7, lineStyle: {width: 2.5, color: C.blue}, itemStyle: {color: C.blue, borderColor: '#fff', borderWidth: 2},
+      areaStyle: {color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: 'rgba(42,120,214,.25)'}, {offset: 1, color: 'rgba(42,120,214,0)'}])}}]}; };
+  metrics.forEach(([k, n]) => { const b = document.createElement('button'); b.textContent = n; b.setAttribute('aria-pressed', String(k === cm));
+    b.onclick = () => { cm = k; [...$('bq-f').children].forEach(x => x.setAttribute('aria-pressed', String(x === b))); if (charts['c-bq']) charts['c-bq'].setOption(Object.assign({}, BASE, o()), true); }; $('bq-f').appendChild(b); });
+  chart('c-bq', o);
 })();
 
-/* ---------- caveats ---------- */
+/* ================= caveats ================= */
 (function(){
   const c = [
-    'A rival is counted on a route when its own API lists both chains. It may still not support a particular token on that chain, so contestation is, if anything, overstated.',
-    'Part of NEAR Intents flow settles on a confidential shard and is not visible in public data, so every revenue and volume figure here is a lower bound.',
-    'Quotes are a snapshot of a few minutes, for placeholder addresses, without executing. Executed prices can differ, and a keyless 1Click quote may carry a fee that a partner integration would not.',
-    'Bitcoin and Tron are not uncontested: Chainflip, THORChain or Relay serve them. The map counts rivals; it does not call any route a monopoly.',
+    'The scenario grid is arithmetic, not a forecast: it shows what yield a given volume and take would produce, not how likely that volume is. It values Intents only.',
+    'Net issuance is annualised from about a month of supply data and will move with staking rewards and burns.',
+    "Only the fees paid directly to NEAR's wallets can be tied to a route. NEAR's total captured revenue is several times larger and the rest cannot be attributed to routes from public data.",
+    'The Explorer API returned roughly 29% of the volume DefiLlama reports for the same days, although fees nearly reconcile. Route shares describe the visible part.',
+    'A rival is counted on a route when its own API lists both chains. It may still not support a given token, so competition is overstated if anything. Bitcoin and Tron are contested.',
+    'Quotes are snapshots taken minutes apart, for placeholder addresses, without executing. Executed prices can differ.',
   ];
-  if (rev && rev.measure !== 'near_fee_usd') c.unshift(`The revenue split uses ${rev.measure_note}. It is not NEAR's captured revenue per route.`);
-  if (rev && rev.sample_meta) c.unshift('The route split comes from a random sample of public blocks, not a full count, so shares carry sampling error (see THESIS.md for intervals).');
   $('cav').innerHTML = c.map(x => `<li>${esc(x)}</li>`).join('');
+})();
+
+/* ================= motion ================= */
+(function(){
+  const countUp = el => { const to = +el.dataset.count, f = el.dataset.fmt; if (!hasG || still){ el.textContent = fmtv(to, f); return; }
+    const o = {v: 0}; gsap.to(o, {v: to, duration: 1.6, ease: 'power3.out', onUpdate: () => el.textContent = fmtv(o.v, f)}); };
+  const fill = el => { const w = el.dataset.w + '%'; if (!hasG || still){ el.style.width = w; return; } gsap.to(el, {width: w, duration: 1.4, ease: 'power3.out'}); };
+  if (hasG && !still){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.eyebrow, h1, .lede', {y: 24, opacity: 0, duration: .8, stagger: .12, ease: 'power3.out'});
+    gsap.from('.kpi', {y: 30, opacity: 0, duration: .7, stagger: .1, delay: .35, ease: 'power3.out', clearProps: 'transform', onStart: () => { document.querySelectorAll('.kpi [data-count]').forEach(countUp); document.querySelectorAll('.kpi [data-w]').forEach(fill); }});
+    gsap.utils.toArray('.part-tag, .part h2, .part p.sub').forEach(el => gsap.from(el, {y: 20, opacity: 0, duration: .6, ease: 'power2.out', scrollTrigger: {trigger: el, start: 'top 90%'}}));
+    gsap.utils.toArray('.card, .insights .insight').forEach(el => gsap.from(el, {y: 34, opacity: 0, duration: .7, ease: 'power3.out', scrollTrigger: {trigger: el, start: 'top 92%', onEnter: () => el.querySelectorAll('[data-w]').forEach(fill)}}));
+    ScrollTrigger.batch('.dot.on', {start: 'top 94%', onEnter: els => gsap.from(els, {scale: 0, opacity: 0, duration: .45, stagger: .012, ease: 'back.out(2)'})});
+    gsap.from('.track .mk', {y: -12, opacity: 0, duration: .5, stagger: .18, ease: 'power2.out', scrollTrigger: {trigger: '.track', start: 'top 88%'}});
+  } else { document.querySelectorAll('[data-count]').forEach(countUp); document.querySelectorAll('[data-w]').forEach(fill); }
+
+  /* nav highlight */
+  const links = [...document.querySelectorAll('nav a')];
+  if ('IntersectionObserver' in window){ const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), {rootMargin: '-30% 0px -60% 0px'});
+    document.querySelectorAll('section.part').forEach(s => so.observe(s)); }
+
+  /* hero: drifting route network */
+  const cv = $('net'), cx = cv.getContext('2d'); let W, H, pts = [], raf;
+  const size = () => { const r = cv.parentElement.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(Math.min(60, W * H / 16000)); pts = Array.from({length: n}, () => ({x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: 1.5 + Math.random() * 2.5})); };
+  const draw = () => { cx.clearRect(0, 0, W, H);
+    for (const p of pts){ p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++){ const a = pts[i], b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < 150){ cx.strokeStyle = `rgba(42,120,214,${(1 - d / 150) * .22})`; cx.lineWidth = 1; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); } }
+    for (const p of pts){ cx.fillStyle = 'rgba(42,120,214,.45)'; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.283); cx.fill(); }
+    if (!still) raf = requestAnimationFrame(draw); };
+  size(); draw(); addEventListener('resize', () => { cancelAnimationFrame(raf); size(); draw(); });
 })();
 </script>
 </body>

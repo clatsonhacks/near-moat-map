@@ -265,6 +265,25 @@ def main() -> None:
         res = revenue_test(agg, by_chain, "NEAR Intents Explorer API")
         res["window"] = [str(ex["day"].min()), str(ex["day"].max())]
         res["partial_days_dropped"] = dropped
+        # Stability and concentration: the thin-route share week by week, and with Zcash set aside.
+        x = ex[ex["origin_chain"] != ex["dest_chain"]].copy()
+        if "near_fee_usd" in x.columns and pd.to_numeric(x["near_fee_usd"], errors="coerce").fillna(0).sum() > 0:
+            x["near_fee_usd"] = pd.to_numeric(x["near_fee_usd"], errors="coerce").fillna(0.0)
+            nr = [rivals_on_route(by_chain, o, d) for o, d in zip(x["origin_chain"], x["dest_chain"])]
+            x["thin"] = [r is not None and len(r) <= LOW_MAX for r in nr]
+            x["week"] = pd.to_datetime(x["day"]).dt.strftime("%G-W%V")
+            res["weekly"] = [{
+                "week": wk, "from": str(g["day"].min()), "to": str(g["day"].max()), "days": int(g["day"].nunique()),
+                "share_near_fee": float(g.loc[g["thin"], "near_fee_usd"].sum() / g["near_fee_usd"].sum()),
+                "share_volume": float(g.loc[g["thin"], "volume_usd"].sum() / g["volume_usd"].sum()),
+            } for wk, g in x.groupby("week")]
+            z = (x["origin_chain"] == "zec") | (x["dest_chain"] == "zec")
+            nz = x[~z]
+            res["zcash"] = {
+                "share_near_fee": float(x.loc[z, "near_fee_usd"].sum() / x["near_fee_usd"].sum()),
+                "share_volume": float(x.loc[z, "volume_usd"].sum() / x["volume_usd"].sum()),
+                "thin_share_ex_zcash": float(nz.loc[nz["thin"], "near_fee_usd"].sum() / nz["near_fee_usd"].sum()),
+            }
         out["revenue"].append(res)
     else:
         out["revenue"].append({"computed": False, "source": "NEAR Intents Explorer API",
