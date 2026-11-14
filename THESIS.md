@@ -88,6 +88,24 @@ Revenue earns a long-term multiple only if rivals cannot take it. We counted how
 - **The higher realised fee on thin routes is mostly mix, not pricing power.** Crowded routes are dominated by stablecoin transfers (`eth>tron`, `tron>eth`) that pay the 1 bp tier. And 92% of app fees go to distribution partners (Ledger, Trust Wallet, Tangem and others via SwapKit), who set their own markups; NEAR does not capture that.
 - **Where a strong rival exists, NEAR is not cheapest.** Chainflip quoted below NEAR on `btc>eth`, `btc>sol`, `eth>btc`, `arb>sol` and `sol>eth` at $1,000.
 
+### Why the claims did not hold
+
+The idea assumed NEAR Intents earns by being the only option. The data says it earns by being cheap on busy routes and by serving one under-served asset.
+
+**Claim 1: revenue from thin routes**
+
+- **Having no rival is not the same as having demand.** NEAR serves 14 chains that no rival lists, but routes with no rival brought only 13.0% of its direct fees. Swaps concentrate on Bitcoin, Ethereum, Tron and Solana, which rivals also serve.
+- **The biggest earners are contested.** The top route, `btc>tron`, has three rivals and 12.5% of fees. Of the eight largest routes, five have three or more rivals and together carry 33.3%.
+- **The thin-route revenue is one asset.** Zcash routes alone are 35.6% of NEAR's direct fees. Without them the thin-route share falls from 47.2% to 18%.
+- **It held earlier and then stopped.** The weekly share was 62% and 59% in late October and 23% and 30% in November, so the 30-day figure sits on a falling trend.
+
+**Claim 2: a price premium on thin routes**
+
+- **Price follows the kind of swap, not the number of rivals.** At $1,000, same-token routes cost 1.5 bps thin and 2.0 bps crowded; different-token routes cost 36.2 bps and 31.4 bps. NEAR's published fee is set by token type, so rival count has nothing to act on.
+- **The apparent premium is a mix effect.** Executed swaps show fees 2.57× higher on thin routes, but crowded routes are mostly low-fee stablecoin transfers. Compared like for like, the ratio is 0.71× to 1.51×.
+- **Where NEAR has one or two rivals, it usually undercuts them.** At $1,000 NEAR was cheaper than the cheapest rival on five of six such routes (`eth>ton`, `eth>zec`, `ltc>eth`, `zec>eth`, `eth>xrp`); only `doge>btc` went the other way.
+- **Most of the fee is not NEAR's to set.** Only 8% of app fees on cross-chain swaps went to NEAR's own wallets. The rest went to distribution partners, who choose their own markup.
+
 ## Network context (NEAR BigQuery)
 
 From `bigquery-public-data.crypto_near_mainnet_us`, 16 October to 13 November 2026, every query filtered on `block_date`:

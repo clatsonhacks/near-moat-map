@@ -138,7 +138,7 @@ ul.caveats li{margin:5px 0}
 </header>
 
 <nav><div class="wrap">
-  <a href="#verdict">Verdict</a><a href="#value">A · What it is worth</a><a href="#moat">B · Will it last</a><a href="#price">Pricing</a><a href="#network">Network</a><a href="#limits">Limits</a>
+  <a href="#verdict">Verdict</a><a href="#value">A · What it is worth</a><a href="#moat">B · Will it last</a><a href="#price">Pricing</a><a href="#why">Why it failed</a><a href="#network">Network</a><a href="#limits">Limits</a>
 </div></nav>
 
 <main class="wrap">
@@ -239,6 +239,16 @@ Ratio = median NEAR cost on thin routes / median NEAR cost on crowded routes, pe
 computed separately for same-token routes (USDC>USDC, ETH>ETH) and different-token routes (BTC>ETH),
 because NEAR's documented fee differs between them and mixing the two would manufacture a premium.</pre></details></div>
     <div class="card"><h3>Fees actually charged on executed swaps</h3><p class="says" id="real-says"></p><div class="chart" id="c-real"></div></div>
+  </div>
+</section>
+
+<section class="part" id="why">
+  <div class="part-tag">Part B · The finding</div>
+  <h2>Why the claims did not hold</h2>
+  <p class="sub" id="why-says"></p>
+  <div class="grid g2">
+    <div><h3 style="margin:0 0 2px;font-size:16.5px">Claim 1 · revenue from thin routes</h3><div class="insights" style="grid-template-columns:1fr;margin-top:12px" id="why1"></div></div>
+    <div><h3 style="margin:0 0 2px;font-size:16.5px">Claim 2 · a price premium on thin routes</h3><div class="insights" style="grid-template-columns:1fr;margin-top:12px" id="why2"></div></div>
   </div>
 </section>
 
@@ -515,6 +525,31 @@ const rev = R.revenue.find(r => r.computed), px = R.pricing;
       series: [{name: 'Thin routes (at most 2 rivals)', type: 'bar', barWidth: 24, barGap: '12%', itemStyle: {color: C.blue, borderRadius: [4, 4, 0, 0]}, data: [rf.fee_usd.low_bps, rf.near_fee_usd.low_bps], label: {show: true, position: 'top', color: C.ink, fontWeight: 600, fontSize: 11.5, formatter: q => q.value.toFixed(1)}},
         {name: 'Crowded routes (4 or 5 rivals)', type: 'bar', barWidth: 24, itemStyle: {color: C.neutral, borderRadius: [4, 4, 0, 0]}, data: [rf.fee_usd.high_bps, rf.near_fee_usd.high_bps], label: {show: true, position: 'top', color: C.ink, fontWeight: 600, fontSize: 11.5, formatter: q => q.value.toFixed(1)}}]}));
   } else miss('c-real', 'Needs per-swap data from the Explorer API.');
+})();
+
+/* ================= why the claims did not hold ================= */
+(function(){
+  if (!rev || !px.computed){ $('why-says').textContent = 'Needs the route revenue split and the quote comparison.'; return; }
+  $('why-says').textContent = 'The idea assumed NEAR Intents earns by being the only option. The data says it earns by being cheap on busy routes and by serving one under-served asset. Each reason below is read from the charts above.';
+  const a = [], b = [], B = rev.buckets, cov = R.coverage;
+  const zero = B.find(x => x.n_rivals === '0'), none = cov.computed ? cov.chains.filter(x => x.n_rivals === 0).length : null;
+  if (zero) a.push(insight('Having no rival is not the same as having demand', `NEAR serves ${none} chains that no rival lists, but routes with no rival brought only ${pct(zero.share)} of its direct fees. Swaps concentrate on chains rivals also serve.`));
+  const T = rev.top_routes, cont = T.slice(0, 8).filter(r => r.n_rivals !== 'unknown' && +r.n_rivals >= 3);
+  a.push(insight('The biggest earners are contested', `The top route, ${T[0].route}, has ${T[0].n_rivals} rivals and ${pct(T[0].share)} of fees. Of the eight largest routes, ${cont.length} have three or more rivals and together carry ${pct(cont.reduce((x, r) => x + r.share, 0))}.`));
+  if (rev.zcash) a.push(insight('The thin-route revenue is one asset', `Zcash routes alone are ${pct(rev.zcash.share_near_fee)} of NEAR's direct fees. Without them the thin-route share falls from ${pct(rev.share_low_contestation)} to ${pct(rev.zcash.thin_share_ex_zcash, 0)}.`));
+  if (rev.weekly){ const W = rev.weekly, mx = W.reduce((x, w) => w.share_near_fee > x.share_near_fee ? w : x, W[0]), last = W[W.length - 1];
+    a.push(insight('It held earlier and then stopped', `The weekly share was ${pct(mx.share_near_fee, 0)} in the week from ${mx.from} and ${pct(last.share_near_fee, 0)} in the latest week, so the 30-day figure sits on a falling trend.`)); }
+  $('why1').innerHTML = a.join('');
+
+  const at = px.by_notional.filter(e => e.notional_usd === 1000), sa = at.find(e => e.pair_type === 'same_asset'), ca = at.find(e => e.pair_type === 'cross_asset');
+  if (sa && ca) b.push(insight('Price follows the kind of swap, not the number of rivals', `At $1,000, same-token routes cost ${bps(sa.low_median_bps)} thin and ${bps(sa.high_median_bps)} crowded; different-token routes cost ${bps(ca.low_median_bps)} and ${bps(ca.high_median_bps)}. NEAR's published fee is set by token type, so rival count has nothing to act on.`));
+  const rf = rev.realised_fee_rate, rs = px.by_notional.filter(e => e.ratio != null).map(e => e.ratio);
+  if (rf && rf.fee_usd.ratio) b.push(insight('The apparent premium is a mix effect', `Executed swaps show fees ${rf.fee_usd.ratio.toFixed(2)}× higher on thin routes, but crowded routes are mostly low-fee stablecoin transfers. Compared like for like, the ratio is ${Math.min(...rs).toFixed(2)}× to ${Math.max(...rs).toFixed(2)}×.`));
+  const one = px.routes.filter(r => r.notional_usd === 1000 && (r.n_rivals === '1' || r.n_rivals === '2') && r.best_rival_bps != null), under = one.filter(r => r.near_bps < r.best_rival_bps);
+  if (one.length) b.push(insight('Where NEAR has one or two rivals, it usually undercuts them', `At $1,000 NEAR was cheaper than the cheapest rival on ${under.length} of ${one.length} such routes (${under.map(r => r.route).join(', ')}). That is the opposite of charging a premium.`));
+  const m = rev.share_low_by_measure;
+  if (m.fee_usd && m.near_fee_usd) b.push(insight('Most of the fee is not NEAR\'s to set', `Only ${pct(m.near_fee_usd.total / m.fee_usd.total, 0)} of app fees on cross-chain swaps went to NEAR's own wallets. The rest went to distribution partners, who choose their own markup.`));
+  $('why2').innerHTML = b.join('');
 })();
 
 /* ================= network ================= */
