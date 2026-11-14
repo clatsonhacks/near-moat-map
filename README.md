@@ -58,3 +58,20 @@ dashboard/index.html  the static dashboard
 tests/                unit tests; fixtures there are synthetic and labelled so
 THESIS.md             claim, evidence for, evidence against, what would change the conclusion
 ```
+
+## Try it (for judges)
+
+1. Open the live dashboard: https://clatsonhacks.github.io/near-moat-map/ . See the thesis, the 0.48% buyback yield, the scenario grid, and the two claim tests (both rejected).
+2. Click "Query behind it" under any chart. See the SQL or API call that produced it.
+3. Run `pip install -r requirements.txt` then `python build.py --offline`. See the model, both claim tests and the dashboard rebuilt from the saved data in `data/processed/` (the log ends with `wrote ...dashboard\index.html`).
+4. Optional, full rebuild: `python build.py` with the credentials above. See every source re-pulled.
+5. Run `python -m unittest discover tests` (or `pytest tests`). See the unit tests pass.
+
+## Built during the hackathon
+
+- **Window:** all code in this repository was written between the hackathon start (2026-11-01) and 2026-11-14. There is no earlier baseline code and no earlier project; the first commit is dated 2026-11-14.
+- **Track:** Investment Thesis. There is no smart contract. NEAR's role is the subject and the data: NEAR Intents (Explorer API), NEAR BigQuery public dataset, and the 1Click quote API.
+- **Libraries:** `requests`, `pandas`, `numpy`, `matplotlib`, `cryptography` (see `requirements.txt`). Data from DefiLlama and the public APIs of Across, Relay, deBridge, Chainflip and THORChain.
+- **AI assistance:** the code, analysis and dashboard were written with Claude Code (Anthropic). The demo voiceover was generated with ElevenLabs. All numbers come from the public sources above and can be re-derived with `python build.py`.
+
+Licensed under the MIT License (see [LICENSE](LICENSE)).

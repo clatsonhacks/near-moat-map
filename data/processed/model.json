@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T07:08:20+00:00",
+  "generated_at": "2026-11-14T08:13:15+00:00",
   "last_day": "2026-11-12",
   "trailing_30d": {
     "from": "2026-10-14",
@@ -217,24 +217,24 @@
   },
   "valuation": {
     "computed": true,
-    "near_price_usd": 3.37,
+    "near_price_usd": 3.32,
     "supply_date": "2026-11-13",
     "circulating_supply_near": 1309543393.2365217,
     "total_supply_near": 1311625146.3627872,
-    "market_value_usd": 4413161235.207078,
+    "market_value_usd": 4347684065.545252,
     "annual_revenue_usd_90d_run_rate": 21077334.611111112,
-    "buyback_yield": 0.00477601734624185,
-    "market_value_to_revenue": 209.3794740479491,
-    "market_value_to_fees": 56.97304282539623,
+    "buyback_yield": 0.004847945318323805,
+    "market_value_to_revenue": 206.27295366148098,
+    "market_value_to_fees": 56.127745454099546,
     "supply_window": [
       "2026-10-16",
       "2026-11-13"
     ],
     "net_total_supply_change_near": 2461497.1683876547,
     "annualised_net_issuance_near": 32087373.802196212,
-    "annualised_net_issuance_usd": 108134449.71340124,
+    "annualised_net_issuance_usd": 106530081.02329142,
     "annualised_net_issuance_rate": 0.024463829388431873,
-    "buyback_as_share_of_net_issuance": 0.19491785149852175
+    "buyback_as_share_of_net_issuance": 0.1978533613102465
   },
   "scenarios": {
     "assumption": "volume multiples and take variants are assumptions; base values are measured",
@@ -246,7 +246,7 @@
         "take": "half of today's take",
         "take_bps": 2.122490573647556,
         "annual_revenue_usd": 5269333.652777778,
-        "buyback_yield": 0.0011940043365604625
+        "buyback_yield": 0.0012119863295809513
       },
       {
         "volume_multiple": 0.5,
@@ -254,7 +254,7 @@
         "take": "today's take",
         "take_bps": 4.244981147295112,
         "annual_revenue_usd": 10538667.305555556,
-        "buyback_yield": 0.002388008673120925
+        "buyback_yield": 0.0024239726591619025
       },
       {
         "volume_multiple": 0.5,
@@ -262,7 +262,7 @@
         "take": "double today's take",
         "take_bps": 8.489962294590224,
         "annual_revenue_usd": 21077334.611111112,
-        "buyback_yield": 0.00477601734624185
+        "buyback_yield": 0.004847945318323805
       },
       {
         "volume_multiple": 0.5,
@@ -270,7 +270,7 @@
         "take": "all fees, none to partners (upper bound)",
         "take_bps": 15.600569600750099,
         "annual_revenue_usd": 38730257.47222222,
-        "buyback_yield": 0.00877608032157132
+        "buyback_yield": 0.008908250205932333
       },
       {
         "volume_multiple": 1,
@@ -278,7 +278,7 @@
         "take": "half of today's take",
         "take_bps": 2.122490573647556,
         "annual_revenue_usd": 10538667.305555556,
-        "buyback_yield": 0.002388008673120925
+        "buyback_yield": 0.0024239726591619025
       },
       {
         "volume_multiple": 1,
@@ -286,7 +286,7 @@
         "take": "today's take",
         "take_bps": 4.244981147295112,
         "annual_revenue_usd": 21077334.611111112,
-        "buyback_yield": 0.00477601734624185
+        "buyback_yield": 0.004847945318323805
       },
       {
         "volume_multiple": 1,
@@ -294,7 +294,7 @@
         "take": "double today's take",
         "take_bps": 8.489962294590224,
         "annual_revenue_usd": 42154669.222222224,
-        "buyback_yield": 0.0095520346924837
+        "buyback_yield": 0.00969589063664761
       },
       {
         "volume_multiple": 1,
@@ -302,7 +302,7 @@
         "take": "all fees, none to partners (upper bound)",
         "take_bps": 15.600569600750099,
         "annual_revenue_usd": 77460514.94444443,
-        "buyback_yield": 0.01755216064314264
+        "buyback_yield": 0.017816500411864666
       },
       {
         "volume_multiple": 2,
@@ -310,7 +310,7 @@
         "take": "half of today's take",
         "take_bps": 2.122490573647556,
         "annual_revenue_usd": 21077334.611111112,
-        "buyback_yield": 0.00477601734624185
+        "buyback_yield": 0.004847945318323805
       },
       {
         "volume_multiple": 2,
@@ -318,7 +318,7 @@
         "take": "today's take",
         "take_bps": 4.244981147295112,
         "annual_revenue_usd": 42154669.222222224,
-        "buyback_yield": 0.0095520346924837
+        "buyback_yield": 0.00969589063664761
       },
       {
         "volume_multiple": 2,
@@ -326,7 +326,7 @@
         "take": "double today's take",
         "take_bps": 8.489962294590224,
         "annual_revenue_usd": 84309338.44444445,
-        "buyback_yield": 0.0191040693849674
+        "buyback_yield": 0.01939178127329522
       },
       {
         "volume_multiple": 2,
@@ -334,7 +334,7 @@
         "take": "all fees, none to partners (upper bound)",
         "take_bps": 15.600569600750099,
         "annual_revenue_usd": 154921029.88888887,
-        "buyback_yield": 0.03510432128628528
+        "buyback_yield": 0.03563300082372933
       },
       {
         "volume_multiple": 5,
@@ -342,7 +342,7 @@
         "take": "half of today's take",
         "take_bps": 2.122490573647556,
         "annual_revenue_usd": 52693336.52777778,
-        "buyback_yield": 0.011940043365604626
+        "buyback_yield": 0.012119863295809514
       },
       {
         "volume_multiple": 5,
@@ -350,7 +350,7 @@
         "take": "today's take",
         "take_bps": 4.244981147295112,
         "annual_revenue_usd": 105386673.05555557,
-        "buyback_yield": 0.02388008673120925
+        "buyback_yield": 0.024239726591619028
       },
       {
         "volume_multiple": 5,
@@ -358,7 +358,7 @@
         "take": "double today's take",
         "take_bps": 8.489962294590224,
         "annual_revenue_usd": 210773346.11111113,
-        "buyback_yield": 0.0477601734624185
+        "buyback_yield": 0.048479453183238055
       },
       {
         "volume_multiple": 5,
@@ -366,7 +366,7 @@
         "take": "all fees, none to partners (upper bound)",
         "take_bps": 15.600569600750099,
         "annual_revenue_usd": 387302574.72222215,
-        "buyback_yield": 0.0877608032157132
+        "buyback_yield": 0.08908250205932333
       },
       {
         "volume_multiple": 10,
@@ -374,7 +374,7 @@
         "take": "half of today's take",
         "take_bps": 2.122490573647556,
         "annual_revenue_usd": 105386673.05555557,
-        "buyback_yield": 0.02388008673120925
+        "buyback_yield": 0.024239726591619028
       },
       {
         "volume_multiple": 10,
@@ -382,7 +382,7 @@
         "take": "today's take",
         "take_bps": 4.244981147295112,
         "annual_revenue_usd": 210773346.11111113,
-        "buyback_yield": 0.0477601734624185
+        "buyback_yield": 0.048479453183238055
       },
       {
         "volume_multiple": 10,
@@ -390,7 +390,7 @@
         "take": "double today's take",
         "take_bps": 8.489962294590224,
         "annual_revenue_usd": 421546692.22222227,
-        "buyback_yield": 0.095520346924837
+        "buyback_yield": 0.09695890636647611
       },
       {
         "volume_multiple": 10,
@@ -398,11 +398,11 @@
         "take": "all fees, none to partners (upper bound)",
         "take_bps": 15.600569600750099,
         "annual_revenue_usd": 774605149.4444443,
-        "buyback_yield": 0.1755216064314264
+        "buyback_yield": 0.17816500411864666
       }
     ],
-    "volume_multiple_for_1pct_yield": 2.0937947404794905,
-    "volume_multiple_for_5pct_yield": 10.468973702397456,
-    "volume_multiple_to_offset_net_issuance": 5.130366420068938
+    "volume_multiple_for_1pct_yield": 2.06272953661481,
+    "volume_multiple_for_5pct_yield": 10.31364768307405,
+    "volume_multiple_to_offset_net_issuance": 5.054248223925482
   }
 }
