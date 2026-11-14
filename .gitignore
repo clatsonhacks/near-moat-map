@@ -1,0 +1,8 @@
+.env
+data/raw/
+__pycache__/
+*.pyc
+keys/
+*.json.key
+CLAUDE.md
+.claude/

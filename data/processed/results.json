@@ -1,0 +1,3203 @@
+{
+  "generated_at": "2026-11-14T07:08:23+00:00",
+  "definitions": {
+    "low_max": 2,
+    "high_min": 4,
+    "rivals": [
+      "across",
+      "relay",
+      "debridge",
+      "chainflip",
+      "thorchain"
+    ]
+  },
+  "coverage": {
+    "computed": true,
+    "fetched_at": "2026-11-14T05:11:20Z",
+    "chains": [
+      {
+        "chain": "bsc",
+        "rivals": [
+          "across",
+          "chainflip",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 5
+      },
+      {
+        "chain": "eth",
+        "rivals": [
+          "across",
+          "chainflip",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 5
+      },
+      {
+        "chain": "sol",
+        "rivals": [
+          "across",
+          "chainflip",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 5
+      },
+      {
+        "chain": "tron",
+        "rivals": [
+          "across",
+          "chainflip",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 5
+      },
+      {
+        "chain": "arb",
+        "rivals": [
+          "across",
+          "chainflip",
+          "debridge",
+          "relay"
+        ],
+        "n_rivals": 4
+      },
+      {
+        "chain": "avax",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 4
+      },
+      {
+        "chain": "base",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 4
+      },
+      {
+        "chain": "btc",
+        "rivals": [
+          "chainflip",
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 3
+      },
+      {
+        "chain": "hood",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay"
+        ],
+        "n_rivals": 3
+      },
+      {
+        "chain": "monad",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay"
+        ],
+        "n_rivals": 3
+      },
+      {
+        "chain": "op",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay"
+        ],
+        "n_rivals": 3
+      },
+      {
+        "chain": "pol",
+        "rivals": [
+          "across",
+          "debridge",
+          "relay"
+        ],
+        "n_rivals": 3
+      },
+      {
+        "chain": "hypercore",
+        "rivals": [
+          "across",
+          "relay"
+        ],
+        "n_rivals": 2
+      },
+      {
+        "chain": "plasma",
+        "rivals": [
+          "across",
+          "relay"
+        ],
+        "n_rivals": 2
+      },
+      {
+        "chain": "xrp",
+        "rivals": [
+          "relay",
+          "thorchain"
+        ],
+        "n_rivals": 2
+      },
+      {
+        "chain": "abs",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "bch",
+        "rivals": [
+          "thorchain"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "bera",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "doge",
+        "rivals": [
+          "thorchain"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "gnosis",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "ltc",
+        "rivals": [
+          "thorchain"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "scroll",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "ton",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "xlayer",
+        "rivals": [
+          "relay"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "zec",
+        "rivals": [
+          "thorchain"
+        ],
+        "n_rivals": 1
+      },
+      {
+        "chain": "adi",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "aleo",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "aptos",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "cardano",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "dash",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "fogo",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "miden",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "movement",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "near",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "prl",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "qtc",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "starknet",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "stellar",
+        "rivals": [],
+        "n_rivals": 0
+      },
+      {
+        "chain": "sui",
+        "rivals": [],
+        "n_rivals": 0
+      }
+    ],
+    "per_rival": {
+      "across": 13,
+      "relay": 21,
+      "debridge": 11,
+      "chainflip": 6,
+      "thorchain": 12
+    }
+  },
+  "revenue": [
+    {
+      "computed": true,
+      "source": "NEAR Intents Explorer API",
+      "measure": "near_fee_usd",
+      "measure_note": "fees paid to NEAR-owned recipients",
+      "cross_chain_total_usd": 382991.65129999997,
+      "same_chain_total_usd": 19722.5495,
+      "share_low_contestation": 0.4716228115858149,
+      "share_low_contestation_upper_bound": 0.47164270183661844,
+      "unknown_share": 1.9890250803490556e-05,
+      "threshold": 0.5,
+      "verdict": "rejected",
+      "share_low_by_measure": {
+        "near_fee_usd": {
+          "total": 382991.65129999997,
+          "share_low": 0.4716228115858149
+        },
+        "fee_usd": {
+          "total": 4813888.4386,
+          "share_low": 0.33336892850111766
+        },
+        "volume_usd": {
+          "total": 985198017.9799998,
+          "share_low": 0.3161772198128028
+        },
+        "n_swaps": {
+          "total": 407062.0,
+          "share_low": 0.3369216482992763
+        }
+      },
+      "realised_fee_rate": {
+        "fee_usd": {
+          "low_bps": 51.51895374221058,
+          "high_bps": 20.083524694266796,
+          "ratio": 2.565234665054466
+        },
+        "near_fee_usd": {
+          "low_bps": 5.798691501172802,
+          "high_bps": 2.336891061589998,
+          "ratio": 2.481370054634651
+        }
+      },
+      "buckets": [
+        {
+          "n_rivals": "0",
+          "routes": 364,
+          "n_swaps": 46668,
+          "volume_usd": 75633926.47,
+          "measure_usd": 49858.8698,
+          "share": 0.13018265445411814,
+          "fee_bps": 25.975105229784063,
+          "near_fee_bps": 6.592130294832225
+        },
+        {
+          "n_rivals": "1",
+          "routes": 201,
+          "n_swaps": 66087,
+          "volume_usd": 195246500.37000003,
+          "measure_usd": 115916.5388,
+          "share": 0.3026607457539637,
+          "fee_bps": 57.41468423124903,
+          "near_fee_bps": 5.936932983706927
+        },
+        {
+          "n_rivals": "2",
+          "routes": 52,
+          "n_swaps": 24393,
+          "volume_usd": 40616743.45,
+          "measure_usd": 14852.190799999998,
+          "share": 0.03877941137773308,
+          "fee_bps": 70.74405030864186,
+          "near_fee_bps": 3.656667063493983
+        },
+        {
+          "n_rivals": "3",
+          "routes": 78,
+          "n_swaps": 75871,
+          "volume_usd": 267079532.42000002,
+          "measure_usd": 107336.4506,
+          "share": 0.2802579383536552,
+          "fee_bps": 89.57859613284403,
+          "near_fee_bps": 4.018894657611067
+        },
+        {
+          "n_rivals": "4",
+          "routes": 26,
+          "n_swaps": 77088,
+          "volume_usd": 65212696.07,
+          "measure_usd": 11884.587499999998,
+          "share": 0.031030930986771614,
+          "fee_bps": 13.45202923458889,
+          "near_fee_bps": 1.8224346202835957
+        },
+        {
+          "n_rivals": "5",
+          "routes": 12,
+          "n_swaps": 116854,
+          "volume_usd": 341395832.08000004,
+          "measure_usd": 83135.396,
+          "share": 0.21706842882295488,
+          "fee_bps": 21.3502586648216,
+          "near_fee_bps": 2.435161422255404
+        },
+        {
+          "n_rivals": "unknown",
+          "routes": 15,
+          "n_swaps": 101,
+          "volume_usd": 12787.119999999999,
+          "measure_usd": 7.617799999999999,
+          "share": 1.9890250803490556e-05,
+          "fee_bps": 10.48656773378212,
+          "near_fee_bps": 5.957400884640169
+        }
+      ],
+      "top_routes": [
+        {
+          "route": "btc>tron",
+          "n_rivals": "3",
+          "rivals": [
+            "chainflip",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 13749,
+          "volume_usd": 38477557.73,
+          "measure_usd": 47810.9894,
+          "share": 0.12483559168382322
+        },
+        {
+          "route": "zec>eth",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 3675,
+          "volume_usd": 40209553.47,
+          "measure_usd": 37590.0547,
+          "share": 0.0981484963768974
+        },
+        {
+          "route": "near>zec",
+          "n_rivals": "0",
+          "rivals": [],
+          "n_swaps": 1476,
+          "volume_usd": 12586774.29,
+          "measure_usd": 23606.6027,
+          "share": 0.06163738196347467
+        },
+        {
+          "route": "eth>tron",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 35855,
+          "volume_usd": 126357189.95,
+          "measure_usd": 21676.9575,
+          "share": 0.05659903401659346
+        },
+        {
+          "route": "btc>eth",
+          "n_rivals": "3",
+          "rivals": [
+            "chainflip",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 9202,
+          "volume_usd": 48353864.0,
+          "measure_usd": 19928.8011,
+          "share": 0.052034557495849
+        },
+        {
+          "route": "tron>eth",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 10383,
+          "volume_usd": 100291217.78,
+          "measure_usd": 19908.3488,
+          "share": 0.051981156070698926
+        },
+        {
+          "route": "tron>btc",
+          "n_rivals": "3",
+          "rivals": [
+            "chainflip",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 2178,
+          "volume_usd": 47602485.46,
+          "measure_usd": 18271.8793,
+          "share": 0.04770829661163427
+        },
+        {
+          "route": "eth>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 2708,
+          "volume_usd": 15761186.93,
+          "measure_usd": 15054.2768,
+          "share": 0.03930706256624869
+        },
+        {
+          "route": "btc>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 736,
+          "volume_usd": 9727784.47,
+          "measure_usd": 11844.8033,
+          "share": 0.030927053526610387
+        },
+        {
+          "route": "btc>sol",
+          "n_rivals": "3",
+          "rivals": [
+            "chainflip",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 10650,
+          "volume_usd": 14130119.06,
+          "measure_usd": 10524.9786,
+          "share": 0.027480960914617204
+        },
+        {
+          "route": "tron>sol",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 3125,
+          "volume_usd": 14449500.5,
+          "measure_usd": 9832.6292,
+          "share": 0.025673220725895233
+        },
+        {
+          "route": "sol>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 2297,
+          "volume_usd": 12787050.5,
+          "measure_usd": 9574.7623,
+          "share": 0.024999924326026688
+        },
+        {
+          "route": "arb>zec",
+          "n_rivals": "0",
+          "rivals": [],
+          "n_swaps": 437,
+          "volume_usd": 4866710.79,
+          "measure_usd": 8928.8373,
+          "share": 0.023313399312211065
+        },
+        {
+          "route": "eth>sol",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 28856,
+          "volume_usd": 20618666.77,
+          "measure_usd": 8443.990600000001,
+          "share": 0.022047453440142396
+        },
+        {
+          "route": "base>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 1031,
+          "volume_usd": 5303751.6899999995,
+          "measure_usd": 8317.679399999999,
+          "share": 0.021717651995198987
+        },
+        {
+          "route": "sol>eth",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 15647,
+          "volume_usd": 14214462.03,
+          "measure_usd": 7374.7168,
+          "share": 0.019255554983947508
+        },
+        {
+          "route": "bsc>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 206,
+          "volume_usd": 4270863.33,
+          "measure_usd": 6412.5926,
+          "share": 0.01674342659489716
+        },
+        {
+          "route": "tron>zec",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 895,
+          "volume_usd": 9008907.84,
+          "measure_usd": 6284.629,
+          "share": 0.016409310695593225
+        },
+        {
+          "route": "eth>btc",
+          "n_rivals": "3",
+          "rivals": [
+            "chainflip",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 8133,
+          "volume_usd": 99577376.53,
+          "measure_usd": 5671.5419,
+          "share": 0.014808526193061694
+        },
+        {
+          "route": "bsc>eth",
+          "n_rivals": "5",
+          "rivals": [
+            "across",
+            "chainflip",
+            "debridge",
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 2302,
+          "volume_usd": 17197305.58,
+          "measure_usd": 5030.0586,
+          "share": 0.013133598559985114
+        },
+        {
+          "route": "xrp>eth",
+          "n_rivals": "2",
+          "rivals": [
+            "relay",
+            "thorchain"
+          ],
+          "n_swaps": 4436,
+          "volume_usd": 6021767.77,
+          "measure_usd": 3945.9973,
+          "share": 0.010303089601577433
+        },
+        {
+          "route": "arb>btc",
+          "n_rivals": "2",
+          "rivals": [
+            "chainflip",
+            "relay"
+          ],
+          "n_swaps": 353,
+          "volume_usd": 6793020.41,
+          "measure_usd": 3944.52,
+          "share": 0.010299232337339466
+        },
+        {
+          "route": "near>sol",
+          "n_rivals": "0",
+          "rivals": [],
+          "n_swaps": 5092,
+          "volume_usd": 9516277.37,
+          "measure_usd": 3562.5138,
+          "share": 0.009301805373322508
+        },
+        {
+          "route": "btc>arb",
+          "n_rivals": "2",
+          "rivals": [
+            "chainflip",
+            "relay"
+          ],
+          "n_swaps": 965,
+          "volume_usd": 6300610.13,
+          "measure_usd": 3303.912,
+          "share": 0.008626590132671124
+        },
+        {
+          "route": "ltc>tron",
+          "n_rivals": "1",
+          "rivals": [
+            "thorchain"
+          ],
+          "n_swaps": 3119,
+          "volume_usd": 2665128.69,
+          "measure_usd": 3017.2309999999998,
+          "share": 0.007878059455757123
+        }
+      ],
+      "window": [
+        "2026-10-15",
+        "2026-11-13"
+      ],
+      "partial_days_dropped": [
+        "2026-11-14"
+      ]
+    }
+  ],
+  "pricing": {
+    "computed": true,
+    "threshold": 1.5,
+    "snapshots": 2,
+    "first_quote": "2026-11-14T05:13:50Z",
+    "last_quote": "2026-11-14T05:34:49Z",
+    "by_notional": [
+      {
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "low_routes": 8,
+        "high_routes": 2,
+        "low_median_bps": 40.30225,
+        "high_median_bps": 27.3735,
+        "ratio": 1.4723089849672129,
+        "verdict": "rejected"
+      },
+      {
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "low_routes": 8,
+        "high_routes": 2,
+        "low_median_bps": 36.15375,
+        "high_median_bps": 31.401000000000003,
+        "ratio": 1.151356644692844,
+        "verdict": "rejected"
+      },
+      {
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "low_routes": 8,
+        "high_routes": 2,
+        "low_median_bps": 42.92775,
+        "high_median_bps": 28.493750000000002,
+        "ratio": 1.5065672296556263,
+        "verdict": "supported"
+      },
+      {
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "low_routes": 4,
+        "high_routes": 5,
+        "low_median_bps": 1.9147500000000002,
+        "high_median_bps": 2.3715,
+        "ratio": 0.8074003795066413,
+        "verdict": "rejected"
+      },
+      {
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "low_routes": 4,
+        "high_routes": 5,
+        "low_median_bps": 1.4525,
+        "high_median_bps": 2.043,
+        "ratio": 0.7109642682329906,
+        "verdict": "rejected"
+      },
+      {
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "low_routes": 4,
+        "high_routes": 5,
+        "low_median_bps": 1.6132499999999999,
+        "high_median_bps": 2.021,
+        "ratio": 0.7982434438396833,
+        "verdict": "rejected"
+      }
+    ],
+    "routes": [
+      {
+        "route": "btc>near",
+        "pair": "BTC>BTC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 0.4695,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>near",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 1.3795,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>sui",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 4.019,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>arb",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 2.45,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>eth",
+        "pair": "wNEAR>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 32.843,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "sol>near",
+        "pair": "SOL>wNEAR",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "0",
+        "near_bps": 35.343,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "doge>btc",
+        "pair": "DOGE>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "1",
+        "near_bps": 176.7255,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 78.54650000000001,
+        "premium_bps": 98.179,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>ton",
+        "pair": "ETH>GRAM",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "1",
+        "near_bps": 45.2615,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 61.579,
+        "premium_bps": -16.317500000000003,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>zec",
+        "pair": "ETH>ZEC",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "1",
+        "near_bps": 62.465500000000006,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 79.00200000000001,
+        "premium_bps": -16.536500000000004,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "ltc>eth",
+        "pair": "LTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "1",
+        "near_bps": 62.012,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 52.6815,
+        "premium_bps": 9.3305,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "zec>eth",
+        "pair": "ZEC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "1",
+        "near_bps": 18.4615,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 52.3795,
+        "premium_bps": -33.918,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>xrp",
+        "pair": "ETH>XRP",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "2",
+        "near_bps": 16.095,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 36.813,
+        "premium_bps": -20.718000000000004,
+        "rivals_quoting": 2
+      },
+      {
+        "route": "arb>base",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "3",
+        "near_bps": 1.6244999999999998,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.3265,
+        "premium_bps": 0.2979999999999998,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>eth",
+        "pair": "BTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "3",
+        "near_bps": 36.591,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 48.5505,
+        "premium_bps": -11.959499999999998,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>sol",
+        "pair": "BTC>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "3",
+        "near_bps": 39.739000000000004,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 58.471000000000004,
+        "premium_bps": -18.732,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>btc",
+        "pair": "ETH>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "3",
+        "near_bps": 143.197,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 47.4985,
+        "premium_bps": 95.6985,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "arb>sol",
+        "pair": "ETH>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "4",
+        "near_bps": 31.066000000000003,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 57.729,
+        "premium_bps": -26.662999999999997,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>arb",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "4",
+        "near_bps": 2.248,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.8245,
+        "premium_bps": 0.4235000000000002,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>base",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "4",
+        "near_bps": 2.126,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.3335,
+        "premium_bps": 0.7925,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>sol",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "5",
+        "near_bps": 2.3715,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.0,
+        "premium_bps": 1.3715000000000002,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>tron",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "5",
+        "near_bps": 85.961,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 73.702,
+        "premium_bps": 12.259,
+        "rivals_quoting": 5
+      },
+      {
+        "route": "sol>eth",
+        "pair": "SOL>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "5",
+        "near_bps": 23.680999999999997,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 33.181,
+        "premium_bps": -9.5,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "tron>eth",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 100.0,
+        "n_rivals": "5",
+        "near_bps": 31.194499999999998,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 3.6,
+        "premium_bps": 27.594499999999996,
+        "rivals_quoting": 5
+      },
+      {
+        "route": "btc>near",
+        "pair": "BTC>BTC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 0.047,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>near",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 0.832,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>sui",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 2.22,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>arb",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 2.073,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>eth",
+        "pair": "wNEAR>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 29.746000000000002,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "sol>near",
+        "pair": "SOL>wNEAR",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "0",
+        "near_bps": 35.343,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "doge>btc",
+        "pair": "DOGE>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "1",
+        "near_bps": 61.4065,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 28.0295,
+        "premium_bps": 33.377,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>ton",
+        "pair": "ETH>GRAM",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "1",
+        "near_bps": 44.949,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 54.164,
+        "premium_bps": -9.215000000000003,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>zec",
+        "pair": "ETH>ZEC",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "1",
+        "near_bps": 36.9645,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 41.411500000000004,
+        "premium_bps": -4.447000000000003,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "ltc>eth",
+        "pair": "LTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "1",
+        "near_bps": 56.0265,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 60.108,
+        "premium_bps": -4.081499999999998,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "zec>eth",
+        "pair": "ZEC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "1",
+        "near_bps": 19.681,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 26.773,
+        "premium_bps": -7.091999999999999,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>xrp",
+        "pair": "ETH>XRP",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "2",
+        "near_bps": 18.176499999999997,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 34.0235,
+        "premium_bps": -15.847000000000001,
+        "rivals_quoting": 2
+      },
+      {
+        "route": "arb>base",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "3",
+        "near_bps": 1.5225,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.033,
+        "premium_bps": 0.48950000000000005,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>eth",
+        "pair": "BTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "3",
+        "near_bps": 29.5285,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 6.3415,
+        "premium_bps": 23.187,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>sol",
+        "pair": "BTC>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "3",
+        "near_bps": 38.4845,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 9.961,
+        "premium_bps": 28.5235,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>btc",
+        "pair": "ETH>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "3",
+        "near_bps": 29.2135,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": -11.7225,
+        "premium_bps": 40.936,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "arb>sol",
+        "pair": "ETH>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "4",
+        "near_bps": 47.6135,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 19.9575,
+        "premium_bps": 27.656000000000002,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>arb",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "4",
+        "near_bps": 2.043,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 0.906,
+        "premium_bps": 1.137,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>base",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "4",
+        "near_bps": 2.031,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 0.857,
+        "premium_bps": 1.1740000000000002,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>sol",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "5",
+        "near_bps": 1.968,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.0,
+        "premium_bps": 0.968,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>tron",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "5",
+        "near_bps": 9.659500000000001,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 17.252499999999998,
+        "premium_bps": -7.592999999999996,
+        "rivals_quoting": 5
+      },
+      {
+        "route": "sol>eth",
+        "pair": "SOL>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "5",
+        "near_bps": 15.188500000000001,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": -3.9805,
+        "premium_bps": 19.169,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "tron>eth",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 1000.0,
+        "n_rivals": "5",
+        "near_bps": 4.4085,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.2610000000000001,
+        "premium_bps": 3.1475,
+        "rivals_quoting": 5
+      },
+      {
+        "route": "btc>near",
+        "pair": "BTC>BTC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 0.005,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>near",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 1.2015,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "eth>sui",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 2.04,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>arb",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 2.025,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "near>eth",
+        "pair": "wNEAR>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 23.149500000000003,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "sol>near",
+        "pair": "SOL>wNEAR",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "0",
+        "near_bps": 35.711,
+        "n_quotes": 2,
+        "best_rival": null,
+        "best_rival_bps": null,
+        "premium_bps": null,
+        "rivals_quoting": 0
+      },
+      {
+        "route": "doge>btc",
+        "pair": "DOGE>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "1",
+        "near_bps": 51.6445,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 8.2125,
+        "premium_bps": 43.432,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>ton",
+        "pair": "ETH>GRAM",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "1",
+        "near_bps": 46.5185,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 63.494,
+        "premium_bps": -16.975499999999997,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>zec",
+        "pair": "ETH>ZEC",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "1",
+        "near_bps": 76.751,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 37.4075,
+        "premium_bps": 39.343500000000006,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "ltc>eth",
+        "pair": "LTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "1",
+        "near_bps": 58.3615,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 37.9325,
+        "premium_bps": 20.429000000000002,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "zec>eth",
+        "pair": "ZEC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "1",
+        "near_bps": 39.337,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 23.698,
+        "premium_bps": 15.639000000000003,
+        "rivals_quoting": 1
+      },
+      {
+        "route": "eth>xrp",
+        "pair": "ETH>XRP",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "2",
+        "near_bps": 19.576,
+        "n_quotes": 2,
+        "best_rival": "thorchain",
+        "best_rival_bps": 22.140500000000003,
+        "premium_bps": -2.5645000000000024,
+        "rivals_quoting": 2
+      },
+      {
+        "route": "arb>base",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "3",
+        "near_bps": 1.4514999999999998,
+        "n_quotes": 2,
+        "best_rival": "relay",
+        "best_rival_bps": 1.021,
+        "premium_bps": 0.4304999999999999,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>eth",
+        "pair": "BTC>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "3",
+        "near_bps": 31.0945,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 6.4190000000000005,
+        "premium_bps": 24.6755,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "btc>sol",
+        "pair": "BTC>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "3",
+        "near_bps": 37.6805,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 20.682000000000002,
+        "premium_bps": 16.9985,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>btc",
+        "pair": "ETH>BTC",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "3",
+        "near_bps": 18.4,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": -13.5995,
+        "premium_bps": 31.999499999999998,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "arb>sol",
+        "pair": "ETH>SOL",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "4",
+        "near_bps": 37.926,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 27.6185,
+        "premium_bps": 10.307500000000001,
+        "rivals_quoting": 3
+      },
+      {
+        "route": "eth>arb",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "4",
+        "near_bps": 2.022,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 0.766,
+        "premium_bps": 1.2559999999999998,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>base",
+        "pair": "ETH>ETH",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "4",
+        "near_bps": 2.021,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 0.761,
+        "premium_bps": 1.2599999999999998,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>sol",
+        "pair": "USDC>USDC",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "5",
+        "near_bps": 1.9164999999999999,
+        "n_quotes": 2,
+        "best_rival": "across",
+        "best_rival_bps": 1.0,
+        "premium_bps": 0.9164999999999999,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "eth>tron",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "5",
+        "near_bps": 2.053,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": 2.0915,
+        "premium_bps": -0.03849999999999998,
+        "rivals_quoting": 5
+      },
+      {
+        "route": "sol>eth",
+        "pair": "SOL>ETH",
+        "pair_type": "cross_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "5",
+        "near_bps": 19.061500000000002,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": -3.8965,
+        "premium_bps": 22.958000000000002,
+        "rivals_quoting": 4
+      },
+      {
+        "route": "tron>eth",
+        "pair": "USDT>USDT",
+        "pair_type": "same_asset",
+        "notional_usd": 10000.0,
+        "n_rivals": "5",
+        "near_bps": 1.7115,
+        "n_quotes": 2,
+        "best_rival": "chainflip",
+        "best_rival_bps": -9.475000000000001,
+        "premium_bps": 11.186500000000002,
+        "rivals_quoting": 5
+      }
+    ],
+    "all_quotes": [
+      {
+        "route": "arb>base",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 1.3265,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 221.392,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 1.6244999999999998,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 3.076,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 1.033,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 29.338,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.5225,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 1.208,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 1.4,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 10.293,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.4514999999999998,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>base",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 1.021,
+        "n_rivals": "3"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 57.729,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 338.15,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 31.066000000000003,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 60.882,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 19.9575,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 109.2005,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 47.6135,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 57.616,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 27.6185,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 84.272,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 37.926,
+        "n_rivals": "4"
+      },
+      {
+        "route": "arb>sol",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 58.2475,
+        "n_rivals": "4"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 48.5505,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 36.591,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 73.7915,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 72.2065,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 6.3415,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 29.5285,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 62.338499999999996,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 53.5975,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 6.4190000000000005,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 31.0945,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 62.92100000000001,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>eth",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 70.0775,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>near",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 0.4695,
+        "n_rivals": "0"
+      },
+      {
+        "route": "btc>near",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 0.047,
+        "n_rivals": "0"
+      },
+      {
+        "route": "btc>near",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 0.005,
+        "n_rivals": "0"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 58.471000000000004,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 39.739000000000004,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 97.477,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 99.3825,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 9.961,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 38.4845,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 84.493,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 76.57300000000001,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 20.682000000000002,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 37.6805,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 97.5545,
+        "n_rivals": "3"
+      },
+      {
+        "route": "btc>sol",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 74.619,
+        "n_rivals": "3"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 176.7255,
+        "n_rivals": "1"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 78.54650000000001,
+        "n_rivals": "1"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 61.4065,
+        "n_rivals": "1"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 28.0295,
+        "n_rivals": "1"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 51.6445,
+        "n_rivals": "1"
+      },
+      {
+        "route": "doge>btc",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 8.2125,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 1.8245,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 43.239000000000004,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 223.8615,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 2.248,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 7.109500000000001,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 0.906,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 10.573,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 29.5775,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.043,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 5.211,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 0.766,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 12.5435,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 10.323,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.022,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>arb",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 5.021,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 1.3335,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 223.43900000000002,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 2.126,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 9.033,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 72.023,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 0.857,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 29.542,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.031,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 7.2035,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 45.545500000000004,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 0.761,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 10.3185,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.021,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 7.02,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>base",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 43.2355,
+        "n_rivals": "4"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 47.4985,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 143.197,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 111.655,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 69.328,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": -11.7225,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 29.2135,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 42.3215,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 0.22849999999999993,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": -13.5995,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 18.4,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 36.418,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>btc",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 10.805,
+        "n_rivals": "3"
+      },
+      {
+        "route": "eth>near",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 1.3795,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>near",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 0.832,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>near",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.2015,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 1.0,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 75.2265,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 267.062,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 2.3715,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 5.023,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 1.0,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 14.3155,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 33.8855,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.968,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 3.2024999999999997,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 1.0,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 12.23,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 10.786,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.9164999999999999,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sol",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 3.02,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>sui",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 4.019,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>sui",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.22,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>sui",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.04,
+        "n_rivals": "0"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 45.2615,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 61.579,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 44.949,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 54.164,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 46.5185,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>ton",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 63.494,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 624.6985,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 494.541,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 1068.298,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 85.961,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 73.702,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 374.9335,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 63.3695,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 42.851,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 132.3945,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 9.659500000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 17.252499999999998,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 98.755,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 7.237,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": 2.0915,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 40.698499999999996,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.053,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 11.6075,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>tron",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 61.5235,
+        "n_rivals": "5"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 16.095,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 46.397999999999996,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 36.813,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 18.176499999999997,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 37.799499999999995,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 34.0235,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 19.576,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 38.951499999999996,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>xrp",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 22.140500000000003,
+        "n_rivals": "2"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 62.465500000000006,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 79.00200000000001,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 36.9645,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 41.411500000000004,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 76.751,
+        "n_rivals": "1"
+      },
+      {
+        "route": "eth>zec",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 37.4075,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 62.012,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 52.6815,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 56.0265,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 60.108,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 58.3615,
+        "n_rivals": "1"
+      },
+      {
+        "route": "ltc>eth",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 37.9325,
+        "n_rivals": "1"
+      },
+      {
+        "route": "near>arb",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 2.45,
+        "n_rivals": "0"
+      },
+      {
+        "route": "near>arb",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.073,
+        "n_rivals": "0"
+      },
+      {
+        "route": "near>arb",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 2.025,
+        "n_rivals": "0"
+      },
+      {
+        "route": "near>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 32.843,
+        "n_rivals": "0"
+      },
+      {
+        "route": "near>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 29.746000000000002,
+        "n_rivals": "0"
+      },
+      {
+        "route": "near>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 23.149500000000003,
+        "n_rivals": "0"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 33.181,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 253.2245,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 23.680999999999997,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 50.159000000000006,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 47.365,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": -3.9805,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 82.3875,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 15.188500000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 43.5615,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 24.0955,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": -3.8965,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 61.431,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 19.061500000000002,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 42.447500000000005,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>eth",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 15.943000000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "sol>near",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 35.343,
+        "n_rivals": "0"
+      },
+      {
+        "route": "sol>near",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 35.343,
+        "n_rivals": "0"
+      },
+      {
+        "route": "sol>near",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 35.711,
+        "n_rivals": "0"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "across",
+        "cost_bps": 3.6,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "chainflip",
+        "cost_bps": 434.55100000000004,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "debridge",
+        "cost_bps": 345.70849999999996,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 31.194499999999998,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "relay",
+        "cost_bps": 14.049,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 25.2735,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "across",
+        "cost_bps": 1.2610000000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "chainflip",
+        "cost_bps": 27.6605,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "debridge",
+        "cost_bps": 53.867999999999995,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 4.4085,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "relay",
+        "cost_bps": 5.907,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 10.133,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "across",
+        "cost_bps": 1.0270000000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "chainflip",
+        "cost_bps": -9.475000000000001,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "debridge",
+        "cost_bps": 25.3765,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 1.7115,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "relay",
+        "cost_bps": 5.0855,
+        "n_rivals": "5"
+      },
+      {
+        "route": "tron>eth",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 16.7425,
+        "n_rivals": "5"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 100.0,
+        "provider": "near_intents",
+        "cost_bps": 18.4615,
+        "n_rivals": "1"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 100.0,
+        "provider": "thorchain",
+        "cost_bps": 52.3795,
+        "n_rivals": "1"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 1000.0,
+        "provider": "near_intents",
+        "cost_bps": 19.681,
+        "n_rivals": "1"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 1000.0,
+        "provider": "thorchain",
+        "cost_bps": 26.773,
+        "n_rivals": "1"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 10000.0,
+        "provider": "near_intents",
+        "cost_bps": 39.337,
+        "n_rivals": "1"
+      },
+      {
+        "route": "zec>eth",
+        "notional_usd": 10000.0,
+        "provider": "thorchain",
+        "cost_bps": 23.698,
+        "n_rivals": "1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,408 @@
+{
+  "generated_at": "2026-11-14T07:08:20+00:00",
+  "last_day": "2026-11-12",
+  "trailing_30d": {
+    "from": "2026-10-14",
+    "to": "2026-11-12",
+    "days": 30,
+    "volume_usd": 3774153452.0,
+    "fees_usd": 6048207.0,
+    "revenue_usd": 1842648.0,
+    "annualised_volume_usd": 45918866999.333336,
+    "annualised_fees_usd": 73586518.5,
+    "annualised_revenue_usd": 22418884.0,
+    "fee_bps_of_volume": 16.025334096563913,
+    "revenue_bps_of_volume": 4.882281612115013,
+    "revenue_share_of_fees": 0.30466020756234036
+  },
+  "trailing_90d": {
+    "from": "2026-08-15",
+    "to": "2026-11-12",
+    "days": 90,
+    "volume_usd": 12243048484.0,
+    "fees_usd": 19099853.0,
+    "revenue_usd": 5197151.0,
+    "annualised_volume_usd": 49652363296.22222,
+    "annualised_fees_usd": 77460514.94444445,
+    "annualised_revenue_usd": 21077334.611111112,
+    "fee_bps_of_volume": 15.600569600750099,
+    "revenue_bps_of_volume": 4.244981147295112,
+    "revenue_share_of_fees": 0.27210424080227213
+  },
+  "previous_90d": {
+    "from": "2026-05-17",
+    "to": "2026-08-14",
+    "days": 90,
+    "volume_usd": 6618627314.0,
+    "fees_usd": 8883695.0,
+    "revenue_usd": 1737608.0,
+    "annualised_volume_usd": 26842210773.444443,
+    "annualised_fees_usd": 36028318.61111111,
+    "annualised_revenue_usd": 7046965.777777778,
+    "fee_bps_of_volume": 13.422262016791356,
+    "revenue_bps_of_volume": 2.625329872139104,
+    "revenue_share_of_fees": 0.19559518871370526
+  },
+  "same_90d_a_year_earlier": {
+    "from": "2025-08-15",
+    "to": "2025-11-12",
+    "days": 90,
+    "volume_usd": 3912847357.0,
+    "fees_usd": 6078182.0,
+    "revenue_usd": 423211.0,
+    "annualised_volume_usd": 15868769836.722221,
+    "annualised_fees_usd": 24650404.777777776,
+    "annualised_revenue_usd": 1716355.7222222222,
+    "fee_bps_of_volume": 15.533910335465203,
+    "revenue_bps_of_volume": 1.0815934315528168,
+    "revenue_share_of_fees": 0.06962789202429279
+  },
+  "growth": {
+    "volume_vs_previous_90d": 0.8497866556261577,
+    "fees_vs_previous_90d": 1.1499897283731602,
+    "revenue_vs_previous_90d": 1.9909801290049307,
+    "volume_vs_year_earlier": 2.1289358789060473,
+    "fees_vs_year_earlier": 2.1423627986131377
+  },
+  "monthly": [
+    {
+      "month": "2024-12",
+      "volume_usd": 2970992.0,
+      "fees_usd": null,
+      "revenue_usd": null
+    },
+    {
+      "month": "2025-01",
+      "volume_usd": 6405486.0,
+      "fees_usd": null,
+      "revenue_usd": null
+    },
+    {
+      "month": "2025-02",
+      "volume_usd": 13194437.0,
+      "fees_usd": null,
+      "revenue_usd": null
+    },
+    {
+      "month": "2025-03",
+      "volume_usd": 23456822.0,
+      "fees_usd": null,
+      "revenue_usd": null
+    },
+    {
+      "month": "2025-04",
+      "volume_usd": 45321918.0,
+      "fees_usd": null,
+      "revenue_usd": null
+    },
+    {
+      "month": "2025-05",
+      "volume_usd": 90736625.0,
+      "fees_usd": 96.0,
+      "revenue_usd": 0.0
+    },
+    {
+      "month": "2025-06",
+      "volume_usd": 184121616.0,
+      "fees_usd": 95436.98,
+      "revenue_usd": 0.0
+    },
+    {
+      "month": "2025-07",
+      "volume_usd": 235933309.0,
+      "fees_usd": 217997.0,
+      "revenue_usd": 0.0
+    },
+    {
+      "month": "2025-08",
+      "volume_usd": 331560249.0,
+      "fees_usd": 419519.0,
+      "revenue_usd": 0.0
+    },
+    {
+      "month": "2025-09",
+      "volume_usd": 483791180.0,
+      "fees_usd": 712949.0,
+      "revenue_usd": 18.0
+    },
+    {
+      "month": "2025-10",
+      "volume_usd": 1723102048.0,
+      "fees_usd": 2496648.0,
+      "revenue_usd": 18.0
+    },
+    {
+      "month": "2025-11",
+      "volume_usd": 3661054797.0,
+      "fees_usd": 7758092.0,
+      "revenue_usd": 768047.0
+    },
+    {
+      "month": "2025-12",
+      "volume_usd": 2009785103.0,
+      "fees_usd": 4116558.0,
+      "revenue_usd": 176629.0
+    },
+    {
+      "month": "2026-01",
+      "volume_usd": 2724468717.0,
+      "fees_usd": 4410217.0,
+      "revenue_usd": 359240.0
+    },
+    {
+      "month": "2026-02",
+      "volume_usd": 2378261095.0,
+      "fees_usd": 4134501.0,
+      "revenue_usd": 663127.0
+    },
+    {
+      "month": "2026-03",
+      "volume_usd": 2079695033.0,
+      "fees_usd": 3590113.0,
+      "revenue_usd": 563460.0
+    },
+    {
+      "month": "2026-04",
+      "volume_usd": 1895540502.0,
+      "fees_usd": 3207256.0,
+      "revenue_usd": 258740.05
+    },
+    {
+      "month": "2026-05",
+      "volume_usd": 1995687999.0,
+      "fees_usd": 3002309.0,
+      "revenue_usd": 619614.0
+    },
+    {
+      "month": "2026-06",
+      "volume_usd": 2354692014.0,
+      "fees_usd": 3111812.0,
+      "revenue_usd": 619475.0
+    },
+    {
+      "month": "2026-07",
+      "volume_usd": 2205579711.0,
+      "fees_usd": 3271913.0,
+      "revenue_usd": 504864.0
+    },
+    {
+      "month": "2026-08",
+      "volume_usd": 2777327253.0,
+      "fees_usd": 3836975.0,
+      "revenue_usd": 723262.0
+    },
+    {
+      "month": "2026-09",
+      "volume_usd": 4803094377.0,
+      "fees_usd": 7325792.0,
+      "revenue_usd": 1839513.0
+    },
+    {
+      "month": "2026-10",
+      "volume_usd": 3985641601.0,
+      "fees_usd": 6388076.0,
+      "revenue_usd": 2189521.0
+    },
+    {
+      "month": "2026-11",
+      "volume_usd": 1602664652.0,
+      "fees_usd": 2649055.0,
+      "revenue_usd": 640346.0
+    }
+  ],
+  "all_time": {
+    "volume_usd": 37614087536.0,
+    "fees_usd": 60745314.980000004,
+    "revenue_usd": 9925874.05
+  },
+  "valuation": {
+    "computed": true,
+    "near_price_usd": 3.37,
+    "supply_date": "2026-11-13",
+    "circulating_supply_near": 1309543393.2365217,
+    "total_supply_near": 1311625146.3627872,
+    "market_value_usd": 4413161235.207078,
+    "annual_revenue_usd_90d_run_rate": 21077334.611111112,
+    "buyback_yield": 0.00477601734624185,
+    "market_value_to_revenue": 209.3794740479491,
+    "market_value_to_fees": 56.97304282539623,
+    "supply_window": [
+      "2026-10-16",
+      "2026-11-13"
+    ],
+    "net_total_supply_change_near": 2461497.1683876547,
+    "annualised_net_issuance_near": 32087373.802196212,
+    "annualised_net_issuance_usd": 108134449.71340124,
+    "annualised_net_issuance_rate": 0.024463829388431873,
+    "buyback_as_share_of_net_issuance": 0.19491785149852175
+  },
+  "scenarios": {
+    "assumption": "volume multiples and take variants are assumptions; base values are measured",
+    "base_annual_volume_usd": 49652363296.22222,
+    "grid": [
+      {
+        "volume_multiple": 0.5,
+        "annual_volume_usd": 24826181648.11111,
+        "take": "half of today's take",
+        "take_bps": 2.122490573647556,
+        "annual_revenue_usd": 5269333.652777778,
+        "buyback_yield": 0.0011940043365604625
+      },
+      {
+        "volume_multiple": 0.5,
+        "annual_volume_usd": 24826181648.11111,
+        "take": "today's take",
+        "take_bps": 4.244981147295112,
+        "annual_revenue_usd": 10538667.305555556,
+        "buyback_yield": 0.002388008673120925
+      },
+      {
+        "volume_multiple": 0.5,
+        "annual_volume_usd": 24826181648.11111,
+        "take": "double today's take",
+        "take_bps": 8.489962294590224,
+        "annual_revenue_usd": 21077334.611111112,
+        "buyback_yield": 0.00477601734624185
+      },
+      {
+        "volume_multiple": 0.5,
+        "annual_volume_usd": 24826181648.11111,
+        "take": "all fees, none to partners (upper bound)",
+        "take_bps": 15.600569600750099,
+        "annual_revenue_usd": 38730257.47222222,
+        "buyback_yield": 0.00877608032157132
+      },
+      {
+        "volume_multiple": 1,
+        "annual_volume_usd": 49652363296.22222,
+        "take": "half of today's take",
+        "take_bps": 2.122490573647556,
+        "annual_revenue_usd": 10538667.305555556,
+        "buyback_yield": 0.002388008673120925
+      },
+      {
+        "volume_multiple": 1,
+        "annual_volume_usd": 49652363296.22222,
+        "take": "today's take",
+        "take_bps": 4.244981147295112,
+        "annual_revenue_usd": 21077334.611111112,
+        "buyback_yield": 0.00477601734624185
+      },
+      {
+        "volume_multiple": 1,
+        "annual_volume_usd": 49652363296.22222,
+        "take": "double today's take",
+        "take_bps": 8.489962294590224,
+        "annual_revenue_usd": 42154669.222222224,
+        "buyback_yield": 0.0095520346924837
+      },
+      {
+        "volume_multiple": 1,
+        "annual_volume_usd": 49652363296.22222,
+        "take": "all fees, none to partners (upper bound)",
+        "take_bps": 15.600569600750099,
+        "annual_revenue_usd": 77460514.94444443,
+        "buyback_yield": 0.01755216064314264
+      },
+      {
+        "volume_multiple": 2,
+        "annual_volume_usd": 99304726592.44444,
+        "take": "half of today's take",
+        "take_bps": 2.122490573647556,
+        "annual_revenue_usd": 21077334.611111112,
+        "buyback_yield": 0.00477601734624185
+      },
+      {
+        "volume_multiple": 2,
+        "annual_volume_usd": 99304726592.44444,
+        "take": "today's take",
+        "take_bps": 4.244981147295112,
+        "annual_revenue_usd": 42154669.222222224,
+        "buyback_yield": 0.0095520346924837
+      },
+      {
+        "volume_multiple": 2,
+        "annual_volume_usd": 99304726592.44444,
+        "take": "double today's take",
+        "take_bps": 8.489962294590224,
+        "annual_revenue_usd": 84309338.44444445,
+        "buyback_yield": 0.0191040693849674
+      },
+      {
+        "volume_multiple": 2,
+        "annual_volume_usd": 99304726592.44444,
+        "take": "all fees, none to partners (upper bound)",
+        "take_bps": 15.600569600750099,
+        "annual_revenue_usd": 154921029.88888887,
+        "buyback_yield": 0.03510432128628528
+      },
+      {
+        "volume_multiple": 5,
+        "annual_volume_usd": 248261816481.1111,
+        "take": "half of today's take",
+        "take_bps": 2.122490573647556,
+        "annual_revenue_usd": 52693336.52777778,
+        "buyback_yield": 0.011940043365604626
+      },
+      {
+        "volume_multiple": 5,
+        "annual_volume_usd": 248261816481.1111,
+        "take": "today's take",
+        "take_bps": 4.244981147295112,
+        "annual_revenue_usd": 105386673.05555557,
+        "buyback_yield": 0.02388008673120925
+      },
+      {
+        "volume_multiple": 5,
+        "annual_volume_usd": 248261816481.1111,
+        "take": "double today's take",
+        "take_bps": 8.489962294590224,
+        "annual_revenue_usd": 210773346.11111113,
+        "buyback_yield": 0.0477601734624185
+      },
+      {
+        "volume_multiple": 5,
+        "annual_volume_usd": 248261816481.1111,
+        "take": "all fees, none to partners (upper bound)",
+        "take_bps": 15.600569600750099,
+        "annual_revenue_usd": 387302574.72222215,
+        "buyback_yield": 0.0877608032157132
+      },
+      {
+        "volume_multiple": 10,
+        "annual_volume_usd": 496523632962.2222,
+        "take": "half of today's take",
+        "take_bps": 2.122490573647556,
+        "annual_revenue_usd": 105386673.05555557,
+        "buyback_yield": 0.02388008673120925
+      },
+      {
+        "volume_multiple": 10,
+        "annual_volume_usd": 496523632962.2222,
+        "take": "today's take",
+        "take_bps": 4.244981147295112,
+        "annual_revenue_usd": 210773346.11111113,
+        "buyback_yield": 0.0477601734624185
+      },
+      {
+        "volume_multiple": 10,
+        "annual_volume_usd": 496523632962.2222,
+        "take": "double today's take",
+        "take_bps": 8.489962294590224,
+        "annual_revenue_usd": 421546692.22222227,
+        "buyback_yield": 0.095520346924837
+      },
+      {
+        "volume_multiple": 10,
+        "annual_volume_usd": 496523632962.2222,
+        "take": "all fees, none to partners (upper bound)",
+        "take_bps": 15.600569600750099,
+        "annual_revenue_usd": 774605149.4444443,
+        "buyback_yield": 0.1755216064314264
+      }
+    ],
+    "volume_multiple_for_1pct_yield": 2.0937947404794905,
+    "volume_multiple_for_5pct_yield": 10.468973702397456,
+    "volume_multiple_to_offset_net_issuance": 5.130366420068938
+  }
+}

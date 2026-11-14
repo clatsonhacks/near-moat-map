@@ -1,0 +1,23 @@
+[
+ {
+  "_note": "SYNTHETIC FIXTURE - minimal token map for unit tests",
+  "assetId": "nep141:eth-0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.omft.near",
+  "blockchain": "eth"
+ },
+ {
+  "assetId": "nep141:wrap.near",
+  "blockchain": "near"
+ },
+ {
+  "assetId": "nep141:btc.omft.near",
+  "blockchain": "btc"
+ },
+ {
+  "assetId": "nep141:sol.omft.near",
+  "blockchain": "sol"
+ },
+ {
+  "assetId": "nep141:arb.omft.near",
+  "blockchain": "arb"
+ }
+]

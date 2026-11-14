@@ -1,0 +1,10 @@
+# Core pipeline (already installed on the build machine)
+requests
+pandas
+numpy
+matplotlib
+# moatmap/bq.py only: RS256 signing of the service-account JWT for the BigQuery REST API.
+# Not needed for the Explorer or DefiLlama pulls, nor when GOOGLE_APPLICATION_CREDENTIALS
+# points at a `gcloud auth application-default login` (authorized_user) file.
+# `google-auth` is accepted as an alternative if it is already installed.
+cryptography

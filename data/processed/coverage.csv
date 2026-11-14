@@ -1,0 +1,235 @@
+chain,provider,supported,evidence,fetched_at
+abs,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=abs (1 tokens),2026-11-14T05:10:28Z
+abs,across,0,2741 not present in https://app.across.to/api/{available-routes|swap/chains} (mapped by name to Abstract (chain id 2741)),2026-11-14T05:10:30Z
+abs,relay,1,https://api.relay.link/chains chains[].id = 2741 [name=abstract] (mapped by name to Abstract (chain id 2741)),2026-11-14T05:10:32Z
+abs,debridge,0,2741 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId (mapped by name to Abstract (chain id 2741)),2026-11-14T05:10:33Z
+abs,chainflip,0,no chainflip identifier maps to this chain (mapped by name to Abstract (chain id 2741)),2026-11-14T05:10:36Z
+abs,thorchain,0,no thorchain identifier maps to this chain (mapped by name to Abstract (chain id 2741)),2026-11-14T05:11:20Z
+adi,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=adi (1 tokens),2026-11-14T05:10:28Z
+adi,across,0,36900 not present in https://app.across.to/api/{available-routes|swap/chains} (chain id 36900 read from the 1Click assetId),2026-11-14T05:10:30Z
+adi,relay,0,36900 not present in https://api.relay.link/chains chains[].id (chain id 36900 read from the 1Click assetId),2026-11-14T05:10:32Z
+adi,debridge,0,36900 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId (chain id 36900 read from the 1Click assetId),2026-11-14T05:10:33Z
+adi,chainflip,0,no chainflip identifier maps to this chain (chain id 36900 read from the 1Click assetId),2026-11-14T05:10:36Z
+adi,thorchain,0,no thorchain identifier maps to this chain (chain id 36900 read from the 1Click assetId),2026-11-14T05:11:20Z
+aleo,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=aleo (3 tokens),2026-11-14T05:10:28Z
+aleo,across,0,no across identifier maps to this chain (no rival lists Aleo),2026-11-14T05:10:30Z
+aleo,relay,0,no relay identifier maps to this chain (no rival lists Aleo),2026-11-14T05:10:32Z
+aleo,debridge,0,no debridge identifier maps to this chain (no rival lists Aleo),2026-11-14T05:10:33Z
+aleo,chainflip,0,no chainflip identifier maps to this chain (no rival lists Aleo),2026-11-14T05:10:36Z
+aleo,thorchain,0,no thorchain identifier maps to this chain (no rival lists Aleo),2026-11-14T05:11:20Z
+aptos,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=aptos (13 tokens),2026-11-14T05:10:28Z
+aptos,across,0,no across identifier maps to this chain (no rival lists Aptos),2026-11-14T05:10:30Z
+aptos,relay,0,no relay identifier maps to this chain (no rival lists Aptos),2026-11-14T05:10:32Z
+aptos,debridge,0,no debridge identifier maps to this chain (no rival lists Aptos),2026-11-14T05:10:33Z
+aptos,chainflip,0,no chainflip identifier maps to this chain (no rival lists Aptos),2026-11-14T05:10:36Z
+aptos,thorchain,0,no thorchain identifier maps to this chain (no rival lists Aptos),2026-11-14T05:11:20Z
+arb,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=arb (7 tokens),2026-11-14T05:10:28Z
+arb,across,1,https://app.across.to/api/{available-routes|swap/chains} = 42161 [available-routes; swap/chains name=Arbitrum],2026-11-14T05:10:30Z
+arb,relay,1,https://api.relay.link/chains chains[].id = 42161 [name=arbitrum],2026-11-14T05:10:32Z
+arb,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 42161 [chainName=Arbitrum, chainId=42161]",2026-11-14T05:10:33Z
+arb,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Arbitrum [assets=ETH/USDC/USDT],2026-11-14T05:10:36Z
+arb,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+avax,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=avax (6 tokens),2026-11-14T05:10:28Z
+avax,across,1,https://app.across.to/api/{available-routes|swap/chains} = 43114 [available-routes; swap/chains name=Avalanche],2026-11-14T05:10:30Z
+avax,relay,1,https://api.relay.link/chains chains[].id = 43114 [name=avalanche],2026-11-14T05:10:32Z
+avax,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 43114 [chainName=Avalanche, chainId=43114]",2026-11-14T05:10:33Z
+avax,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+avax,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = AVAX [Available pools=AVAX.AVAX/AVAX.USDC/AVAX.USDT],2026-11-14T05:11:20Z
+base,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=base (18 tokens),2026-11-14T05:10:28Z
+base,across,1,https://app.across.to/api/{available-routes|swap/chains} = 8453 [available-routes; swap/chains name=Base],2026-11-14T05:10:30Z
+base,relay,1,https://api.relay.link/chains chains[].id = 8453 [name=base],2026-11-14T05:10:32Z
+base,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 8453 [chainName=Base, chainId=8453]",2026-11-14T05:10:33Z
+base,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+base,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = BASE [Available pools=BASE.ETH/BASE.USDC/BASE.VVV],2026-11-14T05:11:20Z
+bch,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=bch (1 tokens),2026-11-14T05:10:28Z
+bch,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+bch,relay,0,no relay identifier maps to this chain,2026-11-14T05:10:32Z
+bch,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+bch,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+bch,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = BCH [Available pools=BCH.BCH],2026-11-14T05:11:20Z
+bera,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=bera (2 tokens),2026-11-14T05:10:28Z
+bera,across,0,80094 not present in https://app.across.to/api/{available-routes|swap/chains},2026-11-14T05:10:30Z
+bera,relay,1,https://api.relay.link/chains chains[].id = 80094 [name=berachain],2026-11-14T05:10:32Z
+bera,debridge,0,80094 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId,2026-11-14T05:10:33Z
+bera,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+bera,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+bsc,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=bsc (16 tokens),2026-11-14T05:10:28Z
+bsc,across,1,https://app.across.to/api/{available-routes|swap/chains} = 56 [available-routes; swap/chains name=BNB Smart Chain],2026-11-14T05:10:30Z
+bsc,relay,1,https://api.relay.link/chains chains[].id = 56 [name=bsc],2026-11-14T05:10:32Z
+bsc,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 56 [chainName=BSC, chainId=56]",2026-11-14T05:10:33Z
+bsc,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Bsc [assets=BNB/USDT],2026-11-14T05:10:36Z
+bsc,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = BSC [Available pools=BSC.BNB/BSC.BTCB/BSC.BUSD/BSC.ETH...],2026-11-14T05:11:20Z
+btc,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=btc (2 tokens),2026-11-14T05:10:28Z
+btc,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+btc,relay,1,https://api.relay.link/chains chains[].id = 8253038 [name=bitcoin],2026-11-14T05:10:32Z
+btc,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+btc,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Bitcoin [assets=BTC],2026-11-14T05:10:36Z
+btc,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = BTC [Available pools=BTC.BTC],2026-11-14T05:11:20Z
+cardano,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=cardano (1 tokens),2026-11-14T05:10:28Z
+cardano,across,0,no across identifier maps to this chain (no rival lists Cardano),2026-11-14T05:10:30Z
+cardano,relay,0,no relay identifier maps to this chain (no rival lists Cardano),2026-11-14T05:10:32Z
+cardano,debridge,0,no debridge identifier maps to this chain (no rival lists Cardano),2026-11-14T05:10:33Z
+cardano,chainflip,0,no chainflip identifier maps to this chain (no rival lists Cardano),2026-11-14T05:10:36Z
+cardano,thorchain,0,no thorchain identifier maps to this chain (no rival lists Cardano),2026-11-14T05:11:20Z
+dash,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=dash (1 tokens),2026-11-14T05:10:28Z
+dash,across,0,no across identifier maps to this chain (no rival lists Dash),2026-11-14T05:10:30Z
+dash,relay,0,no relay identifier maps to this chain (no rival lists Dash),2026-11-14T05:10:32Z
+dash,debridge,0,no debridge identifier maps to this chain (no rival lists Dash),2026-11-14T05:10:33Z
+dash,chainflip,0,no chainflip identifier maps to this chain (no rival lists Dash),2026-11-14T05:10:36Z
+dash,thorchain,0,no thorchain identifier maps to this chain (no rival lists Dash),2026-11-14T05:11:20Z
+doge,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=doge (1 tokens),2026-11-14T05:10:28Z
+doge,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+doge,relay,0,no relay identifier maps to this chain,2026-11-14T05:10:32Z
+doge,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+doge,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+doge,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = DOGE [Available pools=DOGE.DOGE],2026-11-14T05:11:20Z
+eth,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=eth (29 tokens),2026-11-14T05:10:28Z
+eth,across,1,https://app.across.to/api/{available-routes|swap/chains} = 1 [available-routes; swap/chains name=Ethereum],2026-11-14T05:10:30Z
+eth,relay,1,https://api.relay.link/chains chains[].id = 1 [name=ethereum],2026-11-14T05:10:32Z
+eth,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 1 [chainName=Ethereum, chainId=1]",2026-11-14T05:10:33Z
+eth,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Ethereum [assets=ETH/FLIP/USDC/USDT/WBTC/CBBTC],2026-11-14T05:10:36Z
+eth,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = ETH [Available pools=ETH.AAVE/ETH.DAI/ETH.ETH/ETH.GUSD...],2026-11-14T05:11:20Z
+fogo,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=fogo (1 tokens),2026-11-14T05:10:28Z
+fogo,across,0,no across identifier maps to this chain (no rival lists Fogo),2026-11-14T05:10:30Z
+fogo,relay,0,no relay identifier maps to this chain (no rival lists Fogo),2026-11-14T05:10:32Z
+fogo,debridge,0,no debridge identifier maps to this chain (no rival lists Fogo),2026-11-14T05:10:33Z
+fogo,chainflip,0,no chainflip identifier maps to this chain (no rival lists Fogo),2026-11-14T05:10:36Z
+fogo,thorchain,0,no thorchain identifier maps to this chain (no rival lists Fogo),2026-11-14T05:11:20Z
+gnosis,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=gnosis (9 tokens),2026-11-14T05:10:28Z
+gnosis,across,0,100 not present in https://app.across.to/api/{available-routes|swap/chains},2026-11-14T05:10:30Z
+gnosis,relay,1,https://api.relay.link/chains chains[].id = 100 [name=gnosis],2026-11-14T05:10:32Z
+gnosis,debridge,0,100 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId,2026-11-14T05:10:33Z
+gnosis,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+gnosis,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+hood,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=hood (6 tokens),2026-11-14T05:10:28Z
+hood,across,1,https://app.across.to/api/{available-routes|swap/chains} = 4663 [available-routes; swap/chains name=Robinhood] (Robinhood Chain; token contract matches Relay chain 4663),2026-11-14T05:10:30Z
+hood,relay,1,https://api.relay.link/chains chains[].id = 4663 [name=robinhood] (Robinhood Chain; token contract matches Relay chain 4663),2026-11-14T05:10:32Z
+hood,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 4663 [chainName=Robinhood, chainId=4663] (Robinhood Chain; token contract matches Relay chain 4663)",2026-11-14T05:10:33Z
+hood,chainflip,0,no chainflip identifier maps to this chain (Robinhood Chain; token contract matches Relay chain 4663),2026-11-14T05:10:36Z
+hood,thorchain,0,no thorchain identifier maps to this chain (Robinhood Chain; token contract matches Relay chain 4663),2026-11-14T05:11:20Z
+hypercore,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=hypercore (3 tokens),2026-11-14T05:10:28Z
+hypercore,across,1,https://app.across.to/api/{available-routes|swap/chains} = 1337 [swap/chains name=HyperCore] (HyperCore (id 1337 at Across/Relay); deBridge's HyperEVM (999) is a different venue),2026-11-14T05:10:30Z
+hypercore,relay,1,https://api.relay.link/chains chains[].id = 1337 [name=hyperliquid] (HyperCore (id 1337 at Across/Relay); deBridge's HyperEVM (999) is a different venue),2026-11-14T05:10:32Z
+hypercore,debridge,0,no debridge identifier maps to this chain (HyperCore (id 1337 at Across/Relay); deBridge's HyperEVM (999) is a different venue),2026-11-14T05:10:33Z
+hypercore,chainflip,0,no chainflip identifier maps to this chain (HyperCore (id 1337 at Across/Relay); deBridge's HyperEVM (999) is a different venue),2026-11-14T05:10:36Z
+hypercore,thorchain,0,no thorchain identifier maps to this chain (HyperCore (id 1337 at Across/Relay); deBridge's HyperEVM (999) is a different venue),2026-11-14T05:11:20Z
+ltc,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=ltc (1 tokens),2026-11-14T05:10:28Z
+ltc,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+ltc,relay,0,no relay identifier maps to this chain,2026-11-14T05:10:32Z
+ltc,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+ltc,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+ltc,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = LTC [Available pools=LTC.LTC],2026-11-14T05:11:20Z
+miden,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=miden (5 tokens),2026-11-14T05:10:28Z
+miden,across,0,no across identifier maps to this chain (no rival lists Miden),2026-11-14T05:10:30Z
+miden,relay,0,no relay identifier maps to this chain (no rival lists Miden),2026-11-14T05:10:32Z
+miden,debridge,0,no debridge identifier maps to this chain (no rival lists Miden),2026-11-14T05:10:33Z
+miden,chainflip,0,no chainflip identifier maps to this chain (no rival lists Miden),2026-11-14T05:10:36Z
+miden,thorchain,0,no thorchain identifier maps to this chain (no rival lists Miden),2026-11-14T05:11:20Z
+monad,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=monad (3 tokens),2026-11-14T05:10:28Z
+monad,across,1,https://app.across.to/api/{available-routes|swap/chains} = 143 [available-routes; swap/chains name=Monad],2026-11-14T05:10:30Z
+monad,relay,1,https://api.relay.link/chains chains[].id = 143 [name=monad],2026-11-14T05:10:32Z
+monad,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 143 [chainName=Monad, chainId=100000030]",2026-11-14T05:10:33Z
+monad,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+monad,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+movement,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=movement (2 tokens),2026-11-14T05:10:28Z
+movement,across,0,no across identifier maps to this chain (no rival lists Movement),2026-11-14T05:10:30Z
+movement,relay,0,no relay identifier maps to this chain (no rival lists Movement),2026-11-14T05:10:32Z
+movement,debridge,0,no debridge identifier maps to this chain (no rival lists Movement),2026-11-14T05:10:33Z
+movement,chainflip,0,no chainflip identifier maps to this chain (no rival lists Movement),2026-11-14T05:10:36Z
+movement,thorchain,0,no thorchain identifier maps to this chain (no rival lists Movement),2026-11-14T05:11:20Z
+near,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=near (36 tokens),2026-11-14T05:10:28Z
+near,across,0,no across identifier maps to this chain (no rival lists NEAR Protocol),2026-11-14T05:10:30Z
+near,relay,0,no relay identifier maps to this chain (no rival lists NEAR Protocol),2026-11-14T05:10:32Z
+near,debridge,0,no debridge identifier maps to this chain (no rival lists NEAR Protocol),2026-11-14T05:10:33Z
+near,chainflip,0,no chainflip identifier maps to this chain (no rival lists NEAR Protocol),2026-11-14T05:10:36Z
+near,thorchain,0,no thorchain identifier maps to this chain (no rival lists NEAR Protocol),2026-11-14T05:11:20Z
+op,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=op (6 tokens),2026-11-14T05:10:28Z
+op,across,1,https://app.across.to/api/{available-routes|swap/chains} = 10 [available-routes; swap/chains name=Optimism],2026-11-14T05:10:30Z
+op,relay,1,https://api.relay.link/chains chains[].id = 10 [name=optimism],2026-11-14T05:10:32Z
+op,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 10 [chainName=Optimism, chainId=10]",2026-11-14T05:10:33Z
+op,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+op,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+plasma,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=plasma (4 tokens),2026-11-14T05:10:28Z
+plasma,across,1,https://app.across.to/api/{available-routes|swap/chains} = 9745 [available-routes; swap/chains name=Plasma],2026-11-14T05:10:30Z
+plasma,relay,1,https://api.relay.link/chains chains[].id = 9745 [name=plasma],2026-11-14T05:10:32Z
+plasma,debridge,0,9745 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId,2026-11-14T05:10:33Z
+plasma,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+plasma,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+pol,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=pol (9 tokens),2026-11-14T05:10:28Z
+pol,across,1,https://app.across.to/api/{available-routes|swap/chains} = 137 [available-routes; swap/chains name=Polygon],2026-11-14T05:10:30Z
+pol,relay,1,https://api.relay.link/chains chains[].id = 137 [name=polygon],2026-11-14T05:10:32Z
+pol,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 137 [chainName=Polygon, chainId=137]",2026-11-14T05:10:33Z
+pol,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+pol,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+prl,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=prl (1 tokens),2026-11-14T05:10:28Z
+prl,across,0,no across identifier maps to this chain (chain code 'prl' could not be mapped to any rival chain),2026-11-14T05:10:30Z
+prl,relay,0,no relay identifier maps to this chain (chain code 'prl' could not be mapped to any rival chain),2026-11-14T05:10:32Z
+prl,debridge,0,no debridge identifier maps to this chain (chain code 'prl' could not be mapped to any rival chain),2026-11-14T05:10:33Z
+prl,chainflip,0,no chainflip identifier maps to this chain (chain code 'prl' could not be mapped to any rival chain),2026-11-14T05:10:36Z
+prl,thorchain,0,no thorchain identifier maps to this chain (chain code 'prl' could not be mapped to any rival chain),2026-11-14T05:11:20Z
+qtc,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=qtc (1 tokens),2026-11-14T05:10:28Z
+qtc,across,0,no across identifier maps to this chain (chain code 'qtc' could not be mapped to any rival chain),2026-11-14T05:10:30Z
+qtc,relay,0,no relay identifier maps to this chain (chain code 'qtc' could not be mapped to any rival chain),2026-11-14T05:10:32Z
+qtc,debridge,0,no debridge identifier maps to this chain (chain code 'qtc' could not be mapped to any rival chain),2026-11-14T05:10:33Z
+qtc,chainflip,0,no chainflip identifier maps to this chain (chain code 'qtc' could not be mapped to any rival chain),2026-11-14T05:10:36Z
+qtc,thorchain,0,no thorchain identifier maps to this chain (chain code 'qtc' could not be mapped to any rival chain),2026-11-14T05:11:20Z
+scroll,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=scroll (2 tokens),2026-11-14T05:10:28Z
+scroll,across,0,534352 not present in https://app.across.to/api/{available-routes|swap/chains},2026-11-14T05:10:30Z
+scroll,relay,1,https://api.relay.link/chains chains[].id = 534352 [name=scroll],2026-11-14T05:10:32Z
+scroll,debridge,0,534352 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId,2026-11-14T05:10:33Z
+scroll,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+scroll,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+sol,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=sol (23 tokens),2026-11-14T05:10:28Z
+sol,across,1,https://app.across.to/api/{available-routes|swap/chains} = 34268394551451 [swap/chains name=Solana],2026-11-14T05:10:30Z
+sol,relay,1,https://api.relay.link/chains chains[].id = 792703809 [name=solana],2026-11-14T05:10:32Z
+sol,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 7565164 [chainName=Solana, chainId=7565164]",2026-11-14T05:10:33Z
+sol,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Solana [assets=SOL/USDC/USDT],2026-11-14T05:10:36Z
+sol,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = SOL [Available pools=SOL.SOL],2026-11-14T05:11:20Z
+starknet,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=starknet (4 tokens),2026-11-14T05:10:28Z
+starknet,across,0,no across identifier maps to this chain (no rival lists Starknet),2026-11-14T05:10:30Z
+starknet,relay,0,no relay identifier maps to this chain (no rival lists Starknet),2026-11-14T05:10:32Z
+starknet,debridge,0,no debridge identifier maps to this chain (no rival lists Starknet),2026-11-14T05:10:33Z
+starknet,chainflip,0,no chainflip identifier maps to this chain (no rival lists Starknet),2026-11-14T05:10:36Z
+starknet,thorchain,0,no thorchain identifier maps to this chain (no rival lists Starknet),2026-11-14T05:11:20Z
+stellar,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=stellar (2 tokens),2026-11-14T05:10:28Z
+stellar,across,0,no across identifier maps to this chain (no rival lists Stellar),2026-11-14T05:10:30Z
+stellar,relay,0,no relay identifier maps to this chain (no rival lists Stellar),2026-11-14T05:10:32Z
+stellar,debridge,0,no debridge identifier maps to this chain (no rival lists Stellar),2026-11-14T05:10:33Z
+stellar,chainflip,0,no chainflip identifier maps to this chain (no rival lists Stellar),2026-11-14T05:10:36Z
+stellar,thorchain,0,no thorchain identifier maps to this chain (no rival lists Stellar),2026-11-14T05:11:20Z
+sui,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=sui (2 tokens),2026-11-14T05:10:28Z
+sui,across,0,no across identifier maps to this chain (no rival lists Sui),2026-11-14T05:10:30Z
+sui,relay,0,no relay identifier maps to this chain (no rival lists Sui),2026-11-14T05:10:32Z
+sui,debridge,0,no debridge identifier maps to this chain (no rival lists Sui),2026-11-14T05:10:33Z
+sui,chainflip,0,no chainflip identifier maps to this chain (no rival lists Sui),2026-11-14T05:10:36Z
+sui,thorchain,0,no thorchain identifier maps to this chain (no rival lists Sui),2026-11-14T05:11:20Z
+ton,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=ton (2 tokens),2026-11-14T05:10:28Z
+ton,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+ton,relay,1,https://api.relay.link/chains chains[].id = 224235520 [name=ton],2026-11-14T05:10:32Z
+ton,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+ton,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+ton,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+tron,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=tron (2 tokens),2026-11-14T05:10:28Z
+tron,across,1,https://app.across.to/api/{available-routes|swap/chains} = 728126428 [available-routes; swap/chains name=TRON],2026-11-14T05:10:30Z
+tron,relay,1,https://api.relay.link/chains chains[].id = 728126428 [name=tron],2026-11-14T05:10:32Z
+tron,debridge,1,"https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId = 728126428 [chainName=Tron, chainId=100000026]",2026-11-14T05:10:33Z
+tron,chainflip,1,https://mainnet-rpc.chainflip.io cf_supported_assets result[].chain = Tron [assets=TRX/USDT],2026-11-14T05:10:36Z
+tron,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = TRON [Available pools=TRON.TRX/TRON.USDT],2026-11-14T05:11:20Z
+xlayer,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=xlayer (3 tokens),2026-11-14T05:10:28Z
+xlayer,across,0,196 not present in https://app.across.to/api/{available-routes|swap/chains},2026-11-14T05:10:30Z
+xlayer,relay,1,https://api.relay.link/chains chains[].id = 196 [name=xlayer],2026-11-14T05:10:32Z
+xlayer,debridge,0,196 not present in https://dln.debridge.finance/v1.0/supported-chains-info chains[].originalChainId,2026-11-14T05:10:33Z
+xlayer,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+xlayer,thorchain,0,no thorchain identifier maps to this chain,2026-11-14T05:11:20Z
+xrp,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=xrp (1 tokens),2026-11-14T05:10:28Z
+xrp,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+xrp,relay,1,https://api.relay.link/chains chains[].id = 537724 [name=xrp],2026-11-14T05:10:32Z
+xrp,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+xrp,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+xrp,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = XRP [Available pools=XRP.XRP],2026-11-14T05:11:20Z
+zec,near_intents,1,https://1click.chaindefuser.com/v0/tokens blockchain=zec (1 tokens),2026-11-14T05:10:28Z
+zec,across,0,no across identifier maps to this chain,2026-11-14T05:10:30Z
+zec,relay,0,no relay identifier maps to this chain,2026-11-14T05:10:32Z
+zec,debridge,0,no debridge identifier maps to this chain,2026-11-14T05:10:33Z
+zec,chainflip,0,no chainflip identifier maps to this chain,2026-11-14T05:10:36Z
+zec,thorchain,1,https://gateway.liquify.com/chain/thorchain_api/thorchain/pools asset prefix = ZEC [Available pools=ZEC.ZEC],2026-11-14T05:11:20Z

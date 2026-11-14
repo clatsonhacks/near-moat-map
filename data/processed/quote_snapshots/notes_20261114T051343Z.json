@@ -1,0 +1,1138 @@
+{
+ "run": "20261114T051343Z",
+ "keyless_1click_fee": {
+  "sent_credentials": "none (no JWT / X-API-Key)",
+  "documented": "docs.near-intents.org/resources/fees (read 2026-11-14): without API key an additional 0.25% (25 bps) on every non-ANY_INPUT quote, plus the 0.0001% on-chain protocol fee; with API key 20 bps, or 1 bp on stablecoin / same-asset multichain routes.",
+  "observed": "quoteRequest.appFees echoed by each keyless quote in this run (bps, charged on input before the swap); quote.amountOut is net of quote.withdrawFee - see fee_probe.",
+  "echoed_appfee_bps_by_route": {
+   "eth>base": [
+    [
+     1
+    ]
+   ],
+   "eth>arb": [
+    [
+     1
+    ]
+   ],
+   "arb>base": [
+    [
+     1
+    ]
+   ],
+   "eth>sol": [
+    [
+     1
+    ]
+   ],
+   "eth>tron": [
+    [
+     1
+    ]
+   ],
+   "tron>eth": [
+    [
+     1
+    ]
+   ],
+   "eth>near": [
+    [
+     1
+    ]
+   ],
+   "near>arb": [
+    [
+     1
+    ]
+   ],
+   "eth>sui": [
+    [
+     1
+    ]
+   ],
+   "btc>near": [
+    []
+   ],
+   "sol>eth": [
+    [
+     20
+    ]
+   ],
+   "arb>sol": [
+    [
+     20
+    ]
+   ],
+   "btc>eth": [
+    [
+     20
+    ]
+   ],
+   "eth>btc": [
+    [
+     20
+    ]
+   ],
+   "btc>sol": [
+    [
+     20
+    ]
+   ],
+   "eth>xrp": [
+    [
+     20
+    ]
+   ],
+   "eth>ton": [
+    [
+     20
+    ]
+   ],
+   "zec>eth": [
+    [
+     20
+    ]
+   ],
+   "eth>zec": [
+    [
+     20
+    ]
+   ],
+   "doge>btc": [
+    [
+     20
+    ]
+   ],
+   "ltc>eth": [
+    [
+     20
+    ]
+   ],
+   "near>eth": [
+    [
+     20
+    ]
+   ],
+   "sol>near": [
+    [
+     20
+    ]
+   ]
+  },
+  "fee_probe": {
+   "description": "USDC eth>arb, 1000 USDC, keyless dry quote; DESTINATION_CHAIN vs INTENTS recipient",
+   "DESTINATION_CHAIN": {
+    "amountIn": "1000000000",
+    "amountOut": "999792710",
+    "withdrawFee": "5300",
+    "appFees": [
+     {
+      "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+      "fee": 1
+     }
+    ]
+   },
+   "INTENTS": {
+    "amountIn": "1000000000",
+    "amountOut": "999798010",
+    "withdrawFee": "0",
+    "appFees": [
+     {
+      "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+      "fee": 1
+     }
+    ]
+   },
+   "intents_minus_destination_out": 5300,
+   "amountOut_is_net_of_withdrawFee": true
+  }
+ },
+ "cost_definition": "cost_bps=(amount_in_usd-amount_out_usd)/amount_in_usd*1e4; both legs priced with the 1Click /tokens snapshot fetched just before the route (prices_<run>.csv). deBridge amount_out_usd is reduced by its flat native fixFee valued with the same snapshot. User's origin-chain gas is excluded for every provider.",
+ "near_quote_details": [
+  {
+   "route": "eth>base",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "560000000000",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.978738434498"
+  },
+  {
+   "route": "eth>base",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "560000000000",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "999.796947795380"
+  },
+  {
+   "route": "eth>base",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "560000000000",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9997.979041404198"
+  },
+  {
+   "route": "eth>arb",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "1200000000000",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.977524028098"
+  },
+  {
+   "route": "eth>arb",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "1200000000000",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "999.795733388980"
+  },
+  {
+   "route": "eth>arb",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "1200000000000",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9997.977826997798"
+  },
+  {
+   "route": "arb>base",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "2400",
+   "amountInUsd_api": "100.000000277520",
+   "amountOutUsd_api": "99.990112669568"
+  },
+  {
+   "route": "arb>base",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "2400",
+   "amountInUsd_api": "1000.000000776088",
+   "amountOutUsd_api": "999.795610565652"
+  },
+  {
+   "route": "arb>base",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "2400",
+   "amountInUsd_api": "10000.000000763988",
+   "amountOutUsd_api": "9999.118846170413"
+  },
+  {
+   "route": "eth>sol",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "10005",
+   "amountInUsd_api": "100.000000099486",
+   "amountOutUsd_api": "99.975516460448"
+  },
+  {
+   "route": "eth>sol",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "10005",
+   "amountInUsd_api": "1000.000000994860",
+   "amountOutUsd_api": "999.818396845923"
+  },
+  {
+   "route": "eth>sol",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "10005",
+   "amountInUsd_api": "10000.000000952408",
+   "amountOutUsd_api": "9998.196881994494"
+  },
+  {
+   "route": "eth>tron",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "850500",
+   "amountInUsd_api": "100.000000145175",
+   "amountOutUsd_api": "99.141249995985"
+  },
+  {
+   "route": "eth>tron",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "850796",
+   "amountInUsd_api": "1000.000000452555",
+   "amountOutUsd_api": "999.035036874060"
+  },
+  {
+   "route": "eth>tron",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "850796",
+   "amountInUsd_api": "10000.000000528769",
+   "amountOutUsd_api": "9997.976113070759"
+  },
+  {
+   "route": "tron>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "300000",
+   "amountInUsd_api": "100.000000145175",
+   "amountOutUsd_api": "99.686371819380"
+  },
+  {
+   "route": "tron>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "300000",
+   "amountInUsd_api": "1000.000000452555",
+   "amountOutUsd_api": "999.559079679735"
+  },
+  {
+   "route": "tron>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "300000",
+   "amountInUsd_api": "10000.000000528769",
+   "amountOutUsd_api": "9998.288240605665"
+  },
+  {
+   "route": "eth>near",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "100.000000920192",
+   "amountOutUsd_api": "99.979799974272"
+  },
+  {
+   "route": "eth>near",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "1000.000000205952",
+   "amountOutUsd_api": "999.916946430720"
+  },
+  {
+   "route": "eth>near",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "10000.000000060416",
+   "amountOutUsd_api": "9998.800296768384"
+  },
+  {
+   "route": "near>arb",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "5300",
+   "amountInUsd_api": "100.000000920192",
+   "amountOutUsd_api": "99.975500901120"
+  },
+  {
+   "route": "near>arb",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "5300",
+   "amountInUsd_api": "1000.000000205952",
+   "amountOutUsd_api": "999.792711113088"
+  },
+  {
+   "route": "near>arb",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "5300",
+   "amountInUsd_api": "10000.000000060416",
+   "amountOutUsd_api": "9997.974804754560"
+  },
+  {
+   "route": "eth>sui",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "20000",
+   "amountInUsd_api": "100.000000920192",
+   "amountOutUsd_api": "99.959808934272"
+  },
+  {
+   "route": "eth>sui",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "20000",
+   "amountInUsd_api": "1000.000000205952",
+   "amountOutUsd_api": "999.778017698688"
+  },
+  {
+   "route": "eth>sui",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ],
+   "withdrawFee": "20000",
+   "amountInUsd_api": "10000.000000060416",
+   "amountOutUsd_api": "9997.960111340159"
+  },
+  {
+   "route": "btc>near",
+   "notional_usd": 100,
+   "appFees": [],
+   "withdrawFee": "7",
+   "amountInUsd_api": "100.000351530000",
+   "amountOutUsd_api": "99.995652360000"
+  },
+  {
+   "route": "btc>near",
+   "notional_usd": 1000,
+   "appFees": [],
+   "withdrawFee": "7",
+   "amountInUsd_api": "1000.000158750000",
+   "amountOutUsd_api": "999.995459580000"
+  },
+  {
+   "route": "btc>near",
+   "notional_usd": 10000,
+   "appFees": [],
+   "withdrawFee": "7",
+   "amountInUsd_api": "10000.000244880001",
+   "amountOutUsd_api": "9999.995545709999"
+  },
+  {
+   "route": "sol>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "100.000000062580",
+   "amountOutUsd_api": "99.759042307544"
+  },
+  {
+   "route": "sol>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "1000.000000022040",
+   "amountOutUsd_api": "998.336598325231"
+  },
+  {
+   "route": "sol>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "10000.000000069460",
+   "amountOutUsd_api": "9977.039555262209"
+  },
+  {
+   "route": "arb>sol",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.712522635280"
+  },
+  {
+   "route": "arb>sol",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "993.967665078160"
+  },
+  {
+   "route": "arb>sol",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9962.711728590921"
+  },
+  {
+   "route": "btc>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "100.000244610000",
+   "amountOutUsd_api": "99.591562959276"
+  },
+  {
+   "route": "btc>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "1000.000431090000",
+   "amountOutUsd_api": "996.736872819881"
+  },
+  {
+   "route": "btc>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "10000.000280880000",
+   "amountOutUsd_api": "9963.213043370277"
+  },
+  {
+   "route": "eth>btc",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "98.607201030000"
+  },
+  {
+   "route": "eth>btc",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "997.551522270000"
+  },
+  {
+   "route": "eth>btc",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9987.225117480000"
+  },
+  {
+   "route": "btc>sol",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "100.000244610000",
+   "amountOutUsd_api": "99.568964000040"
+  },
+  {
+   "route": "btc>sol",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "1000.000431090000",
+   "amountOutUsd_api": "995.953604629040"
+  },
+  {
+   "route": "btc>sol",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "132346",
+   "amountInUsd_api": "10000.000280880000",
+   "amountOutUsd_api": "9960.586637290682"
+  },
+  {
+   "route": "eth>xrp",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "10",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.828043963164"
+  },
+  {
+   "route": "eth>xrp",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "10",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "997.906225517878"
+  },
+  {
+   "route": "eth>xrp",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "10",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9978.359921756406"
+  },
+  {
+   "route": "eth>ton",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "40000000",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.696161389600"
+  },
+  {
+   "route": "eth>ton",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "40000000",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "997.030965033200"
+  },
+  {
+   "route": "eth>ton",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "40000000",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9968.497202149663"
+  },
+  {
+   "route": "zec>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "100.000000701000",
+   "amountOutUsd_api": "99.788535987355"
+  },
+  {
+   "route": "zec>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "1000.000007010000",
+   "amountOutUsd_api": "997.981597905875"
+  },
+  {
+   "route": "zec>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "10000.000006514099",
+   "amountOutUsd_api": "9956.013017906746"
+  },
+  {
+   "route": "eth>zec",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "32000",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.423349257600"
+  },
+  {
+   "route": "eth>zec",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "32000",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "996.870445267500"
+  },
+  {
+   "route": "eth>zec",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "32000",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9929.846827590300"
+  },
+  {
+   "route": "doge>btc",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "100.000000000468",
+   "amountOutUsd_api": "98.240400720000"
+  },
+  {
+   "route": "doge>btc",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "1000.000000000268",
+   "amountOutUsd_api": "993.995747360000"
+  },
+  {
+   "route": "doge>btc",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "1900",
+   "amountInUsd_api": "10000.000000000156",
+   "amountOutUsd_api": "9951.286680719999"
+  },
+  {
+   "route": "ltc>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "100.000000005000",
+   "amountOutUsd_api": "99.394745908503"
+  },
+  {
+   "route": "ltc>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "1000.000000050000",
+   "amountOutUsd_api": "994.546121403548"
+  },
+  {
+   "route": "ltc>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "10000.000000011902",
+   "amountOutUsd_api": "9942.506926447661"
+  },
+  {
+   "route": "near>eth",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "100.000000000000",
+   "amountOutUsd_api": "99.842610992102"
+  },
+  {
+   "route": "near>eth",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "1000.000000000000",
+   "amountOutUsd_api": "998.732808240648"
+  },
+  {
+   "route": "near>eth",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "35000000000000",
+   "amountInUsd_api": "10000.000000000000",
+   "amountOutUsd_api": "9976.390773733832"
+  },
+  {
+   "route": "sol>near",
+   "notional_usd": 100,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "100.000000074800",
+   "amountOutUsd_api": "99.603824903965"
+  },
+  {
+   "route": "sol>near",
+   "notional_usd": 1000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "1000.000000066700",
+   "amountOutUsd_api": "996.038248812998"
+  },
+  {
+   "route": "sol>near",
+   "notional_usd": 10000,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 20
+    }
+   ],
+   "withdrawFee": "0",
+   "amountInUsd_api": "10000.000000061402",
+   "amountOutUsd_api": "9958.290660284152"
+  }
+ ],
+ "rows_cost_negative_or_over_1000bps": [
+  {
+   "route": "eth>tron",
+   "origin_chain": "eth",
+   "dest_chain": "tron",
+   "origin_symbol": "USDT",
+   "dest_symbol": "USDT",
+   "fetched_at": "2026-11-14T05:15:31Z",
+   "notional_usd": 100,
+   "provider": "debridge",
+   "ok": 1,
+   "amount_in_usd": "100.000000",
+   "amount_out_usd": "89.450056",
+   "cost_bps": "1054.994",
+   "error": ""
+  },
+  {
+   "route": "tron>eth",
+   "origin_chain": "tron",
+   "dest_chain": "eth",
+   "origin_symbol": "USDT",
+   "dest_symbol": "USDT",
+   "fetched_at": "2026-11-14T05:16:38Z",
+   "notional_usd": 10000,
+   "provider": "chainflip",
+   "ok": 1,
+   "amount_in_usd": "10000.000001",
+   "amount_out_usd": "10010.187744",
+   "cost_bps": "-10.188",
+   "error": ""
+  },
+  {
+   "route": "eth>btc",
+   "origin_chain": "eth",
+   "dest_chain": "btc",
+   "origin_symbol": "ETH",
+   "dest_symbol": "BTC",
+   "fetched_at": "2026-11-14T05:19:09Z",
+   "notional_usd": 1000,
+   "provider": "chainflip",
+   "ok": 1,
+   "amount_in_usd": "1000.000000",
+   "amount_out_usd": "1001.699756",
+   "cost_bps": "-16.998",
+   "error": ""
+  },
+  {
+   "route": "eth>btc",
+   "origin_chain": "eth",
+   "dest_chain": "btc",
+   "origin_symbol": "ETH",
+   "dest_symbol": "BTC",
+   "fetched_at": "2026-11-14T05:19:10Z",
+   "notional_usd": 1000,
+   "provider": "thorchain",
+   "ok": 1,
+   "amount_in_usd": "1000.000000",
+   "amount_out_usd": "1000.295966",
+   "cost_bps": "-2.960",
+   "error": ""
+  },
+  {
+   "route": "eth>btc",
+   "origin_chain": "eth",
+   "dest_chain": "btc",
+   "origin_symbol": "ETH",
+   "dest_symbol": "BTC",
+   "fetched_at": "2026-11-14T05:19:14Z",
+   "notional_usd": 10000,
+   "provider": "chainflip",
+   "ok": 1,
+   "amount_in_usd": "10000.000000",
+   "amount_out_usd": "10018.302617",
+   "cost_bps": "-18.303",
+   "error": ""
+  }
+ ],
+ "counts": {
+  "near_intents": {
+   "ok": 69,
+   "failed": 0
+  },
+  "across": {
+   "ok": 18,
+   "failed": 6
+  },
+  "relay": {
+   "ok": 39,
+   "failed": 0
+  },
+  "debridge": {
+   "ok": 24,
+   "failed": 0
+  },
+  "chainflip": {
+   "ok": 27,
+   "failed": 0
+  },
+  "thorchain": {
+   "ok": 36,
+   "failed": 3
+  }
+ }
+}

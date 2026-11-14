@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEAR Intents Thesis</title>
+<style>
+:root{
+  color-scheme:light;
+  --page:#f9f9f7; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --s1:#2a78d6; --s2:#eb6834; --off:#e1e0d9;
+  --good:#0ca30c; --critical:#d03b3b; --warning:#fab219;
+  --code:#f0efec;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0d0d0d; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --s1:#3987e5; --s2:#d95926; --off:#2c2c2a; --code:#232321;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0d0d0d; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --s1:#3987e5; --s2:#d95926; --off:#2c2c2a; --code:#232321;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 80px}
+h1{font-size:30px;line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-size:19px;margin:0 0 4px}
+.lede{color:var(--ink2);max-width:72ch;margin:0 0 20px}
+.meta{color:var(--muted);font-size:13px}
+section{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin:16px 0}
+.says{color:var(--ink2);margin:0 0 14px;max-width:80ch}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px}
+.tile .label{color:var(--ink2);font-size:13px}
+.tile .value{font-size:34px;font-weight:600;line-height:1.2;margin:4px 0}
+.tile .note{color:var(--ink2);font-size:13px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:2px 9px;border-radius:99px;border:1px solid var(--border);color:var(--ink)}
+.badge i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.nc{border:1px dashed var(--axis);border-radius:8px;padding:14px;color:var(--ink2);font-size:14px}
+details{margin-top:14px;font-size:13px}
+summary{cursor:pointer;color:var(--ink2)}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow:auto;font:12px/1.5 ui-monospace,Consolas,monospace;max-height:340px;white-space:pre-wrap;word-break:break-word}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--grid);text-align:left;white-space:nowrap}
+th{color:var(--ink2);font-weight:600}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:0 0 8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:50%;display:inline-block}
+.filters{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}
+.filters button{font:inherit;font-size:13px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--ink2);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--ink2);font-size:12px;font-family:inherit}
+svg text.strong{fill:var(--ink)}
+svg text.tick{fill:var(--muted);font-variant-numeric:tabular-nums}
+.multi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.multi h3{font-size:14px;margin:0 0 2px}
+.multi p{font-size:12px;color:var(--muted);margin:0 0 6px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:6px 9px;border-radius:6px;opacity:0;transition:opacity .08s;z-index:9;max-width:280px;line-height:1.4}
+.cell{width:14px;height:14px;border-radius:4px;display:inline-block;background:var(--off);vertical-align:middle}
+.cell.on{background:var(--s1)}
+ul.caveats{margin:8px 0 0;padding-left:18px;color:var(--ink2)}
+ul.caveats li{margin:4px 0}
+</style>
+</head>
+<body>
+<main>
+  <p class="meta">NEAR hackathon · Investment Thesis track · <span id="gen"></span></p>
+  <h1>NEAR's long-term case rests on Intents. Here is what the evidence supports.</h1>
+  <p class="lede" id="lede"></p>
+  <div class="tiles" id="mtiles"></div>
+
+  <section><h2>A. What Intents revenue is worth to a NEAR holder</h2>
+    <p class="says" id="val-says"></p>
+    <div class="multi" id="val-charts"></div>
+    <p class="meta" style="margin:18px 0 4px">Buyback yield on NEAR's market value under different volume and take assumptions. The measured position today is the highlighted cell; every other cell is an assumption, not a forecast.</p>
+    <div class="scroll" id="grid"></div>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.model
+
+run rate      = trailing 90 days of DefiLlama volume, fees and revenue x 365 / 90
+market value  = circulating supply (sql/circulating_supply.sql on NEAR BigQuery) x NEAR price (1Click token list)
+buyback yield = annual revenue / market value      (since 2026-02-23 NEAR's captured Intents revenue buys back NEAR)
+net issuance  = change in total supply over the BigQuery window, annualised
+grid cell     = run-rate volume x volume multiple x take (bps of volume NEAR keeps) / market value</pre></details>
+  </section>
+
+  <h2 style="margin:36px 0 0">B. Will it last? The Moat Map</h2>
+  <p class="lede" style="margin:6px 0 0">Revenue is only worth a long-term multiple if rivals cannot take it. We counted how many of five rival bridges (Across, Relay, deBridge, Chainflip, THORChain) can serve each route and tested two claims whose thresholds were fixed before the data was pulled.</p>
+  <div class="tiles" id="tiles"></div>
+
+  <section><h2>1. Where NEAR Intents has company</h2>
+    <p class="says" id="cov-says"></p><div class="scroll" id="cov"></div>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.coverage
+
+NEAR Intents chains : GET https://1click.chaindefuser.com/v0/tokens  (distinct `blockchain`)
+Across              : GET https://app.across.to/api/available-routes
+Relay               : GET https://api.relay.link/chains
+deBridge            : GET https://dln.debridge.finance/v1.0/supported-chains-info
+Chainflip, THORChain: the rival's own asset / pool list (see moatmap/coverage.py)
+
+A filled cell = the rival's own live API lists that chain. Output: data/processed/coverage.csv</pre></details>
+  </section>
+
+  <section><h2>2. Revenue by number of rivals on the route</h2>
+    <p class="says" id="rev-says"></p><div id="rev"></div>
+    <details><summary>Query behind it</summary><pre id="rev-q"></pre></details>
+  </section>
+
+  <section><h2>3. The routes that carry the money</h2>
+    <p class="says" id="top-says"></p><div class="scroll" id="top"></div>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.analyze   (function revenue_test)
+
+Sum the per-route rows, drop same-chain swaps, rank by the revenue measure, and attach the number of
+rivals whose API lists both the origin and the destination chain (data/processed/coverage.csv).</pre></details>
+  </section>
+
+  <section><h2>4. What a swap costs: NEAR Intents against the cheapest rival</h2>
+    <p class="says" id="px-says"></p>
+    <div class="filters" id="px-f" role="group" aria-label="Swap size"></div>
+    <div class="legend"><span><i class="sw" style="background:var(--s1)"></i>NEAR Intents</span><span><i class="sw" style="background:var(--s2)"></i>Cheapest rival quoting the route</span></div>
+    <div id="px"></div>
+    <details><summary>Table view</summary><div class="scroll" id="px-t"></div></details>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.quotes
+
+For each route x size x provider: request a live quote for the same asset pair and input amount.
+cost_bps = (amount_in_usd - amount_out_usd) / amount_in_usd x 10,000
+Both sides are priced with one 1Click price snapshot taken in the same run, for every provider, so the
+figure is the all-in cost (spread + protocol fee + destination gas), not each provider's own estimate.
+Failed quotes are kept with ok=0 and never filled in. Output: data/processed/quotes.csv</pre></details>
+  </section>
+
+  <section><h2>5. Is the low-contestation premium there?</h2>
+    <p class="says" id="ratio-says"></p><div class="scroll" id="ratio"></div>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.analyze   (function pricing_test)
+
+NEAR Intents cost per route = median cost_bps across quote snapshots.
+"Least contested" = routes where at most 2 rivals list both chains; "most contested" = 4 or 5.
+Ratio = median cost on least-contested routes / median cost on most-contested routes, per swap size,
+computed separately for same-token routes (USDC>USDC, ETH>ETH) and different-token routes (BTC>ETH),
+because NEAR's documented fee differs between them and mixing the two would manufacture a premium.
+Claim holds at a size if the ratio is at least 1.5.</pre></details>
+  </section>
+
+  <section><h2>6. Control totals: fees, revenue and volume</h2>
+    <p class="says" id="ll-says"></p><div class="multi" id="ll"></div>
+    <details><summary>Query behind it</summary><pre>python -m moatmap.llama
+
+GET https://api.llama.fi/summary/fees/near-intents?dataType=dailyFees
+GET https://api.llama.fi/summary/fees/near-intents?dataType=dailyRevenue
+GET https://api.llama.fi/summary/dexs/near-intents
+
+DefiLlama's adapter reads NEAR's own Dune datasets: fees = protocol fee + affiliate fees;
+revenue = NEAR / wNEAR swept into NEAR's three revenue wallets, so it arrives in lumps on sweep days.</pre></details>
+  </section>
+
+  <section><h2>7. Network usage from NEAR BigQuery</h2>
+    <p class="says" id="bq-says"></p><div class="multi" id="bq"></div>
+    <details><summary>Queries behind it</summary><div id="bq-q"></div></details>
+  </section>
+
+  <section><h2>What these charts cannot tell you</h2><ul class="caveats" id="cav"></ul></section>
+</main>
+<div id="tip" role="tooltip"></div>
+<script>
+const D = /*__DATA__*/null;
+const R = D.results;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const usd = v => v == null ? 'n/a' : (Math.abs(v) >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : Math.abs(v) >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : Math.abs(v) >= 1e4 ? '$' + (v/1e3).toFixed(1) + 'K' : '$' + v.toLocaleString('en-US', {maximumFractionDigits: 0}));
+const num = v => v == null ? 'n/a' : (Math.abs(v) >= 1e6 ? (v/1e6).toFixed(2) + 'M' : Math.abs(v) >= 1e4 ? (v/1e3).toFixed(1) + 'K' : v.toLocaleString('en-US', {maximumFractionDigits: 0}));
+const pct = v => v == null ? 'n/a' : (v * 100).toFixed(1) + '%';
+const bps = v => v == null ? 'n/a' : v.toFixed(1) + ' bps';
+const nc = why => `<div class="nc"><strong>Not computed.</strong> ${esc(why)}</div>`;
+const tip = $('tip');
+function hover(el, html){
+  el.addEventListener('mousemove', e => { tip.innerHTML = html; tip.style.opacity = 1;
+    const w = tip.offsetWidth; tip.style.left = Math.min(e.clientX + 14, innerWidth - w - 8) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+  el.addEventListener('mouseleave', () => tip.style.opacity = 0);
+}
+const NS = 'http://www.w3.org/2000/svg';
+function S(tag, attrs, parent, text){ const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; if (parent) parent.appendChild(e); return e; }
+function niceMax(v){ if (!(v > 0)) return 1; const p = Math.pow(10, Math.floor(Math.log10(v))); const m = v / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
+const ptName = t => t === 'same_asset' ? 'Same token both sides' : t === 'cross_asset' ? 'Different tokens' : t;
+const verdictBadge = v => { const c = v === 'supported' ? 'var(--good)' : v === 'rejected' ? 'var(--muted)' : 'var(--warning)';
+  const t = v === 'supported' ? 'Threshold met' : v === 'rejected' ? 'Threshold not met' : v === 'inconclusive' ? 'Inconclusive' : 'Not computed';
+  return `<span class="badge"><i style="background:${c}"></i>${t}</span>`; };
+
+$('gen').textContent = 'built ' + R.generated_at.replace('T', ' ').replace('+00:00', ' UTC');
+const revs = R.revenue.filter(r => r.computed);
+const rev = revs[0];           // official source first; block sample if that is all there is
+const px = R.pricing;
+
+/* ---------- A. valuation model ---------- */
+(function(){
+  const M = D.model;
+  if (!M){ $('mtiles').innerHTML = nc('model.json missing: run python -m moatmap.model'); return; }
+  const t = M.trailing_90d, g = M.growth, v = M.valuation || {}, y = M.same_90d_a_year_earlier;
+  const x = n => n == null ? 'n/a' : (n + 1).toFixed(1) + '×';
+  const tile = (l, val, note) => `<div class="tile"><div class="label">${l}</div><div class="value">${val}</div><div class="note">${note}</div></div>`;
+  let h = tile('Intents volume, annualised', usd(t.annualised_volume_usd), `90 days to ${t.to}. ${x(g.volume_vs_year_earlier)} the same 90 days a year earlier.`)
+        + tile('Revenue captured by NEAR, annualised', usd(t.annualised_revenue_usd), `${(t.revenue_share_of_fees * 100).toFixed(0)}% of the ${usd(t.annualised_fees_usd)} in fees; it was ${(y.revenue_share_of_fees * 100).toFixed(0)}% a year earlier.`);
+  if (v.computed){
+    h += tile('Buyback yield on NEAR market value', (v.buyback_yield * 100).toFixed(2) + '%', `${usd(v.annual_revenue_usd_90d_run_rate)} a year against ${usd(v.market_value_usd)} (${num(v.circulating_supply_near)} NEAR at $${v.near_price_usd}).`)
+       + tile('Share of new NEAR issuance the buyback offsets', v.buyback_as_share_of_net_issuance == null ? 'n/a' : (v.buyback_as_share_of_net_issuance * 100).toFixed(0) + '%', `Total supply grew at ${(v.annualised_net_issuance_rate * 100).toFixed(2)}% a year over ${v.supply_window.join(' to ')}.`);
+    const sc = M.scenarios;
+    $('lede').textContent = `NEAR Intents is a real and fast-growing business: ${usd(t.annualised_volume_usd)} of annualised volume, ${x(g.volume_vs_year_earlier)} a year ago, with NEAR's captured revenue now used to buy back the token. But that revenue is ${(v.buyback_yield * 100).toFixed(2)}% of NEAR's market value and offsets ${(v.buyback_as_share_of_net_issuance * 100).toFixed(0)}% of new issuance, so the long-term case depends on Intents growing about ${sc.volume_multiple_to_offset_net_issuance.toFixed(0)}× from here, and on rivals not taking the flow. Part A sizes the first condition; part B tests the second.`;
+    $('val-says').textContent = `At today's take of ${t.revenue_bps_of_volume.toFixed(1)} bps of volume, Intents volume would have to grow ${sc.volume_multiple_for_1pct_yield.toFixed(1)}× for the buyback to reach 1% of market value, ${sc.volume_multiple_to_offset_net_issuance.toFixed(1)}× to offset net issuance, and ${sc.volume_multiple_for_5pct_yield.toFixed(1)}× to reach 5%.`;
+    const takes = [...new Set(sc.grid.map(c => c.take))], vms = [...new Set(sc.grid.map(c => c.volume_multiple))];
+    let tb = '<table><thead><tr><th>Annual volume</th>' + takes.map(k => { const c = sc.grid.find(q => q.take === k); return `<th class="num">${esc(k)}<br><span style="font-weight:400">${c.take_bps.toFixed(1)} bps</span></th>`; }).join('') + '</tr></thead><tbody>';
+    for (const vm of vms){ const c0 = sc.grid.find(q => q.volume_multiple === vm);
+      tb += `<tr><td>${vm}× run rate (${usd(c0.annual_volume_usd)})</td>` + takes.map(k => { const c = sc.grid.find(q => q.volume_multiple === vm && q.take === k); const now = vm === 1 && k === "today's take";
+        return `<td class="num" style="${now ? 'outline:2px solid var(--s1);outline-offset:-2px;font-weight:600' : ''}" title="${usd(c.annual_revenue_usd)} a year">${(c.buyback_yield * 100).toFixed(2)}%</td>`; }).join('') + '</tr>'; }
+    $('grid').innerHTML = tb + '</tbody></table>';
+  } else {
+    h += tile('Buyback yield on NEAR market value', 'n/a', esc(v.reason || 'not computed'));
+    $('lede').textContent = `NEAR Intents runs at ${usd(t.annualised_volume_usd)} of annualised volume and ${usd(t.annualised_revenue_usd)} of revenue captured by NEAR.`;
+    $('grid').innerHTML = nc(v.reason || 'valuation not computed');
+  }
+  $('mtiles').innerHTML = h;
+  const mon = M.monthly.slice(0, -1);   /* the current month is incomplete */
+  [['volume_usd', 'Monthly volume'], ['fees_usd', 'Monthly fees (protocol + partners)'], ['revenue_usd', "Monthly revenue captured by NEAR"]].forEach(([k, n]) => {
+    const p = mon.filter(r => r[k] != null).map(r => ({x: r.month, y: r[k]})); if (p.length > 1) lineChart($('val-charts'), n, 'USD per calendar month, DefiLlama', p, usd); });
+})();
+
+/* ---------- headline tiles ---------- */
+(function(){
+  let h = '';
+  if (rev){
+    h += `<div class="tile"><div class="label">Share of cross-chain ${rev.measure === 'volume_usd' ? 'volume' : 'fee revenue'} from routes with at most 2 rivals</div>
+      <div class="value">${pct(rev.share_low_contestation)}</div>${verdictBadge(rev.verdict)}
+      <div class="note">Claim needs at least ${pct(rev.threshold)}. Source: ${esc(rev.source)}; measure: ${esc(rev.measure_note)}.</div></div>`;
+  } else {
+    h += `<div class="tile"><div class="label">Share of revenue from routes with at most 2 rivals</div><div class="value">n/a</div>${verdictBadge(null)}
+      <div class="note">${esc(R.revenue.map(r => r.reason).filter(Boolean).join(' · '))}</div></div>`;
+  }
+  if (px.computed){
+    for (const e of px.by_notional.filter(x => x.notional_usd === 1000))
+    h += `<div class="tile"><div class="label">NEAR Intents cost on least-contested routes relative to most-contested · ${ptName(e.pair_type).toLowerCase()} · $${num(e.notional_usd)} swap</div>
+      <div class="value">${e.ratio == null ? 'n/a' : e.ratio.toFixed(2) + '×'}</div>${verdictBadge(e.ratio == null ? null : e.verdict)}
+      <div class="note">Claim needs at least ${px.threshold}×. Median ${bps(e.low_median_bps)} over ${e.low_routes} thin routes against ${bps(e.high_median_bps)} over ${e.high_routes} crowded routes.</div></div>`;
+  } else {
+    h += `<div class="tile"><div class="label">NEAR Intents cost, least- vs most-contested routes</div><div class="value">n/a</div>${verdictBadge(null)}<div class="note">${esc(px.reason)}</div></div>`;
+  }
+  $('tiles').innerHTML = h;
+})();
+
+/* ---------- 1 coverage ---------- */
+(function(){
+  const c = R.coverage;
+  if (!c.computed){ $('cov').innerHTML = nc(c.reason); return; }
+  const rivals = R.definitions.rivals;
+  const thin = c.chains.filter(x => x.n_rivals <= 2).length;
+  $('cov-says').textContent = `Of the ${c.chains.length} chains NEAR Intents serves, ${thin} are listed by at most two of the five rivals, and ${c.chains.filter(x => x.n_rivals === 0).length} by none.`;
+  let h = '<table><thead><tr><th>Chain</th>' + rivals.map(r => `<th>${esc(r)}</th>`).join('') + '<th class="num">Rivals</th></tr></thead><tbody>';
+  for (const ch of c.chains)
+    h += `<tr><td>${esc(ch.chain)}</td>` + rivals.map(r => `<td><span class="cell ${ch.rivals.includes(r) ? 'on' : ''}" title="${esc(r)} ${ch.rivals.includes(r) ? 'lists' : 'does not list'} ${esc(ch.chain)}"></span></td>`).join('') + `<td class="num">${ch.n_rivals}</td></tr>`;
+  h += '<tr><th>Chains listed</th>' + rivals.map(r => `<th>${c.per_rival[r]}</th>`).join('') + '<th></th></tr></tbody></table>';
+  $('cov').innerHTML = h;
+})();
+
+/* ---------- horizontal bar helper ---------- */
+function hbars(el, rows, fmt, tipf){
+  const W = 720, lab = 150, rowH = 34, padR = 70, H = rows.length * rowH + 8;
+  const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img'});
+  const max = niceMax(Math.max(...rows.map(r => r.value)));
+  S('line', {x1: lab, x2: lab, y1: 0, y2: H - 8, stroke: 'var(--axis)'}, svg);
+  rows.forEach((r, i) => {
+    const y = i * rowH + 6, w = Math.max(0, (r.value / max) * (W - lab - padR));
+    S('text', {x: lab - 10, y: y + 15, 'text-anchor': 'end', class: 'strong'}, svg, r.label);
+    const p = S('path', {d: `M${lab},${y} h${Math.max(w - 4, 0)} a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4 h-${Math.max(w - 4, 0)} z`, fill: 'var(--s1)'}, svg);
+    S('text', {x: lab + w + 8, y: y + 15, class: 'strong'}, svg, fmt(r.value));
+    const hit = S('rect', {x: 0, y: y - 6, width: W, height: rowH, fill: 'transparent'}, svg);
+    hover(hit, tipf(r));
+  });
+  el.appendChild(svg);
+}
+
+/* ---------- 2 revenue buckets ---------- */
+(function(){
+  if (!revs.length){ $('rev').innerHTML = nc(R.revenue.map(r => r.source + ': ' + r.reason).join(' '));
+    $('rev-says').textContent = 'The split of NEAR Intents revenue by route needs per-swap data, which is not available in this build.'; }
+  const what = r => r.measure === 'volume_usd' ? 'volume' : 'fee revenue';
+  if (rev) $('rev-says').textContent = `Routes that at most two rivals can serve bring in ${pct(rev.share_low_contestation)} of NEAR Intents' cross-chain ${what(rev)}; the claim needed ${pct(rev.threshold)}.`;
+  revs.forEach(r => {
+    const d = document.createElement('div'); d.style.marginBottom = '18px';
+    d.innerHTML = `<p class="meta" style="margin:0 0 6px"><strong style="color:var(--ink)">${esc(r.source)}</strong> · share of cross-chain ${what(r)} (${usd(r.cross_chain_total_usd)} total) by number of rivals able to serve the route${r.window ? ' · ' + r.window.join(' to ') : ''}</p>`;
+    hbars(d, r.buckets.map(b => ({label: b.n_rivals === 'unknown' ? 'unknown' : b.n_rivals + (b.n_rivals === '1' ? ' rival' : ' rivals'), value: b.share, b})), pct,
+      x => `<strong>${esc(x.label)}</strong><br>${pct(x.b.share)} · ${usd(x.b.measure_usd)}<br>${x.b.routes} routes · ${num(x.b.n_swaps)} swaps · ${usd(x.b.volume_usd)} volume`);
+    $('rev').appendChild(d);
+  });
+  revs.forEach(r => { const m = r.share_low_by_measure || {}; const nm = {near_fee_usd: "Fees paid to NEAR's own wallets", fee_usd: 'All app fees (mostly distribution partners)', volume_usd: 'Swap volume', n_swaps: 'Number of swaps'};
+    let h = '<table style="margin-top:6px"><thead><tr><th>Measured by</th><th class="num">Cross-chain total</th><th class="num">Share from routes with at most 2 rivals</th></tr></thead><tbody>';
+    for (const k in m) h += `<tr><td>${nm[k] || k}</td><td class="num">${k === 'n_swaps' ? num(m[k].total) : usd(m[k].total)}</td><td class="num">${pct(m[k].share_low)}</td></tr>`;
+    $('rev').insertAdjacentHTML('beforeend', h + '</tbody></table>'); });
+  R.revenue.filter(r => !r.computed).forEach(r => $('rev').insertAdjacentHTML('beforeend', `<div class="nc" style="margin-top:8px"><strong>${esc(r.source)}: not computed.</strong> ${esc(r.reason)}</div>`));
+  $('rev-q').textContent = `Official source  : python -m moatmap.explorer
+  GET https://explorer.near-intents.org/api/v0/transactions?statuses=SUCCESS&numberOfTransactions=1000&...   (Authorization: Bearer $NEAR_INTENTS_JWT)
+  route = chain(originAsset) > chain(destinationAsset); volume = amountInUsd; fees from appFees
+  fee per recipient = amountInUsd x appFees[].fee / 10,000 ; NEAR's own = recipient is one of NEAR's three revenue wallets
+Then            : python -m moatmap.analyze  groups routes by the number of rivals listing both chains (coverage.csv)`;
+})();
+
+/* ---------- 3 top routes ---------- */
+(function(){
+  if (!rev){ $('top').innerHTML = nc('Needs per-swap data (see panel 2).'); $('top-says').textContent = ''; return; }
+  const t = rev.top_routes.slice(0, 15);
+  const thin = t.filter(x => x.n_rivals !== 'unknown' && +x.n_rivals <= 2);
+  $('top-says').textContent = `Of the ${t.length} largest routes, ${thin.length} can be served by at most two rivals; together those ${thin.length} carry ${pct(thin.reduce((a, x) => a + x.share, 0))} of the total.`;
+  let h = '<table><thead><tr><th>Route</th><th class="num">Rivals</th><th>Who else serves it</th><th class="num">Swaps</th><th class="num">Volume</th><th class="num">Measure</th><th class="num">Share</th></tr></thead><tbody>';
+  for (const r of t) h += `<tr><td>${esc(r.route)}</td><td class="num">${r.n_rivals}</td><td>${r.rivals ? (r.rivals.join(', ') || 'none') : 'unknown'}</td><td class="num">${num(r.n_swaps)}</td><td class="num">${usd(r.volume_usd)}</td><td class="num">${usd(r.measure_usd)}</td><td class="num">${pct(r.share)}</td></tr>`;
+  $('top').innerHTML = h + '</tbody></table>';
+})();
+
+/* ---------- 4 pricing dumbbell ---------- */
+(function(){
+  if (!px.computed){ $('px').innerHTML = nc(px.reason); return; }
+  const sizes = [...new Set(px.routes.map(r => r.notional_usd))].sort((a, b) => a - b);
+  let cur = sizes.includes(1000) ? 1000 : sizes[0];
+  const draw = () => {
+    const rows = px.routes.filter(r => r.notional_usd === cur).sort((a, b) => a.pair_type.localeCompare(b.pair_type) || (+a.n_rivals - +b.n_rivals) || a.route.localeCompare(b.route));
+    const W = 760, lab = 190, rowH = 26, padR = 30, top = 22, H = rows.length * rowH + top + 8;
+    const vals = rows.flatMap(r => [r.near_bps, r.best_rival_bps]).filter(v => v != null);
+    const lo = Math.floor(Math.min(0, ...vals) / 20) * 20, hi = Math.ceil(Math.max(...vals) / 20) * 20, nt = (hi - lo) / 20 <= 8 ? (hi - lo) / 20 : 4;
+    const x = v => lab + ((v - lo) / (hi - lo)) * (W - lab - padR);
+    const el = $('px'); el.innerHTML = '';
+    const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Cost in basis points by route'});
+    for (let i = 0; i <= nt; i++){ const v = lo + (hi - lo) * i / nt;
+      S('line', {x1: x(v), x2: x(v), y1: top, y2: H - 8, stroke: 'var(--grid)'}, svg);
+      S('text', {x: x(v), y: 12, 'text-anchor': 'middle', class: 'tick'}, svg, Math.round(v) + ' bps'); }
+    rows.forEach((r, i) => {
+      const y = top + i * rowH + rowH / 2;
+      S('text', {x: 0, y: y + 4, class: 'strong'}, svg, r.route + (r.pair_type === 'same_asset' ? ' ·' : ''));
+      S('text', {x: lab - 12, y: y + 4, 'text-anchor': 'end', class: 'tick'}, svg, r.n_rivals + (r.n_rivals === '1' ? ' rival' : ' rivals'));
+      if (r.best_rival_bps != null){
+        S('line', {x1: x(r.near_bps), x2: x(r.best_rival_bps), y1: y, y2: y, stroke: 'var(--axis)', 'stroke-width': 2}, svg);
+        S('circle', {cx: x(r.best_rival_bps), cy: y, r: 5, fill: 'var(--s2)', stroke: 'var(--surface)', 'stroke-width': 2}, svg);
+      }
+      S('circle', {cx: x(r.near_bps), cy: y, r: 5, fill: 'var(--s1)', stroke: 'var(--surface)', 'stroke-width': 2}, svg);
+      const hit = S('rect', {x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent'}, svg);
+      hover(hit, `<strong>${esc(r.route)}</strong> (${esc(r.pair)}), $${num(cur)}<br>NEAR Intents: ${bps(r.near_bps)}<br>` +
+        (r.best_rival ? `Cheapest rival (${esc(r.best_rival)}): ${bps(r.best_rival_bps)}<br>NEAR premium: ${bps(r.premium_bps)}` : 'No rival returned a quote'));
+    });
+    el.appendChild(svg);
+    [...$('px-f').children].forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === cur)));
+    let h = '<table><thead><tr><th>Route</th><th>Pair</th><th>Type</th><th class="num">Rivals listing both chains</th><th class="num">NEAR Intents</th><th>Cheapest rival</th><th class="num">Its cost</th><th class="num">NEAR premium</th><th class="num">Rivals that quoted</th></tr></thead><tbody>';
+    for (const r of rows) h += `<tr><td>${esc(r.route)}</td><td>${esc(r.pair)}</td><td>${ptName(r.pair_type)}</td><td class="num">${r.n_rivals}</td><td class="num">${bps(r.near_bps)}</td><td>${r.best_rival ? esc(r.best_rival) : 'none quoted'}</td><td class="num">${bps(r.best_rival_bps)}</td><td class="num">${bps(r.premium_bps)}</td><td class="num">${r.rivals_quoting}</td></tr>`;
+    $('px-t').innerHTML = h + '</tbody></table>';
+    const both = rows.filter(r => r.best_rival_bps != null), cheaper = both.filter(r => r.near_bps <= r.best_rival_bps).length;
+    $('px-says').textContent = `At $${num(cur)}, NEAR Intents is the cheapest option on ${cheaper} of the ${both.length} routes where a rival also quoted, and is the only quote on ${rows.length - both.length} of ${rows.length} routes; routes marked · move the same token, the rest also swap it (${px.snapshots} quote snapshot${px.snapshots === 1 ? '' : 's'}, ${px.first_quote.slice(0, 16)} to ${px.last_quote.slice(0, 16)} UTC).`;
+  };
+  sizes.forEach(s => { const b = document.createElement('button'); b.textContent = '$' + num(s); b.dataset.v = s; b.onclick = () => { cur = s; draw(); }; $('px-f').appendChild(b); });
+  draw();
+})();
+
+/* ---------- 5 ratio table ---------- */
+(function(){
+  if (!px.computed){ $('ratio').innerHTML = nc(px.reason); return; }
+  const ok = px.by_notional.filter(e => e.ratio != null);
+  const pass = ok.filter(e => e.verdict === 'supported').length, rs = ok.map(e => e.ratio);
+  $('ratio-says').textContent = ok.length
+    ? `Comparing like with like, NEAR Intents' cost on routes with at most two rivals is between ${Math.min(...rs).toFixed(2)}× and ${Math.max(...rs).toFixed(2)}× its cost on routes with four or five; the 1.5× claim holds in ${pass} of ${ok.length} comparisons.`
+    : 'The ratio could not be computed because one of the two groups has no successful quotes.';
+  let h = '<table><thead><tr><th>Pair type</th><th class="num">Swap size</th><th class="num">Thin routes (≤2 rivals)</th><th class="num">Median cost</th><th class="num">Crowded routes (≥4 rivals)</th><th class="num">Median cost</th><th class="num">Ratio</th><th>Result</th></tr></thead><tbody>';
+  for (const e of px.by_notional) h += `<tr><td>${ptName(e.pair_type)}</td><td class="num">$${num(e.notional_usd)}</td><td class="num">${e.low_routes}</td><td class="num">${bps(e.low_median_bps)}</td><td class="num">${e.high_routes}</td><td class="num">${bps(e.high_median_bps)}</td><td class="num">${e.ratio == null ? 'n/a' : e.ratio.toFixed(2) + '×'}</td><td>${verdictBadge(e.ratio == null ? null : e.verdict)}</td></tr>`;
+  if (rev && rev.realised_fee_rate){ const rf = rev.realised_fee_rate, f = v => v == null ? 'n/a' : v.toFixed(1) + ' bps';
+    h += '</tbody></table><p class="meta" style="margin:18px 0 4px">Cross-check on executed swaps (' + rev.window.join(' to ') + '): fees actually charged, as basis points of volume. Not like for like: the mix of tokens differs between the groups.</p><table><thead><tr><th>Fee</th><th class="num">Thin routes (≤2 rivals)</th><th class="num">Crowded routes (≥4 rivals)</th><th class="num">Ratio</th></tr></thead><tbody>';
+    [['fee_usd', 'All app fees'], ['near_fee_usd', "Fees to NEAR's own wallets"]].forEach(([k, n]) => { const x = rf[k]; if (x) h += `<tr><td>${n}</td><td class="num">${f(x.low_bps)}</td><td class="num">${f(x.high_bps)}</td><td class="num">${x.ratio == null ? 'n/a' : x.ratio.toFixed(2) + '×'}</td></tr>`; }); }
+  $('ratio').innerHTML = h + '</tbody></table>';
+})();
+
+/* ---------- line chart helper ---------- */
+function lineChart(el, title, sub, pts, fmt){
+  const box = document.createElement('div');
+  box.innerHTML = `<h3>${esc(title)}</h3><p>${esc(sub)}</p>`;
+  const W = 320, H = 150, l = 44, r = 8, t = 8, b = 20;
+  const svg = S('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': title});
+  const max = niceMax(Math.max(...pts.map(p => p.y))), n = pts.length;
+  const x = i => l + (n === 1 ? 0 : i / (n - 1) * (W - l - r)), y = v => t + (1 - v / max) * (H - t - b);
+  [0, .5, 1].forEach(f => { S('line', {x1: l, x2: W - r, y1: y(max * f), y2: y(max * f), stroke: f ? 'var(--grid)' : 'var(--axis)'}, svg);
+    S('text', {x: l - 6, y: y(max * f) + 4, 'text-anchor': 'end', class: 'tick'}, svg, fmt(max * f)); });
+  S('text', {x: l, y: H - 4, class: 'tick'}, svg, pts[0].x); S('text', {x: W - r, y: H - 4, 'text-anchor': 'end', class: 'tick'}, svg, pts[n - 1].x);
+  const d = pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p.y).toFixed(1)).join('');
+  S('path', {d: d + `L${x(n - 1)},${y(0)}L${x(0)},${y(0)}z`, fill: 'var(--s1)', opacity: .1}, svg);
+  S('path', {d, fill: 'none', stroke: 'var(--s1)', 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round'}, svg);
+  const cross = S('line', {y1: t, y2: H - b, stroke: 'var(--axis)', visibility: 'hidden'}, svg);
+  const dot = S('circle', {r: 4, fill: 'var(--s1)', stroke: 'var(--surface)', 'stroke-width': 2, visibility: 'hidden'}, svg);
+  const hit = S('rect', {x: l, y: t, width: W - l - r, height: H - t - b, fill: 'transparent'}, svg);
+  hit.addEventListener('mousemove', e => { const bb = svg.getBoundingClientRect(); const px = (e.clientX - bb.left) / bb.width * W;
+    const i = Math.max(0, Math.min(n - 1, Math.round((px - l) / (W - l - r) * (n - 1))));
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', x(i)); dot.setAttribute('cy', y(pts[i].y)); dot.setAttribute('visibility', 'visible');
+    tip.innerHTML = `<strong>${pts[i].x}</strong><br>${fmt(pts[i].y)}`; tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 14, innerWidth - 150) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+  hit.addEventListener('mouseleave', () => { tip.style.opacity = 0; cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); });
+  box.appendChild(svg); el.appendChild(box);
+}
+/* 7-day sum per week keeps lumpy sweep-day revenue readable */
+function weekly(rows, key){ const out = []; const clean = rows.filter(r => r[key] != null);
+  for (let i = clean.length % 7; i + 7 <= clean.length; i += 7){ const w = clean.slice(i, i + 7); out.push({x: w[6].day, y: w.reduce((a, r) => a + r[key], 0)}); } return out; }
+
+/* ---------- 6 llama ---------- */
+(function(){
+  const L = D.llama;
+  if (!L){ $('ll').innerHTML = nc('llama_daily.csv missing: run python -m moatmap.llama'); return; }
+  const last = L.slice(-30), sum = k => last.reduce((a, r) => a + (r[k] || 0), 0);
+  const f = sum('fees_usd'), v = sum('volume_usd'), rv = sum('revenue_usd');
+  $('ll-says').textContent = `In the 30 days to ${last[last.length - 1].day}, DefiLlama reports ${usd(v)} of NEAR Intents volume, ${usd(f)} of fees and ${usd(rv)} swept to NEAR's revenue wallets, so fees were ${(f / v * 1e4).toFixed(1)} bps of volume.`;
+  [['volume_usd', 'Weekly volume'], ['fees_usd', 'Weekly fees (protocol + affiliate)'], ['revenue_usd', "Weekly revenue swept to NEAR's wallets"]].forEach(([k, t]) => {
+    const p = weekly(L, k); if (p.length > 1) lineChart($('ll'), t, 'USD per 7 days, DefiLlama', p, usd); });
+})();
+
+/* ---------- 7 bigquery ---------- */
+(function(){
+  $('bq-q').innerHTML = Object.entries(D.sql).map(([n, s]) => `<p class="meta" style="margin:10px 0 4px">sql/${esc(n)}</p><pre>${esc(s)}</pre>`).join('') || '<pre>no SQL files found</pre>';
+  if (!D.bq_daily){ $('bq-says').textContent = 'The SQL is written and shown below, but it has not been run in this build, so no BigQuery number appears anywhere on this page.';
+    $('bq').innerHTML = nc('bq_daily.csv missing: set GOOGLE_APPLICATION_CREDENTIALS and GCP_PROJECT in .env, then run python -m moatmap.bq'); $('bq').style.display = 'block'; return; }
+  const by = {}; D.bq_daily.forEach(r => (by[r.metric] = by[r.metric] || []).push({x: r.block_date, y: r.value}));
+  const fr = D.bq_freshness || {};
+  const core = [['transactions', 'Transactions on NEAR'], ['active_accounts', 'Active accounts (distinct signers)'], ['network_function_calls', 'Contract calls, whole network'],
+    ['intents_function_calls', 'Contract calls to intents.near'], ['intents_distinct_signers', 'Distinct signers reaching intents.near']];
+  /* the newest block_date is still filling in, so it is not plotted */
+  const full = p => p.sort((x, y) => x.x < y.x ? -1 : 1).filter(q => q.x < fr.last_block_date);
+  core.forEach(([m, t]) => { if (by[m]){ const p = full(by[m]); if (p.length > 1) lineChart($('bq'), t, 'per day, NEAR BigQuery', p, num); } });
+  const sum = m => full(by[m] || []).reduce((acc, q) => acc + q.y, 0), mean = m => sum(m) / full(by[m] || [{}]).length;
+  const top = D.bq_top || [], me = top.find(r => r.contract === 'intents.near');
+  $('bq-says').textContent = (me ? `intents.near is the #${me.rank_by_calls} most-called contract on NEAR, taking ${pct(me.share_of_network_calls)} of all contract calls between ${me.window_start} and ${me.window_end}, ` : '') +
+    `but only about ${num(mean('intents_distinct_signers'))} distinct accounts sign for it per day out of ${num(mean('active_accounts'))} active on the network: usage is heavy and concentrated in a few solver and relayer accounts. Dataset current to ${fr.last_block_date}.`;
+  if (top.length){ let h = '<table><thead><tr><th class="num">Rank</th><th>Contract</th><th class="num">Calls</th><th class="num">Share of network calls</th><th class="num">Distinct callers</th></tr></thead><tbody>';
+    for (const r of top.slice(0, 10)) h += `<tr><td class="num">${r.rank_by_calls}</td><td>${esc(String(r.contract).length > 28 ? String(r.contract).slice(0, 12) + '…' + String(r.contract).slice(-8) : r.contract)}</td><td class="num">${num(r.function_calls)}</td><td class="num">${pct(r.share_of_network_calls)}</td><td class="num">${num(r.distinct_predecessors)}</td></tr>`;
+    $('bq').insertAdjacentHTML('afterend', '<p class="meta" style="margin:16px 0 4px">Most-called contracts on NEAR over the window</p><div class="scroll">' + h + '</tbody></table></div>'); }
+})();
+
+/* ---------- caveats ---------- */
+(function(){
+  const c = [
+    'A rival is counted on a route when its own API lists both chains. It may still not support a particular token on that chain, so contestation is, if anything, overstated.',
+    'Part of NEAR Intents flow settles on a confidential shard and is not visible in public data, so every revenue and volume figure here is a lower bound.',
+    'Quotes are a snapshot of a few minutes, for placeholder addresses, without executing. Executed prices can differ, and a keyless 1Click quote may carry a fee that a partner integration would not.',
+    'Bitcoin and Tron are not uncontested: Chainflip, THORChain or Relay serve them. The map counts rivals; it does not call any route a monopoly.',
+  ];
+  if (rev && rev.measure !== 'near_fee_usd') c.unshift(`The revenue split uses ${rev.measure_note}. It is not NEAR's captured revenue per route.`);
+  if (rev && rev.sample_meta) c.unshift('The route split comes from a random sample of public blocks, not a full count, so shares carry sampling error (see THESIS.md for intervals).');
+  $('cav').innerHTML = c.map(x => `<li>${esc(x)}</li>`).join('');
+})();
+</script>
+</body>
+</html>

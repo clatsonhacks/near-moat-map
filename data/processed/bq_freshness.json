@@ -1,0 +1,40 @@
+{
+ "checked_at": "2026-11-14T07:06:29+00:00",
+ "dataset": "bigquery-public-data.crypto_near_mainnet_us",
+ "last_block_date": "2026-11-14",
+ "last_block_timestamp_utc": "2026-11-14T06:59:59Z",
+ "days_stale": 0,
+ "note": "NEAR Lake (the S3 source of this dataset) was deprecated 2026-03-24 per docs.near.org; the window below ends at the last block_date actually present, not at today.",
+ "window_start": "2026-10-16",
+ "window_end": "2026-11-14",
+ "heavy_window_start": "2026-11-08",
+ "queries": {
+  "freshness": {
+   "window": [
+    "2026-10-15",
+    "2026-11-14"
+   ],
+   "dry_run_bytes": 71597456,
+   "state": "ok",
+   "bytes_processed": 71597456,
+   "rows": 1,
+   "job_id": "job_qy3QwYF6gZenrJZgfF8TVL0ZVMDW",
+   "cache_hit": false
+  },
+  "circulating_supply": {
+   "window": [
+    "2026-10-16",
+    "2026-11-14"
+   ],
+   "dry_run_bytes": 33936,
+   "state": "ok",
+   "bytes_processed": 33936,
+   "rows": 29,
+   "job_id": "job_1z4Ey4zdmMqHuJ7cGY_cES29RwyS",
+   "cache_hit": false
+  }
+ },
+ "last_date_per_metric": {},
+ "total_bytes_processed": 71631392,
+ "dry_run_only": false
+}
